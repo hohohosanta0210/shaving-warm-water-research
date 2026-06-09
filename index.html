@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>면도 시 '털 불리기' 행동 & 니즈 리서치</title>
+<meta name="description" content="디시·클리앙·더쿠·인스티즈·네이트판·마이피누·아하·쓰레드·블라인드 등 9개 커뮤니티 실제 게시글/댓글 기반 — 면도 전 따뜻한 물로 털을 불리는 행동과 제품 니즈 리서치" />
+<meta property="og:title" content="면도 시 '털 불리기' 행동 & 니즈 리서치" />
+<meta property="og:description" content="9개 커뮤니티 실제 목소리 기반 — 불리기는 귀찮아서 생략되는가, 쉬운 제품이 있으면 쓸 것인가" />
+<meta property="og:type" content="article" />
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+<style>
+  :root{
+    --bg:#f7f4ef;
+    --surface:#fffdfa;
+    --ink:#1d1a16;
+    --muted:#6b6359;
+    --line:#e6dfd4;
+    --accent:#d9603b;      /* warm water / heat */
+    --accent-soft:#fbe9e1;
+    --teal:#2f7d72;        /* secondary signal */
+    --teal-soft:#e2f0ed;
+    --quote-bg:#f1ece3;
+    --strong:#0f0d0a;
+    --radius:16px;
+    --shadow:0 1px 2px rgba(29,26,22,.04), 0 8px 28px -12px rgba(29,26,22,.16);
+    --maxw:760px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,system-ui,"Segoe UI",Roboto,sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.72;
+    -webkit-font-smoothing:antialiased;
+    font-feature-settings:"tnum";
+    letter-spacing:-.011em;
+  }
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+
+  /* ---------- hero ---------- */
+  header.hero{
+    padding:84px 0 40px;
+    border-bottom:1px solid var(--line);
+    background:
+      radial-gradient(120% 80% at 100% 0%, var(--accent-soft) 0%, rgba(251,233,225,0) 55%),
+      radial-gradient(90% 70% at 0% 0%, var(--teal-soft) 0%, rgba(226,240,237,0) 45%);
+  }
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:13px;font-weight:600;color:var(--accent);
+    letter-spacing:.02em;text-transform:none;margin-bottom:18px;
+    padding:6px 12px;border:1px solid var(--accent);border-radius:999px;background:rgba(255,255,255,.5);
+  }
+  .eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent)}
+  h1{
+    font-size:clamp(30px,5.5vw,46px);
+    line-height:1.16;font-weight:800;letter-spacing:-.03em;
+    margin:0 0 18px;color:var(--strong);
+  }
+  .sub{font-size:17px;color:var(--muted);margin:0 0 26px;max-width:60ch}
+  .meta{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{
+    font-size:12.5px;color:var(--muted);background:var(--surface);
+    border:1px solid var(--line);border-radius:999px;padding:5px 11px;font-weight:500;
+  }
+
+  /* ---------- sections ---------- */
+  main{padding:56px 0 40px}
+  section{margin:0 0 60px}
+  .kicker{
+    font-size:13px;font-weight:700;color:var(--accent);letter-spacing:.04em;
+    margin:0 0 10px;display:flex;align-items:center;gap:10px;
+  }
+  .kicker .num{
+    font-size:12px;width:24px;height:24px;border-radius:8px;
+    background:var(--accent);color:#fff;display:grid;place-items:center;font-weight:800;
+  }
+  h2{font-size:clamp(22px,3.6vw,28px);line-height:1.25;font-weight:800;letter-spacing:-.02em;margin:0 0 8px;color:var(--strong)}
+  .verdict{font-size:15px;font-weight:700;color:var(--teal);margin:0 0 22px}
+  .verdict.warn{color:var(--accent)}
+  p{margin:0 0 16px;font-size:16.5px}
+  a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(217,96,59,.35);transition:border-color .15s}
+  a:hover{border-color:var(--accent)}
+  strong{color:var(--strong);font-weight:700}
+  .hl{background:linear-gradient(180deg,transparent 62%,var(--accent-soft) 62%);padding:0 1px;font-weight:600}
+
+  /* ---------- TL;DR cards ---------- */
+  .tldr{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:0 0 8px}
+  .card{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    padding:22px 20px;box-shadow:var(--shadow);position:relative;overflow:hidden;
+  }
+  .card .n{font-size:13px;font-weight:800;color:var(--accent);margin-bottom:10px}
+  .card p{font-size:15px;margin:0;color:var(--ink);line-height:1.62}
+  .card::after{content:"";position:absolute;inset:0 auto 0 0;width:3px;background:var(--accent)}
+
+  /* ---------- quotes ---------- */
+  blockquote{
+    margin:18px 0;padding:18px 20px;background:var(--quote-bg);
+    border-radius:12px;border-left:3px solid var(--accent);
+    font-size:16px;color:var(--strong);line-height:1.6;
+  }
+  blockquote.teal{border-left-color:var(--teal)}
+  blockquote .src{display:block;margin-top:10px;font-size:13px;color:var(--muted);font-weight:500}
+  blockquote .src a{border:none;font-weight:600}
+  .qlist{list-style:none;padding:0;margin:14px 0}
+  .qlist li{
+    position:relative;padding:12px 0 12px 22px;border-bottom:1px dashed var(--line);font-size:16px;
+  }
+  .qlist li:last-child{border-bottom:none}
+  .qlist li::before{content:"“";position:absolute;left:0;top:10px;color:var(--accent);font-size:22px;font-weight:800;line-height:1}
+  .qlist .src{font-size:13px;color:var(--muted);font-weight:500}
+  .qlist .src a{border:none;font-weight:600}
+
+  /* ---------- table ---------- */
+  .tablecard{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+  table{width:100%;border-collapse:collapse;font-size:15px}
+  th,td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:var(--quote-bg);font-weight:700;color:var(--strong);font-size:13.5px;letter-spacing:.01em}
+  tr:last-child td{border-bottom:none}
+  .stars{color:var(--accent);font-weight:800;letter-spacing:1px;white-space:nowrap}
+  .stars .off{color:var(--line)}
+
+  /* ---------- whitespace callout ---------- */
+  .whitespace{
+    background:linear-gradient(135deg,#1d1a16,#2c2722);color:#f7f4ef;
+    border-radius:var(--radius);padding:30px 28px;margin:26px 0;box-shadow:var(--shadow);
+  }
+  .whitespace .lbl{font-size:12.5px;font-weight:700;color:var(--accent);letter-spacing:.06em;margin-bottom:12px}
+  .whitespace p{font-size:18px;line-height:1.55;margin:0;color:#f7f4ef}
+  .whitespace .q{color:#ffd9cb;font-weight:700}
+
+  /* ---------- next steps ---------- */
+  .steps{display:grid;gap:12px;margin:18px 0}
+  .step{display:flex;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+  .step .d{font-size:14px;font-weight:800;color:var(--teal);background:var(--teal-soft);min-width:30px;height:30px;border-radius:8px;display:grid;place-items:center}
+  .step p{margin:0;font-size:15px}
+
+  /* ---------- method / footer ---------- */
+  .method{background:var(--surface);border:1px dashed var(--line);border-radius:var(--radius);padding:24px 22px}
+  .method h3{margin:0 0 14px;font-size:15px;font-weight:800;color:var(--strong)}
+  .method ul{margin:0;padding-left:18px}
+  .method li{font-size:14.5px;color:var(--muted);margin-bottom:7px}
+  .method li strong{color:var(--ink)}
+  .badge-ok{color:var(--teal);font-weight:700}
+  .badge-no{color:var(--accent);font-weight:700}
+
+  footer{border-top:1px solid var(--line);padding:34px 0 70px;color:var(--muted);font-size:13.5px}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:6px;justify-content:space-between;align-items:center}
+
+  hr.soft{border:none;border-top:1px solid var(--line);margin:0}
+
+  @media (max-width:640px){
+    header.hero{padding:60px 0 34px}
+    main{padding:42px 0 30px}
+    .tldr{grid-template-columns:1fr}
+    section{margin-bottom:48px}
+    .whitespace p{font-size:16px}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">커뮤니티 기반 사용자 리서치</span>
+    <h1>면도 시 '털 불리기' 행동 &amp; 니즈 리서치</h1>
+    <p class="sub">사람들은 면도 전 정말 따뜻한 물로 털을 불릴까? 귀찮아서 생략한다면, 더 쉬운 제품이 있으면 갈아탈까? — 9개 한국 커뮤니티의 <strong>실제 게시글·댓글</strong>을 직접 수집해 정리했다.</p>
+    <div class="meta">
+      <span class="chip">디시 면도갤</span>
+      <span class="chip">클리앙</span>
+      <span class="chip">더쿠</span>
+      <span class="chip">인스티즈</span>
+      <span class="chip">네이트판</span>
+      <span class="chip">마이피누</span>
+      <span class="chip">아하</span>
+      <span class="chip">쓰레드</span>
+      <span class="chip">블라인드</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- TL;DR -->
+  <section id="tldr">
+    <div class="kicker"><span class="num">TL</span> 핵심 결론 3줄</div>
+    <div class="tldr">
+      <div class="card">
+        <div class="n">01 · 안다, 안 한다</div>
+        <p>"따뜻한 물로 불리기"는 누구나 아는 정석이지만, 실제로는 상당수가 <strong>귀찮아서 생략</strong>한다. "정답은 알지만 안 지키는" 전형적 패턴.</p>
+      </div>
+      <div class="card">
+        <div class="n">02 · 불리기 = 페인포인트</div>
+        <p>불리기 단계 자체가 불만이다. <strong>"하루종일 불리고 있을 수도 없고"</strong>, "바쁜 아침엔 현실적으로 힘들다" — 시간·번거로움이 핵심.</p>
+      </div>
+      <div class="card">
+        <div class="n">03 · 편하면 갈아탄다</div>
+        <p>전환 의향이 강하다. 단 기존 대안(전기·레이저·제모기)은 <strong>비용·피부자극·효과부족</strong>의 벽이 있어 빈자리가 존재.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Q1 -->
+  <section id="q1">
+    <div class="kicker"><span class="num">Q1</span> 사람들이 따뜻한 물로 털을 불리는가?</div>
+    <h2>"불려야 한다"는 상식, 그러나 실행은 갈린다</h2>
+    <p class="verdict">결론 — 지식은 공통, 행동은 둘로 분기</p>
+    <p>거의 모든 가이드성 글이 불리기를 <strong>1번 스텝</strong>으로 강조한다. 물 먹은 수염은 마른 상태보다 약 <span class="hl">70% 부드러워진다</span>는 수치가 커뮤니티 전반에 반복 인용된다.</p>
+    <ul class="qlist">
+      <li>불리지 않고 면도를 하면 수염이 억세서 밀기 힘들뿐더러 건조한 상태로 밀면 피부도 상처입기 쉽다
+        <span class="src">— 디시 면도갤 <a href="https://gall.dcinside.com/board/view/?id=shaving&no=9302" target="_blank" rel="noopener">초보 면붕이 기본글</a></span></li>
+      <li>"수염 불리기"를 면도의 3대 요소 중 첫 번째로 꼽음
+        <span class="src">— 클리앙 <a href="https://www.clien.net/service/board/lecture/10033278" target="_blank" rel="noopener">면도하는 방법</a></span></li>
+      <li>면도기 자체를 온수에 불리는 것이 효과가 가장 좋더군요
+        <span class="src">— 아하 <a href="https://www.a-ha.io/questions/4c4e9f2d42ecdf3cabe818daf5e7ca6e" target="_blank" rel="noopener">온수 불리기 Q&amp;A</a></span></li>
+    </ul>
+    <p>그러나 실제 행동은 갈린다. 종합하면 <strong>"불리고 하나 바로 하나 큰 차이가 없는 것 같아 시간 아끼려고 바로 하는 사람"</strong>도 흔하다 — 즉 <span class="hl">불리기 생략은 일상적 현실</span>이다.</p>
+  </section>
+
+  <hr class="soft" />
+
+  <!-- Q2 -->
+  <section id="q2" style="padding-top:40px">
+    <div class="kicker"><span class="num">Q2</span> 귀찮아서 안 하는가?</div>
+    <h2>YES — 가장 강한 신호</h2>
+    <p class="verdict warn">결론 — 불리기/준비 단계는 명백한 페인포인트</p>
+    <p>준비 단계를 직접 "귀찮다·고문·비현실적"이라 표현한 목소리가 다수 확인됐다. 특히 블라인드의 한 줄이 핵심을 정확히 찌른다.</p>
+
+    <blockquote>
+      쉐이빙폼만 바르고 하면 <strong>피바다가 되네</strong>.. (불리기 생략 → 출혈)<br>
+      → 조언 "뜨거운 물로 수염 불려"에 원글이 답하길:<br>
+      <strong>"블려도 좀 그렇던데 하루종일 불리고 있을 수도 없구 흑흑 보통 몇 분 불려 형?"</strong>
+      <span class="src">— 블라인드 <a href="https://www.teamblind.com/kr/post/%EA%B0%91%EC%9E%90%EA%B8%B0-%EB%A9%B4%EB%8F%84%ED%95%B4%EC%95%BC%EB%90%A0%EB%95%8C-%ED%8C%81%EC%9E%88%EC%96%B4-%ED%98%95%EB%93%A4-tj0FQKTK" target="_blank" rel="noopener">갑자기 면도해야 될 때 팁</a></span>
+    </blockquote>
+
+    <ul class="qlist">
+      <li>스팀타월 방식은 "바쁜 아침에 현실적으로 힘들다" (저자 본인이 인정, 약식 대안 제시)
+        <span class="src">— 클리앙 <a href="https://www.clien.net/service/board/lecture/10033278" target="_blank" rel="noopener">면도하는 방법</a></span></li>
+      <li>거품칠하고 불리고 시간도 시간이고 조심조심해서 깎고 <strong>고문과도 같았지만</strong>…
+        <span class="src">— 디시 면도갤 <a href="https://gall.dcinside.com/board/view/?id=shaving&no=1516" target="_blank" rel="noopener">면도 고민 끝낸 이유</a></span></li>
+      <li>(여성·다리털) 매일매일 밀어요 <strong>귀찮아서 안 민 날은 긴바지</strong>
+        <span class="src">— 마이피누 <a href="https://mypnu.net/ha/589530" target="_blank" rel="noopener">여자분들 다리털 어떻게</a></span></li>
+      <li>물로만 하면 편하긴 한데 피부 자극이 심해서 하고 나면 빨갛고 따갑다
+        <span class="src">— 클리앙 (물로만 면도 경험담)</span></li>
+    </ul>
+
+    <div class="whitespace">
+      <div class="lbl">패턴 요약 — 사용자가 갇힌 딜레마</div>
+      <p>불리기를 빼면 <span class="q">피바다 / 따가움</span>, 제대로 하면 <span class="q">시간 / 번거로움</span>. 사용자는 이 둘 사이에 끼어 있다. = <strong style="color:#fff">빈 시장(white space)</strong></p>
+    </div>
+  </section>
+
+  <hr class="soft" />
+
+  <!-- Q3 -->
+  <section id="q3" style="padding-top:40px">
+    <div class="kicker"><span class="num">Q3</span> 쉬운 제품이 있으면 쓸 것인가?</div>
+    <h2>의향 매우 높음 — 단, 기존 대안엔 불만</h2>
+    <p class="verdict">결론 — 전환 장벽 낮음, 진입 기회 큼</p>
+    <p>귀찮음을 못 견딘 사람들은 이미 "더 편한 것"으로 <strong>적극 이주</strong> 중이다. 즉 전환 의향이 행동으로 검증된다.</p>
+
+    <p style="font-weight:700;color:var(--strong);margin-bottom:6px">남성 — "편하면 갈아탄다"</p>
+    <ul class="qlist">
+      <li>수동 면도기를 전기 면도기로 바꿔라 / 자주 하는 게 귀찮으면 영구 제모를 받아라 / 그냥 지나가기만 하면 되니까 무지하게 편하다
+        <span class="src">— 디시 면도갤 <a href="https://gall.dcinside.com/board/view/?id=shaving&no=1516" target="_blank" rel="noopener">면도 고민 끝낸 이유</a></span></li>
+      <li>(질문 자체가 니즈) 하루 한 번 면도가 <strong>귀찮다면 차라리 제모를 하는 게 좋을까요?</strong>
+        <span class="src">— 아하 <a href="https://www.a-ha.io/questions/43fb5bd86d8f4861bf8555b1d9fe8e06" target="_blank" rel="noopener">면도 귀찮으면 제모?</a></span></li>
+    </ul>
+
+    <p style="font-weight:700;color:var(--strong);margin-bottom:6px">여성 — "미는 것보다 편한 것" 선호 뚜렷</p>
+    <ul class="qlist">
+      <li><strong>물엿 제모 좋아요</strong> 저 털녀인데 짱이에요 / <strong>제모기 써요, 미는 것보다 늦게 자라고</strong> 좋은 느낌
+        <span class="src">— 마이피누 <a href="https://mypnu.net/ha/589530" target="_blank" rel="noopener">여자분들 다리털 어떻게</a></span></li>
+      <li>(역설) 비누 달린 제모면도기 → 털 제거가 번거로워 족집게·칫솔로 청소 = <strong>제품 관리가 또 다른 귀찮음</strong>
+        <span class="src">— 인스티즈 <a href="https://www.instiz.net/name_beauty/1174989" target="_blank" rel="noopener">비누 달린 제모면도기</a></span></li>
+    </ul>
+
+    <p style="font-weight:700;color:var(--strong);margin-bottom:6px">단, 기존 "쉬운 대안"의 벽 = 진입 기회</p>
+    <blockquote class="teal">
+      "시술은 또 돈 들고" · "레이저 할 돈도 없고 한 번 한다고 아예 안 나는 것도 아니라" · "가는 것도 일이고"<br>
+      "제모 자주 했더니 <strong>피부 다 망가졌어</strong> 이젠 안 하고 있어"
+      <span class="src">— 인스티즈 <a href="https://www.instiz.net/name/32256637" target="_blank" rel="noopener">대체 왜 제모를 안 하지?</a> / 네이트판 <a href="https://pann.nate.com/talk/313084200" target="_blank" rel="noopener">제모 후기 고민</a></span>
+    </blockquote>
+  </section>
+
+  <hr class="soft" />
+
+  <!-- Insights -->
+  <section id="insight" style="padding-top:40px">
+    <div class="kicker"><span class="num">★</span> 제품 니즈 관점 시사점</div>
+    <h2>검증된 니즈와 강도</h2>
+    <div class="tablecard">
+      <table>
+        <thead>
+          <tr><th>검증된 니즈</th><th>근거 강도</th><th>제품 함의</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>준비(불리기)가 귀찮아 생략</td><td class="stars">★★★</td><td>"불리기 없이 바로" 가치제안이 통한다</td></tr>
+          <tr><td>생략하면 따가움/상처 발생</td><td class="stars">★★★</td><td>"준비 생략 + 무자극" 동시 충족 시 차별화</td></tr>
+          <tr><td>더 편하면 즉시 전환</td><td class="stars">★★★</td><td>전환 장벽 낮음, 진입 기회 큼</td></tr>
+          <tr><td>기존 대안은 돈·피부손상·효과부족</td><td class="stars">★★<span class="off">★</span></td><td>레이저·제모기 틈새 = 저가·무자극·즉시성</td></tr>
+          <tr><td>휴대/출장/급할 때 간편</td><td class="stars">★★<span class="off">★</span></td><td>"워터리스 / 원스텝" 컨셉 수요 존재</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="whitespace">
+      <div class="lbl">한 줄로 정의된 빈자리</div>
+      <p>"따뜻한 물에 불리는 번거로운 준비 없이, <span class="q">바로</span>, <span class="q">자극 없이</span> 밀 수 있게 해주는 제품" — 블라인드의 <span class="q">"하루종일 불리고 있을 수도 없고"</span>, 클리앙의 <span class="q">"바쁜 아침엔 현실적으로 힘들다"</span> 가 타깃 카피의 출발점.</p>
+    </div>
+  </section>
+
+  <!-- Next steps -->
+  <section id="next">
+    <div class="kicker"><span class="num">→</span> 다음 단계 추천</div>
+    <h2>이번 리서치의 한계와 보완</h2>
+    <div class="steps">
+      <div class="step"><div class="d">1</div><p><strong>정량화 약함</strong> — "불리기 생략 비율"을 설문/커뮤니티 자체 투표(면도갤·클리앙)로 수치화</p></div>
+      <div class="step"><div class="d">2</div><p><strong>가격 민감도 미확인</strong> — 레이저 대비 얼마면 쓸지, 컨셉 테스트로 검증</p></div>
+      <div class="step"><div class="d">3</div><p><strong>세그먼트 심층</strong> — 남성(수염)·여성(바디) 니즈를 분리해 별도 인터뷰</p></div>
+    </div>
+  </section>
+
+  <!-- Method -->
+  <section id="method">
+    <div class="method">
+      <h3>방법론 메모 · insane-search</h3>
+      <ul>
+        <li><span class="badge-ok">WebFetch 직접 통과</span> — 디시 · 클리앙 · 더쿠 · 인스티즈 · 네이트판 · 아하</li>
+        <li><span class="badge-ok">Jina Reader 우회 (403/SPA)</span> — 개드립 · 쓰레드(threads.com) · 블라인드 (무설치 경로로 성공)</li>
+        <li><span class="badge-no">수집 불가</span> — pgr21(원글 삭제), 개드립 1건(404 삭제)</li>
+        <li><strong>미사용</strong> — curl_cffi 엔진(외부 저장소 패키지 설치가 자동모드에서 거부). 승인 시 댓글 페이지네이션까지 심화 수집 가능</li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>면도 '털 불리기' 행동 &amp; 니즈 리서치 · 9개 커뮤니티 실제 목소리 기반</span>
+    <span>Researched with <strong>insane-search</strong> · 2026</span>
+  </div>
+</footer>
+
+</body>
+</html>

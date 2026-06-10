@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>면도 준비 생략 제품 — 시장성 &amp; 경쟁제품 분석</title>
+<meta name="description" content="'불리기 없이 바로 면도' 제품을 출시해도 될까? 질레트 히티드 면도기·H2NO 워터리스 젤·프리쉐이브 오일 등 경쟁 지형과 한국 시장성, 출시 타당성(Go/No-Go) 분석." />
+<meta property="og:title" content="면도 준비 생략 제품 — 시장성 & 경쟁제품 분석 (Part 2)" />
+<meta property="og:description" content="질레트 히티드 면도기의 한국 단종이 주는 교훈, 경쟁 3대 접근, 시장 규모, 세그먼트 적합도, Go/No-Go 결론" />
+<meta property="og:type" content="article" />
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+<style>
+  :root{
+    --bg:#f7f4ef;--surface:#fffdfa;--ink:#1d1a16;--muted:#6b6359;--line:#e6dfd4;
+    --accent:#d9603b;--accent-soft:#fbe9e1;--teal:#2f7d72;--teal-soft:#e2f0ed;
+    --quote-bg:#f1ece3;--strong:#0f0d0a;--radius:16px;
+    --shadow:0 1px 2px rgba(29,26,22,.04), 0 8px 28px -12px rgba(29,26,22,.16);
+    --maxw:760px;--go:#2f7d72;--warn:#d9603b;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,system-ui,"Segoe UI",Roboto,sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.72;-webkit-font-smoothing:antialiased;font-feature-settings:"tnum";letter-spacing:-.011em;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+
+  header.hero{padding:60px 0 40px;border-bottom:1px solid var(--line);
+    background:radial-gradient(120% 80% at 100% 0%, var(--accent-soft) 0%, rgba(251,233,225,0) 55%),
+      radial-gradient(90% 70% at 0% 0%, var(--teal-soft) 0%, rgba(226,240,237,0) 45%);}
+  .nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;font-size:13.5px;font-weight:600}
+  .nav a,.nav span{padding:7px 14px;border-radius:999px;text-decoration:none}
+  .nav .here{background:var(--accent);color:#fff}
+  .nav .other{background:var(--surface);border:1px solid var(--line);color:var(--muted)}
+  .nav a{border-bottom:none}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--accent);
+    margin-bottom:18px;padding:6px 12px;border:1px solid var(--accent);border-radius:999px;background:rgba(255,255,255,.5);}
+  .eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent)}
+  h1{font-size:clamp(28px,5vw,42px);line-height:1.18;font-weight:800;letter-spacing:-.03em;margin:0 0 18px;color:var(--strong)}
+  .sub{font-size:17px;color:var(--muted);margin:0 0 26px;max-width:60ch}
+  .meta{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{font-size:12.5px;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:5px 11px;font-weight:500}
+
+  main{padding:50px 0 40px}
+  section{margin:0 0 58px}
+  .kicker{font-size:13px;font-weight:700;color:var(--accent);letter-spacing:.04em;margin:0 0 10px;display:flex;align-items:center;gap:10px}
+  .kicker .num{font-size:12px;width:24px;height:24px;border-radius:8px;background:var(--accent);color:#fff;display:grid;place-items:center;font-weight:800}
+  h2{font-size:clamp(22px,3.6vw,28px);line-height:1.25;font-weight:800;letter-spacing:-.02em;margin:0 0 8px;color:var(--strong)}
+  .verdict{font-size:15px;font-weight:700;color:var(--teal);margin:0 0 22px}
+  .verdict.warn{color:var(--accent)}
+  p{margin:0 0 16px;font-size:16.5px}
+  a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(217,96,59,.35);transition:border-color .15s}
+  a:hover{border-color:var(--accent)}
+  strong{color:var(--strong);font-weight:700}
+  .hl{background:linear-gradient(180deg,transparent 62%,var(--accent-soft) 62%);padding:0 1px;font-weight:600}
+
+  /* verdict banner */
+  .gobox{background:linear-gradient(135deg,#1d1a16,#2c2722);color:#f7f4ef;border-radius:var(--radius);padding:30px 28px;box-shadow:var(--shadow);margin-bottom:8px}
+  .gobox .tag{display:inline-block;font-size:13px;font-weight:800;letter-spacing:.04em;padding:6px 14px;border-radius:999px;background:#2f7d72;color:#fff;margin-bottom:16px}
+  .gobox h2{color:#fff;font-size:clamp(20px,3.4vw,26px);margin:0 0 12px}
+  .gobox p{color:#e9e2d7;font-size:16px;margin:0 0 10px}
+  .gobox .em{color:#ffd9cb;font-weight:700}
+  .gobox .cond{margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,.14);font-size:14.5px;color:#cfc7bb}
+
+  /* stat cards */
+  .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:18px 0}
+  .stat{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .stat::after{content:"";position:absolute;inset:0 auto 0 0;width:3px;background:var(--teal)}
+  .stat .big{font-size:27px;font-weight:800;color:var(--strong);letter-spacing:-.02em;line-height:1.1}
+  .stat .lbl{font-size:13.5px;color:var(--muted);margin-top:6px;line-height:1.45}
+  .stat .src{font-size:11.5px;color:#a59c8f;margin-top:8px}
+  .stat .src a{border:none;color:#a59c8f}
+
+  /* competitor cards */
+  .comp{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px 22px;box-shadow:var(--shadow);margin:14px 0}
+  .comp .top{display:flex;align-items:center;gap:10px;margin-bottom:6px;flex-wrap:wrap}
+  .comp .badge{font-size:11.5px;font-weight:800;padding:4px 10px;border-radius:999px}
+  .b-hw{background:#efe2dd;color:#a8472a}
+  .b-chem{background:var(--teal-soft);color:#1f5a51}
+  .b-sub{background:#eee9df;color:#6b6359}
+  .comp h3{margin:0;font-size:18px;font-weight:800;color:var(--strong)}
+  .comp .ex{font-size:13.5px;color:var(--muted);font-weight:600;margin-left:auto}
+  .comp p{font-size:15px;margin:8px 0 0}
+  .comp .row{display:flex;gap:18px;flex-wrap:wrap;margin-top:12px;font-size:13.5px}
+  .comp .row .k{color:var(--muted)}
+  .comp .row .v{color:var(--strong);font-weight:600}
+  .pro{color:var(--teal);font-weight:700}
+  .con{color:var(--accent);font-weight:700}
+
+  /* case highlight */
+  .case{background:#fff4ef;border:1px solid #f1d3c6;border-left:4px solid var(--accent);border-radius:14px;padding:22px;margin:18px 0}
+  .case .lbl{font-size:12px;font-weight:800;color:var(--accent);letter-spacing:.05em;margin-bottom:10px}
+  .case p{font-size:15.5px;margin:0 0 8px}
+  .case .punch{font-size:16px;font-weight:700;color:var(--strong)}
+
+  /* table */
+  .tablecard{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+  table{width:100%;border-collapse:collapse;font-size:14.5px}
+  th,td{text-align:left;padding:13px 15px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:var(--quote-bg);font-weight:700;color:var(--strong);font-size:13px}
+  tr:last-child td{border-bottom:none}
+  .fit-hi{color:var(--teal);font-weight:800}
+  .fit-mid{color:#b88a00;font-weight:800}
+  .fit-lo{color:var(--accent);font-weight:800}
+
+  /* segments */
+  .seg{display:grid;gap:12px;margin:16px 0}
+  .segrow{display:flex;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px;align-items:flex-start}
+  .segrow .ic{min-width:34px;height:34px;border-radius:9px;display:grid;place-items:center;font-weight:800;font-size:14px}
+  .ic-hi{background:var(--teal-soft);color:#1f5a51}
+  .ic-lo{background:var(--accent-soft);color:#a8472a}
+  .segrow p{margin:0;font-size:15px}
+  .segrow .t{font-weight:700;color:var(--strong)}
+
+  /* risk list */
+  .risk{list-style:none;padding:0;margin:14px 0}
+  .risk li{position:relative;padding:13px 0 13px 30px;border-bottom:1px dashed var(--line);font-size:15.5px}
+  .risk li:last-child{border-bottom:none}
+  .risk li::before{content:"!";position:absolute;left:0;top:11px;width:20px;height:20px;border-radius:50%;background:var(--accent-soft);color:var(--accent);font-weight:800;font-size:12px;display:grid;place-items:center}
+  .risk li .mit{display:block;margin-top:5px;font-size:13.5px;color:var(--muted)}
+  .risk li .mit b{color:var(--teal)}
+
+  /* steps */
+  .steps{display:grid;gap:12px;margin:16px 0}
+  .step{display:flex;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+  .step .d{font-size:14px;font-weight:800;color:var(--teal);background:var(--teal-soft);min-width:30px;height:30px;border-radius:8px;display:grid;place-items:center}
+  .step p{margin:0;font-size:15px}
+
+  .method{background:var(--surface);border:1px dashed var(--line);border-radius:var(--radius);padding:24px 22px}
+  .method h3{margin:0 0 14px;font-size:15px;font-weight:800;color:var(--strong)}
+  .method ul{margin:0;padding-left:18px}
+  .method li{font-size:14.5px;color:var(--muted);margin-bottom:7px}
+  .method li strong{color:var(--ink)}
+
+  footer{border-top:1px solid var(--line);padding:34px 0 70px;color:var(--muted);font-size:13.5px}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:6px;justify-content:space-between;align-items:center}
+  footer a{font-weight:600}
+  hr.soft{border:none;border-top:1px solid var(--line);margin:0}
+
+  @media (max-width:640px){
+    header.hero{padding:44px 0 32px}
+    main{padding:38px 0 30px}
+    .stats{grid-template-columns:1fr}
+    section{margin-bottom:46px}
+    .comp .ex{margin-left:0;width:100%}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <nav class="nav">
+      <a class="other" href="index.html">← PART 1 · 사용자 니즈</a>
+      <span class="here">PART 2 · 시장성·경쟁제품</span>
+    </nav>
+    <span class="eyebrow">출시 타당성 &amp; 경쟁 분석</span>
+    <h1>'준비 없이 바로 면도' 제품, 출시해도 될까?</h1>
+    <p class="sub">Part 1에서 검증된 니즈("불리기가 귀찮아 생략한다 · 편하면 갈아탄다")를 시장 관점으로 검증한다. 비슷한 제품은 이미 있는가? 시장은 충분한가? 출시 판단은?</p>
+    <div class="meta">
+      <span class="chip">질레트 히티드</span>
+      <span class="chip">H2NO 워터리스</span>
+      <span class="chip">프리쉐이브 오일</span>
+      <span class="chip">제모·그루밍 시장</span>
+      <span class="chip">올리브영·쿠팡</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- VERDICT -->
+  <section id="verdict">
+    <div class="kicker"><span class="num">✓</span> 결론 먼저</div>
+    <div class="gobox">
+      <span class="tag">조건부 GO</span>
+      <h2>출시 타당성 있음 — 단, '저가 소모품'으로. '프리미엄 하드웨어'는 금물.</h2>
+      <p>니즈는 <span class="em">검증됐고</span>, 경쟁의 빈자리도 <span class="em">실재한다</span>. 비슷한 컨셉의 제품은 있지만, <strong style="color:#fff">한국 주류 시장에 '불리기 생략'을 정면으로 내세운 저가 소모품은 비어 있다.</strong></p>
+      <p>가장 가까운 경쟁재였던 질레트 히티드 면도기(하드웨어, 24.9만원)는 <span class="em">가격 탓에 한국에서 단종 수순</span>을 밟았다 — 즉 "컨셉 수요는 있으나 비싸면 죽는다"가 이미 증명됐다.</p>
+      <div class="cond">전제 조건 — ① 하드웨어가 아닌 <b style="color:#fff">바르는 오일/젤(1~2만원대 소모품)</b> ② 타깃은 <b style="color:#fff">억센 수염 남성 + 여성 바디 + 휴대·간편 수요</b> ③ "물에 불릴 필요 없이 바로, 무자극" 메시지 선점 ④ 카테고리 교육 비용 감수</div>
+    </div>
+  </section>
+
+  <!-- COMPETITIVE LANDSCAPE -->
+  <section id="competitors">
+    <div class="kicker"><span class="num">1</span> 시장에 비슷한 제품이 있는가?</div>
+    <h2>있다 — 3가지 접근으로 이미 존재한다</h2>
+    <p class="verdict warn">결론 — 컨셉은 검증됐으나, 한국 주류 저가 소모품 자리는 비어 있음</p>
+    <p>"따뜻한 물 준비를 건너뛰고 편하게 면도"라는 문제는 이미 세 갈래로 공략되고 있다. 각각의 성패가 우리 전략을 결정한다.</p>
+
+    <div class="comp">
+      <div class="top">
+        <span class="badge b-hw">하드웨어</span>
+        <h3>질레트랩스 히티드 면도기</h3>
+        <span class="ex">Procter &amp; Gamble</span>
+      </div>
+      <p>면도기 헤드에 온열 바를 넣어 "핫타월 면도를 매 스트로크마다" 구현. 1초 만에 가열돼 온수 준비를 대체. <em>Time '2019 최고의 발명품'</em>, CES 어워드.</p>
+      <div class="row">
+        <span><span class="k">가격</span> <span class="v">US $200 / 한국 24.9만원</span></span>
+        <span><span class="k">평가</span> <span class="con">기믹 논란·고가</span></span>
+        <span><span class="k">한국</span> <span class="con">2024 단종 수순</span></span>
+      </div>
+      <p style="margin-top:10px;font-size:14px;color:var(--muted)">핵심 비판: <em>"증기가 없어 핫타월을 완전히 대체하진 못한다"</em>, <em>"이미 거품·준비를 잘 하는 사람에겐 추가 이득이 적다"</em>, <em>"얇은 윤활제(젤·오일)와 함께 써야 효과" — 두꺼운 폼은 오히려 가열 효과를 죽인다.</em> <a href="https://shavingadvisor.com/cartridge-razor/gillettelabs-heated/" target="_blank" rel="noopener">ShavingAdvisor</a> · <a href="http://www.mediapen.com/news/view/493422" target="_blank" rel="noopener">미디어펜(한국 출시)</a></p>
+    </div>
+
+    <div class="comp">
+      <div class="top">
+        <span class="badge b-chem">화학·워터리스</span>
+        <h3>H2NO Shave (드라이 애플라이 젤)</h3>
+        <span class="ex">미국 인디 브랜드</span>
+      </div>
+      <p>물 없이 마른 피부에 바르는 무헹굼 젤. 비누 아님·거품 안 남·헹굴 필요 없음. 알로에 베이스로 자극 적고 <strong>전기면도기 포함 모든 면도기 호환</strong>. 여행·외출·급할 때 타깃.</p>
+      <div class="row">
+        <span><span class="k">형태</span> <span class="v">휴대용 튜브(3.4oz, TSA 통과)</span></span>
+        <span><span class="k">평가</span> <span class="pro">"면도독 사라졌다" 호평</span></span>
+        <span><span class="k">규모</span> <span class="con">니치 인디(한국 미진출)</span></span>
+      </div>
+      <p style="margin-top:10px;font-size:14px;color:var(--muted)">우리 컨셉에 가장 가까운 <strong>소모품형 정답</strong>. 단 미국 한정·소규모. 한국엔 사실상 부재. <a href="https://h2noshave.com/" target="_blank" rel="noopener">h2noshave.com</a></p>
+    </div>
+
+    <div class="comp">
+      <div class="top">
+        <span class="badge b-chem">화학·연화</span>
+        <h3>프리쉐이브 오일 / 크림</h3>
+        <span class="ex">블루비어드리벤지·니베아 외</span>
+      </div>
+      <p>면도 전 발라 수염을 즉시 부드럽게 + 피부 보호. 오일·크림 두 형태. 글로벌엔 정착된 카테고리지만 <strong>한국선 수입 니치</strong>(펀샵 등). 니베아조차 한국 가이드는 여전히 "따뜻한 타월 + 젤"을 권장 = 수동 준비 전제.</p>
+      <div class="row">
+        <span><span class="k">한국 침투</span> <span class="con">낮음 (전용 매대 거의 없음)</span></span>
+        <span><span class="k">DIY 대체</span> <span class="con">베이비오일·코코넛오일 자가 사용 활발</span></span>
+      </div>
+      <p style="margin-top:10px;font-size:14px;color:var(--muted)">클리앙 후기: <em>"면도 오일이 생각보다 괜찮네요… 상처 안 나고 부드럽게"</em> — 단 <em>"날 세척이 귀찮다"</em>는 관리 불만 존재. <a href="https://www.clien.net/service/board/park/16644023" target="_blank" rel="noopener">클리앙</a></p>
+    </div>
+
+    <div class="comp">
+      <div class="top">
+        <span class="badge b-sub">대체재</span>
+        <h3>방수 전기면도기 · 인샤워 제모크림</h3>
+        <span class="ex">필립스·브라운·바디네이처 외</span>
+      </div>
+      <p>IPX7 건습식 전기면도기는 "샤워 중 그냥 면도"로 준비 단계를 우회(4만원대~). 여성·바디는 <strong>인샤워 제모크림</strong>이 "바르고 닦으면 끝, 통증 없음"으로 이미 간편함을 상품화.</p>
+      <div class="row">
+        <span><span class="k">위협</span> <span class="con">간편함을 이미 부분 충족</span></span>
+        <span><span class="k">틈새</span> <span class="pro">'바르는 준비 생략' 영역은 별개</span></span>
+      </div>
+    </div>
+
+    <div class="case">
+      <div class="lbl">핵심 교훈 · 질레트 히티드의 한국 단종</div>
+      <p>2020년 1월 한국 출시, 온열 바로 스팀 면도 재현, 화려한 수상 이력. 그러나 <strong>2024년 현재 "지나친 가격 탓에 수요가 적어 단종 수순… 마트·공식몰에서 찾기 힘듦"</strong>.</p>
+      <p class="punch">→ 컨셉(따뜻함 = 준비 생략)의 수요는 진짜다. 죽인 건 컨셉이 아니라 <span class="hl">가격(24.9만원)</span>이다. 우리의 진입로는 정확히 그 반대편 — <span class="hl">1~2만원대 소모품</span>.</p>
+    </div>
+  </section>
+
+  <hr class="soft" />
+
+  <!-- MARKET SIZE -->
+  <section id="market" style="padding-top:40px">
+    <div class="kicker"><span class="num">2</span> 시장은 충분한가?</div>
+    <h2>성장하는 두 개의 모(母)시장</h2>
+    <p class="verdict">결론 — 남성 그루밍 + 제모, 둘 다 우상향. 진입 시점 나쁘지 않음</p>
+    <div class="stats">
+      <div class="stat">
+        <div class="big">약 1.2조원</div>
+        <div class="lbl">한국 남성 화장품 시장 (약 10억$), 향후 5년 <strong>+50%</strong> 전망</div>
+        <div class="src"><a href="https://www.cosinkorea.com/news/article.html?no=14827" target="_blank" rel="noopener">코스인코리아</a></div>
+      </div>
+      <div class="stat">
+        <div class="big">$66.9B → $101.8B</div>
+        <div class="lbl">글로벌 남성 그루밍 (2025→2035), CAGR ~4%. <strong>면도 부문이 약 25%</strong></div>
+        <div class="src"><a href="https://www.businessresearchinsights.com/market-reports/male-grooming-market-125421" target="_blank" rel="noopener">Business Research Insights</a></div>
+      </div>
+      <div class="stat">
+        <div class="big">여 $7.1B · 남 $4.8B</div>
+        <div class="lbl">글로벌 제모 제품 시장(2024). 아·태가 가장 빠르게 성장(CAGR 6.1%)</div>
+        <div class="src"><a href="https://www.marketresearchfuture.com/ko/reports/depilatory-product-market-39623" target="_blank" rel="noopener">MRF</a></div>
+      </div>
+      <div class="stat">
+        <div class="big">제모기기 구매 <strong>2/3가 남성</strong></div>
+        <div class="lbl">한국 남성 제모 부문 <strong>+12%</strong> 성장 기여. '그루밍족' 확산</div>
+        <div class="src"><a href="https://www.hankyung.com/life/article/202006041659g" target="_blank" rel="noopener">한경</a></div>
+      </div>
+    </div>
+    <p>두 모시장(남성 그루밍·제모) 모두 구조적 성장세이고, 성장 동력은 <strong>'외모 관리 일상화 + 간편함 추구'</strong> — 우리 제품의 가치제안과 정확히 일치한다. 시장 부족이 출시를 막을 이유는 아니다.</p>
+  </section>
+
+  <hr class="soft" />
+
+  <!-- SEGMENT FIT -->
+  <section id="segment" style="padding-top:40px">
+    <div class="kicker"><span class="num">3</span> 누구에게 팔리는가?</div>
+    <h2>세그먼트 적합도 — 균등하지 않다</h2>
+    <p class="verdict warn">결론 — '억센 수염 · 여성 바디 · 간편 추구'에 강하고, '얇은 수염 남성'엔 약하다</p>
+    <div class="tablecard">
+      <table>
+        <thead><tr><th>타깃</th><th>적합도</th><th>근거</th></tr></thead>
+        <tbody>
+          <tr><td>억센·뻣뻣 수염 남성</td><td class="fit-hi">높음</td><td>마른 수염이 가장 따갑고 준비 효과 큼 ("철사만큼 억세다")</td></tr>
+          <tr><td>여성 바디(다리·겨드랑이)</td><td class="fit-hi">높음</td><td>"귀찮아서 안 민 날은 긴바지" · 간편 제품 선호 명확</td></tr>
+          <tr><td>휴대·출장·급할 때</td><td class="fit-hi">높음</td><td>"폼·젤 없이 면도" 니즈, 워터리스의 핵심 용도</td></tr>
+          <tr><td>20·30대 그루밍 입문</td><td class="fit-mid">중간</td><td>스웨거·그라펜 등 남성 라인 확장 = 신규 소비층</td></tr>
+          <tr><td>얇고 듬성한 수염 남성</td><td class="fit-lo">낮음</td><td>"한국인 수염 얇아 면도크림 없이도 충분"이라는 통념 — 연화 가치 약함</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="seg">
+      <div class="segrow"><div class="ic ic-hi">↑</div><p><span class="t">핵심 진입 세그먼트</span> — 억센 수염 남성 + 여성 바디 + 휴대 수요. 이 셋은 "준비가 귀찮다 → 편하면 산다"가 가장 또렷한 집단.</p></div>
+      <div class="segrow"><div class="ic ic-lo">↓</div><p><span class="t">주의</span> — "한국 남성 수염은 얇다"는 통념이 대중 남성 시장의 연화 니즈를 일부 깎는다. 매스 남성 단일 타깃은 위험.</p></div>
+    </div>
+  </section>
+
+  <hr class="soft" />
+
+  <!-- RISKS -->
+  <section id="risk" style="padding-top:40px">
+    <div class="kicker"><span class="num">4</span> 무엇이 위험한가?</div>
+    <h2>리스크와 완화책</h2>
+    <ul class="risk">
+      <li>낮은 전환비용은 양날의 검 — 쉽게 써보지만 쉽게 이탈
+        <span class="mit"><b>완화:</b> 반복 구매를 만드는 사용 경험(향·발림·후속 보습) + 정기구독/리필 모델</span></li>
+      <li>저가 대체재가 많음 — 베이비오일 DIY, 4만원대 건습식 전기면도기, 인샤워 제모크림
+        <span class="mit"><b>완화:</b> DIY의 페인(날 세척 번거로움·끈적임)을 정면으로 해결한 포뮬러로 차별화</span></li>
+      <li>얇은 수염 통념 — 대중 남성에게 "굳이?" 반응
+        <span class="mit"><b>완화:</b> 억센 수염·여성 바디·휴대 용도로 메시지를 좁혀 진입 후 확장</span></li>
+      <li>카테고리 교육 비용 — '바르는 준비 생략'은 한국에 낯선 개념
+        <span class="mit"><b>완화:</b> 질레트 히티드가 떠나며 비운 '따뜻함=준비 생략' 내러티브를 저가로 계승</span></li>
+      <li>대기업 진입 위험 — 컨셉 검증 시 P&amp;G·도루코 등이 빠르게 추격 가능
+        <span class="mit"><b>완화:</b> 초기 브랜드·커뮤니티(면도갤·올영 리뷰) 선점, 좁은 세그먼트 충성도 확보</span></li>
+    </ul>
+  </section>
+
+  <hr class="soft" />
+
+  <!-- ACTION -->
+  <section id="action" style="padding-top:40px">
+    <div class="kicker"><span class="num">→</span> 실행 제언</div>
+    <h2>출시한다면, 이렇게</h2>
+    <div class="steps">
+      <div class="step"><div class="d">1</div><p><strong>제품 형태</strong> — $200 하드웨어 금지. <strong>바르는 워터리스/프리쉐이브 젤·오일(1~2만원대 소모품)</strong>. 전기·날면도기 모두 호환.</p></div>
+      <div class="step"><div class="d">2</div><p><strong>1차 타깃</strong> — 억센 수염 남성 + 여성 바디 제모. 매스 남성 단일 타깃은 피한다.</p></div>
+      <div class="step"><div class="d">3</div><p><strong>메시지</strong> — "물에 불릴 필요 없이, 바르고 바로, 무자극." Part 1 인용("하루종일 불리고 있을 수도 없고")을 카피로.</p></div>
+      <div class="step"><div class="d">4</div><p><strong>검증 순서</strong> — 올리브영/쿠팡 소량 입점 또는 와디즈 펀딩으로 컨셉 테스트 → 반복구매율·리뷰 감성으로 PMF 확인 후 확대.</p></div>
+      <div class="step"><div class="d">5</div><p><strong>가격 검증</strong> — Part 1의 미확인 항목. "레이저 대비 얼마면 쓸지" 컨셉 테스트로 WTP(지불의향) 측정.</p></div>
+    </div>
+  </section>
+
+  <!-- METHOD -->
+  <section id="method">
+    <div class="method">
+      <h3>방법론 메모 · insane-search</h3>
+      <ul>
+        <li><strong>경쟁 데이터</strong> — 질레트 히티드(글로벌/한국 단종), H2NO(워터리스), 프리쉐이브 오일, 방수 전기면도기/인샤워 제모크림 교차 확인</li>
+        <li><strong>시장 데이터</strong> — 코스인코리아·Business Research Insights·Mordor·MRF·한경 등 복수 출처 (일부 자동번역 수치 오류는 배제하고 신뢰 가능한 값만 채택)</li>
+        <li><strong>우회 수집</strong> — 403/SPA 페이지는 Jina Reader로 처리. curl_cffi 엔진은 설치 권한 거부로 미사용</li>
+        <li><strong>한계</strong> — 매출 단위 정밀 데이터·국내 WTP는 미확보. 다음 단계 컨셉 테스트로 보완 권장</li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span><a href="index.html">← Part 1 · 사용자 니즈로</a></span>
+    <span>Researched with <strong>insane-search</strong> · 2026</span>
+  </div>
+</footer>
+
+</body>
+</html>

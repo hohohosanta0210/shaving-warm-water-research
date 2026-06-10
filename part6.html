@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>와디즈 진입 — 시제품·양산 투자 비용</title>
+<meta name="description" content="발열 프리쉐이브 패치를 와디즈 펀딩으로 출시할 때 드는 투자 비용 — OEM/ODM 시제품·개발비, MOQ, 인증·시험, 콘텐츠, 양산비, 와디즈 수수료까지 단계별 추정." />
+<meta property="og:title" content="와디즈 진입 — 시제품·양산 투자 비용 (Part 6)" />
+<meta property="og:description" content="펀딩 전 선투자 vs 성공 후 양산비. 단계별 비용 분해와 린/표준/풀 시나리오 총액 추정." />
+<meta property="og:type" content="article" />
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+<style>
+  :root{
+    --bg:#f7f4ef;--surface:#fffdfa;--ink:#1d1a16;--muted:#6b6359;--line:#e6dfd4;
+    --accent:#d9603b;--accent-soft:#fbe9e1;--teal:#2f7d72;--teal-soft:#e2f0ed;
+    --quote-bg:#f1ece3;--strong:#0f0d0a;--radius:16px;
+    --shadow:0 1px 2px rgba(29,26,22,.04), 0 8px 28px -12px rgba(29,26,22,.16);
+    --maxw:860px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,system-ui,"Segoe UI",Roboto,sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.72;-webkit-font-smoothing:antialiased;font-feature-settings:"tnum";letter-spacing:-.011em;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+
+  header.hero{padding:56px 0 38px;border-bottom:1px solid var(--line);
+    background:radial-gradient(120% 80% at 100% 0%, var(--accent-soft) 0%, rgba(251,233,225,0) 55%),
+      radial-gradient(90% 70% at 0% 0%, var(--teal-soft) 0%, rgba(226,240,237,0) 45%);}
+  .nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;font-size:13.5px;font-weight:600}
+  .nav a,.nav span{padding:7px 13px;border-radius:999px;text-decoration:none}
+  .nav .here{background:var(--accent);color:#fff}
+  .nav .other{background:var(--surface);border:1px solid var(--line);color:var(--muted)}
+  .nav a{border-bottom:none}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--accent);
+    margin-bottom:18px;padding:6px 12px;border:1px solid var(--accent);border-radius:999px;background:rgba(255,255,255,.5);}
+  .eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent)}
+  h1{font-size:clamp(27px,4.6vw,40px);line-height:1.18;font-weight:800;letter-spacing:-.03em;margin:0 0 16px;color:var(--strong)}
+  .sub{font-size:17px;color:var(--muted);margin:0;max-width:62ch}
+  .toc{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}
+  .toc a{font-size:13.5px;font-weight:700;padding:8px 14px;border-radius:10px;background:var(--surface);border:1px solid var(--line);color:var(--ink);text-decoration:none}
+  .toc a:hover{border-color:var(--accent);color:var(--accent)}
+
+  main{padding:50px 0 40px}
+  section{margin:0 0 60px;scroll-margin-top:20px}
+  .kicker{font-size:13px;font-weight:700;color:var(--accent);letter-spacing:.04em;margin:0 0 10px;display:flex;align-items:center;gap:10px}
+  .kicker .num{font-size:12px;width:24px;height:24px;border-radius:8px;background:var(--accent);color:#fff;display:grid;place-items:center;font-weight:800}
+  h2{font-size:clamp(22px,3.4vw,28px);line-height:1.25;font-weight:800;letter-spacing:-.02em;margin:0 0 10px;color:var(--strong)}
+  h3{font-size:16.5px;font-weight:800;color:var(--strong);margin:24px 0 8px}
+  p{margin:0 0 16px;font-size:16.5px}
+  a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(217,96,59,.35)}
+  a:hover{border-color:var(--accent)}
+  strong{color:var(--strong);font-weight:700}
+  .lead{font-size:16px;color:var(--muted);margin-bottom:18px}
+  .hl{background:linear-gradient(180deg,transparent 62%,var(--accent-soft) 62%);padding:0 1px;font-weight:600}
+
+  /* key insight banner */
+  .insight{background:linear-gradient(135deg,#1d1a16,#2c2722);color:#f3efe9;border-radius:var(--radius);padding:28px;box-shadow:var(--shadow)}
+  .insight .lbl{font-size:12px;font-weight:800;color:#ff8a63;letter-spacing:.05em;margin-bottom:10px}
+  .insight p{font-size:17px;line-height:1.6;margin:0;color:#ece5df}
+  .insight .em{color:#ffd9c4;font-weight:700}
+
+  /* stat cards */
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+  .stat{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .stat::after{content:"";position:absolute;inset:0 auto 0 0;width:3px;background:var(--teal)}
+  .stat .big{font-size:22px;font-weight:800;color:var(--strong);letter-spacing:-.01em;line-height:1.15}
+  .stat .lbl{font-size:13px;color:var(--muted);margin-top:5px;line-height:1.45}
+
+  /* tables */
+  .tablecard{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);margin:12px 0}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  th,td{text-align:left;padding:12px 13px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:var(--quote-bg);font-weight:700;color:var(--strong);font-size:12.5px}
+  tr:last-child td{border-bottom:none}
+  td .it{font-weight:700;color:var(--strong)}
+  td .sub2{display:block;font-size:12px;color:var(--muted);margin-top:2px}
+  .cost{font-weight:800;color:var(--accent);white-space:nowrap}
+  .cost.teal{color:var(--teal)}
+  .tag{display:inline-block;font-size:11px;font-weight:800;padding:2px 8px;border-radius:999px;white-space:nowrap}
+  .tag-must{background:var(--accent-soft);color:#a8472a}
+  .tag-after{background:var(--teal-soft);color:#1f5a51}
+  .tag-opt{background:#eee9df;color:#6b6359}
+  tfoot td,.total td{background:#faf2ec;font-weight:800;color:var(--strong);font-size:14.5px}
+
+  /* scenario cards */
+  .scen{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:16px 0}
+  .scard{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}
+  .scard.hot{border-color:#f1d3c6;box-shadow:0 8px 28px -12px rgba(217,96,59,.3)}
+  .scard .nm{font-size:15px;font-weight:800;color:var(--strong)}
+  .scard .amt{font-size:26px;font-weight:800;color:var(--accent);margin:8px 0 2px;letter-spacing:-.5px}
+  .scard .amt small{font-size:13px;color:var(--muted);font-weight:600}
+  .scard ul{margin:10px 0 0;padding-left:16px}
+  .scard li{font-size:13px;color:var(--muted);margin-bottom:5px}
+  .scard .pick{display:inline-block;font-size:11px;font-weight:800;color:#a8472a;background:var(--accent-soft);border-radius:999px;padding:3px 9px;margin-bottom:8px}
+
+  /* levers */
+  .lever{list-style:none;padding:0;margin:14px 0}
+  .lever li{position:relative;padding:13px 0 13px 30px;border-bottom:1px dashed var(--line);font-size:15.5px}
+  .lever li:last-child{border-bottom:none}
+  .lever li::before{content:"↓";position:absolute;left:0;top:12px;width:21px;height:21px;border-radius:50%;background:var(--teal-soft);color:var(--teal);font-weight:800;font-size:12px;display:grid;place-items:center}
+  .lever li b{color:var(--strong)}
+  .lever li .sv{display:block;font-size:13px;color:var(--teal);font-weight:700;margin-top:3px}
+
+  .note{background:var(--quote-bg);border-radius:12px;padding:14px 16px;font-size:13.5px;color:var(--muted);margin:14px 0}
+  .note b{color:var(--ink)}
+
+  .method{background:var(--surface);border:1px dashed var(--line);border-radius:var(--radius);padding:22px}
+  .method h3{margin:0 0 12px;font-size:15px}
+  .method ul{margin:0;padding-left:18px}
+  .method li{font-size:14px;color:var(--muted);margin-bottom:6px}
+  .disc{font-size:13px;color:var(--muted);background:var(--quote-bg);border-radius:12px;padding:14px 16px;margin-top:14px}
+
+  footer{border-top:1px solid var(--line);padding:34px 0 70px;color:var(--muted);font-size:13.5px}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:6px;justify-content:space-between;align-items:center}
+  footer a{font-weight:600}
+  hr.soft{border:none;border-top:1px solid var(--line);margin:0}
+
+  @media (max-width:640px){
+    header.hero{padding:42px 0 30px}
+    main{padding:38px 0 30px}
+    .stats,.scen{grid-template-columns:1fr}
+    section{margin-bottom:48px}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <nav class="nav">
+      <a class="other" href="index.html">PART 1</a>
+      <a class="other" href="market.html">PART 2</a>
+      <a class="other" href="part3.html">PART 3</a>
+      <a class="other" href="part4.html">PART 4</a>
+      <a class="other" href="part5.html">PART 5</a>
+      <span class="here">PART 6 · 투자 비용</span>
+    </nav>
+    <span class="eyebrow">와디즈 진입 · 시제품/양산 투자</span>
+    <h1>HOTSHOT를 와디즈에 올리려면, 돈이 얼마나 드나</h1>
+    <p class="sub">OEM/ODM 시제품·개발비, MOQ, 인증·시험, 콘텐츠, 양산비, 와디즈 수수료까지 — 핫팩·마스크팩·쉐이빙 제조 기준으로 단계별 비용을 추정했다.</p>
+    <div class="toc">
+      <a href="#core">① 핵심 구조</a>
+      <a href="#breakdown">② 비용 분해</a>
+      <a href="#scenario">③ 시나리오 총액</a>
+      <a href="#lever">④ 절감 레버</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- CORE -->
+  <section id="core">
+    <div class="kicker"><span class="num">!</span> 먼저 알아야 할 구조</div>
+    <h2>"양산비는 펀딩이 내준다"</h2>
+    <div class="insight">
+      <div class="lbl">와디즈 비용 구조의 핵심</div>
+      <p>와디즈는 <span class="em">선주문(펀딩금)으로 양산비를 충당</span>하는 구조다. 그래서 펀딩 오픈 <span class="em">전에 실제로 내 돈으로 써야 하는 선투자</span>는 <strong style="color:#fff">시제품 + 인증 + 콘텐츠</strong>에 집중된다. 대량 양산 MOQ 부담은 펀딩이 성공하면 그 모금액이 흡수한다.</p>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="big">5%부터</div><div class="lbl">와디즈 펀딩 수수료(Light 요금제, PG 별도). <strong>실패 시 0원</strong> — 손실 위험 낮음</div></div>
+      <div class="stat"><div class="big">6~8주</div><div class="lbl">기획→샘플→생산 리드타임(샘플 수정 시 연장)</div></div>
+      <div class="stat"><div class="big">MOQ 3,000~5,000</div><div class="lbl">핫팩·스팀마스크 결합 제품의 현실적 최소 양산 수량</div></div>
+    </div>
+    <p class="note">💡 즉, "와디즈 도전 비용" ≈ <b>펀딩 전 선투자(아래 ②의 빨강 <span class="tag tag-must">선투자</span> 항목 합)</b>. 양산(<span class="tag tag-after">성공 후</span>)은 펀딩금으로 집행.</p>
+  </section>
+
+  <hr class="soft" />
+
+  <!-- BREAKDOWN -->
+  <section id="breakdown" style="padding-top:40px">
+    <div class="kicker"><span class="num">②</span> 단계별 비용 분해</div>
+    <h2>항목별 추정 (소량 1회 출시 기준)</h2>
+    <p class="lead">금액은 <strong>업계 통상 범위 추정</strong>이며 사양·업체·수량에 따라 크게 달라진다. <span class="tag tag-must">선투자</span>=펀딩 전 필수 / <span class="tag tag-after">성공 후</span>=펀딩금 집행 / <span class="tag tag-opt">선택</span>=상황별.</p>
+
+    <h3>A. 개발 · 시제품 (펀딩 전)</h3>
+    <div class="tablecard">
+      <table>
+        <thead><tr><th>항목</th><th>추정 비용</th><th>구분</th></tr></thead>
+        <tbody>
+          <tr><td><span class="it">제품 개발·처방·금형/지그</span><span class="sub2">발열체+시트 결합 설계, 패치 재단 칼선, 파우치 사양</span></td><td class="cost">100~500만원</td><td><span class="tag tag-must">선투자</span></td></tr>
+          <tr><td><span class="it">시제품(샘플) 제작</span><span class="sub2">와디즈 심사용 + 촬영용 소량(수십~수백 개). 소량이라 개당 단가 높음</span></td><td class="cost">50~300만원</td><td><span class="tag tag-must">선투자</span></td></tr>
+          <tr><td><span class="it">발열 안전 자체검증</span><span class="sub2">표면온도·저온화상·점착 자극 사전 테스트(반복)</span></td><td class="cost">50~200만원</td><td><span class="tag tag-must">선투자</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>B. 인증 · 시험 (펀딩 전, 분류에 따라 갈림)</h3>
+    <div class="tablecard">
+      <table>
+        <thead><tr><th>항목</th><th>추정 비용</th><th>구분</th></tr></thead>
+        <tbody>
+          <tr><td><span class="it">공산품 KC 안전확인/공급자적합성</span><span class="sub2">순수 발열 패치 경로 · 시험 1~3개월</span></td><td class="cost">수십~수백만원</td><td><span class="tag tag-must">선투자</span></td></tr>
+          <tr><td><span class="it">화장품 책임판매업 등록</span><span class="sub2">에센스 동반·화장품 경로 선택 시 · 전자민원</span></td><td class="cost teal">2.7만원~</td><td><span class="tag tag-opt">선택</span></td></tr>
+          <tr><td><span class="it">피부자극 첩포시험 + 안정성/미생물</span><span class="sub2">화장품 경로 시 · 시험기관 견적制(통상 단건 수십만원~)</span></td><td class="cost">100~300만원</td><td><span class="tag tag-opt">선택</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">⚖️ <b>분류가 비용을 가른다</b> — <b>공산품行(순수 발열 패치)</b>으로 가면 화장품 임상·책임판매업을 건너뛰어 시험비·시간이 크게 준다. 에센스·보습 효능을 넣으면 화장품行이 되어 B의 회색 항목이 추가된다. (근거: <a href="part3.html">Part 3 규제</a>)</p>
+
+    <h3>C. 콘텐츠 · 마케팅 (펀딩 전)</h3>
+    <div class="tablecard">
+      <table>
+        <thead><tr><th>항목</th><th>추정 비용</th><th>구분</th></tr></thead>
+        <tbody>
+          <tr><td><span class="it">상세페이지 제작(대행)</span><span class="sub2">와디즈 파트너 라이트~프리미엄. 자체 제작 시 대폭 절감</span></td><td class="cost">80~300만원</td><td><span class="tag tag-opt">선택</span></td></tr>
+          <tr><td><span class="it">제품·연출 촬영</span><span class="sub2">패키지·사용컷·GIF. 이미 보유한 비주얼 활용 가능</span></td><td class="cost">50~200만원</td><td><span class="tag tag-opt">선택</span></td></tr>
+          <tr><td><span class="it">디자인(로고·패키지·상세 디자인)</span><span class="sub2">본 프로젝트 비주얼(Part 5) 활용 시 0~소액</span></td><td class="cost teal">0~100만원</td><td><span class="tag tag-opt">선택</span></td></tr>
+          <tr><td><span class="it">오픈예정·초기 광고비</span><span class="sub2">알림신청 모으기. 가변(생략 가능)</span></td><td class="cost">0~300만원</td><td><span class="tag tag-opt">선택</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>D. 양산 · 수수료 (펀딩 성공 후 — 펀딩금 집행)</h3>
+    <div class="tablecard">
+      <table>
+        <thead><tr><th>항목</th><th>추정 비용</th><th>구분</th></tr></thead>
+        <tbody>
+          <tr><td><span class="it">양산 제작비 (5,000개 기준)</span><span class="sub2">발열체+시트+에센스+파우치+재단. 개당 원가 추정 약 800~2,000원</span></td><td class="cost teal">400~1,000만원</td><td><span class="tag tag-after">성공 후</span></td></tr>
+          <tr><td><span class="it">부자재(파우치 인쇄·단상자)</span><span class="sub2">파우치 5,000개~ / 단상자 소량 1,000개~ 가능</span></td><td class="cost teal">100~400만원</td><td><span class="tag tag-after">성공 후</span></td></tr>
+          <tr><td><span class="it">와디즈 수수료</span><span class="sub2">모금액의 5%~ (Light) + PG 수수료. 실패 시 0</span></td><td class="cost teal">모금액 약 7~12%</td><td><span class="tag tag-after">성공 후</span></td></tr>
+          <tr><td><span class="it">배송·풀필먼트</span><span class="sub2">리워드 발송. 수량 비례</span></td><td class="cost teal">수량 비례</td><td><span class="tag tag-after">성공 후</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">📦 핫팩 OEM은 <b>부직포 인쇄+진공포장 5,000개~ / 기성 핫팩+포장지 인쇄 3,000개~</b> 제작 가능(<a href="https://www.kevinsroom.co.kr/felt-hotpack" target="_blank" rel="noopener">케빈스룸</a>). 핫팩 소량 도매가 참고 ≈ 개당 260원 수준이나, 우리 제품은 시트·에센스·재단이 더해져 단가가 올라간다.</p>
+  </section>
+
+  <hr class="soft" />
+
+  <!-- SCENARIO -->
+  <section id="scenario" style="padding-top:40px">
+    <div class="kicker"><span class="num">③</span> 시나리오별 '펀딩 전 선투자' 총액</div>
+    <h2>내 돈으로 먼저 써야 하는 금액</h2>
+    <p class="lead">양산은 펀딩금으로 충당한다는 전제 하에, <strong>펀딩 오픈 전 현금 선투자</strong> 추정 총액. (양산·수수료·배송은 성공 후 모금액에서 집행)</p>
+    <div class="scen">
+      <div class="scard">
+        <div class="nm">린(Lean)</div>
+        <div class="amt">약 400~900만원</div>
+        <ul>
+          <li>공산품行(임상 생략)</li>
+          <li>자체 콘텐츠·디자인(Part 5 활용)</li>
+          <li>최소 시제품 + KC 시험</li>
+          <li>광고 최소</li>
+        </ul>
+      </div>
+      <div class="scard hot">
+        <div class="pick">★ 현실적 권장</div>
+        <div class="nm">표준(Standard)</div>
+        <div class="amt">약 1,200~2,500만원</div>
+        <ul>
+          <li>공산품行 + 일부 안전시험 보강</li>
+          <li>상세페이지·촬영 외주</li>
+          <li>시제품 충분히 반복</li>
+          <li>오픈예정 광고 소액</li>
+        </ul>
+      </div>
+      <div class="scard">
+        <div class="nm">풀(Full)</div>
+        <div class="amt">약 3,000~5,000만원+</div>
+        <ul>
+          <li>화장품行(에센스+임상)</li>
+          <li>프리미엄 콘텐츠·촬영</li>
+          <li>인체적용/효능 시험</li>
+          <li>적극 광고 집행</li>
+        </ul>
+      </div>
+    </div>
+    <p class="note">🎯 <b>요지</b> — "와디즈 한 번 도전" 자체는 <span class="hl">린 400만원대~표준 2천만원대</span>로 시작 가능. 양산 대량 자금은 펀딩 성공이 해결. 다만 펀딩 <b>실패 시 선투자(시제품·인증·콘텐츠)는 회수 불가</b>.</p>
+  </section>
+
+  <hr class="soft" />
+
+  <!-- LEVERS -->
+  <section id="lever" style="padding-top:40px">
+    <div class="kicker"><span class="num">④</span> 비용 절감 레버</div>
+    <h2>선투자를 더 줄이는 법</h2>
+    <ul class="lever">
+      <li><b>공산품行으로 설계</b> — 에센스·효능 표방을 빼고 순수 발열 패치로 가면 화장품 임상·책임판매업 비용/시간 회피
+        <span class="sv">절감: 임상·시험 100~300만원 + 수 주 단축</span></li>
+      <li><b>원스톱 OEM 활용</b> — 이미 온열 스팀 마스크를 만드는 곳(스팀베이스·DHT)에 변형 의뢰 → 발열체+시트 별도 조율 비용 절감
+        <span class="sv">절감: 개발·조율 공수 감소, 시제품 리드타임 단축</span></li>
+      <li><b>자체 콘텐츠</b> — Part 5 비주얼·Part 4 카피를 그대로 활용해 상세페이지·디자인 외주 최소화
+        <span class="sv">절감: 콘텐츠 130~600만원 → 0~소액</span></li>
+      <li><b>MOQ 협상·소량 라인</b> — 1,000개부터 가능한 곳 탐색, 펀딩 목표를 보수적으로 잡아 초기 양산 부담↓
+        <span class="sv">절감: 초기 재고 리스크 축소</span></li>
+      <li><b>정부 지원 활용</b> — 지자체 시제품 제작 지원사업(예: 인천 비즈OK 등) 신청으로 샘플비 보전
+        <span class="sv">절감: 시제품비 일부 지원</span></li>
+    </ul>
+    <div class="note">📋 <b>다음 액션</b> — ① OEM 3곳(스팀베이스·핫팩부심·셀프코스) <b>실견적</b> 요청(사양서: 40~43℃·하관 패치·1회용·공산품行 명기) ② KTL/KTC에 KC 안전확인 견적 ③ 와디즈 파트너존 콘텐츠 패키지 견적. 세 견적이 모이면 이 표의 추정치가 실수치로 확정된다.</div>
+  </section>
+
+  <!-- METHOD -->
+  <section id="method">
+    <div class="method">
+      <h3>방법론 · insane-search</h3>
+      <ul>
+        <li><strong>수수료·MOQ·리드타임</strong> — 와디즈 공지(최저 5%), 핫팩 OEM(3,000~5,000개~), 화장품 OEM(MOQ·리드타임 6~8주) 등 공개 자료</li>
+        <li><strong>개발·금형</strong> — ODM 금형/개발비 초기 100~500만원(파스토), 화장품 MOQ 5,000개 제작·시험 사례</li>
+        <li><strong>인증</strong> — KC 안전확인 1~3개월·수십~수백만원, 화장품책임판매업 2.7만원</li>
+        <li><strong>견적制 항목</strong> — 첩포시험·상세페이지 등 비공개 항목은 업계 통상 범위로 추정 표기</li>
+      </ul>
+      <div class="disc">⚠️ <b>면책</b> — 모든 금액은 공개 정보 기반 <b>추정 범위</b>이며 실제 견적이 아니다. 사양·수량·업체·시점에 따라 크게 달라진다. 집행 전 OEM·시험기관·와디즈 파트너의 <b>공식 견적</b>으로 반드시 확정할 것.</div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span><a href="part5.html">← Part 5 · 브랜드로</a></span>
+    <span>HOTSHOT 컨셉 · Researched with <strong>insane-search</strong> · 2026</span>
+  </div>
+</footer>
+
+</body>
+</html>

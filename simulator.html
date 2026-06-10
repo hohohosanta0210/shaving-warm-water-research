@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>펀딩 손익분기 시뮬레이터 — HOTSHOT</title>
+<meta name="description" content="와디즈 펀딩 목표금액·객단가·원가·수수료·선투자를 입력하면 손익분기 모금액과 필요 후원자 수, 예상 순이익을 즉시 계산." />
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+<style>
+  :root{--bg:#f7f4ef;--surface:#fffdfa;--ink:#1d1a16;--muted:#6b6359;--line:#e6dfd4;--accent:#d9603b;--accent-soft:#fbe9e1;--teal:#2f7d72;--teal-soft:#e2f0ed;--quote-bg:#f1ece3;--strong:#0f0d0a;--radius:16px;--shadow:0 1px 2px rgba(29,26,22,.04),0 8px 28px -12px rgba(29,26,22,.16);--maxw:860px;}
+  *{box-sizing:border-box}html{scroll-behavior:smooth}
+  body{margin:0;font-family:"Pretendard Variable",Pretendard,-apple-system,system-ui,"Malgun Gothic",sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;-webkit-font-smoothing:antialiased;letter-spacing:-.011em}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+  header.hero{padding:56px 0 36px;border-bottom:1px solid var(--line);background:radial-gradient(120% 80% at 100% 0%,var(--accent-soft) 0%,rgba(251,233,225,0) 55%),radial-gradient(90% 70% at 0% 0%,var(--teal-soft) 0%,rgba(226,240,237,0) 45%)}
+  .nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;font-size:13px;font-weight:600}
+  .nav a,.nav span{padding:6px 12px;border-radius:999px;text-decoration:none}
+  .nav .here{background:var(--accent);color:#fff}.nav .other{background:var(--surface);border:1px solid var(--line);color:var(--muted)}.nav a{border-bottom:none}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--accent);margin-bottom:18px;padding:6px 12px;border:1px solid var(--accent);border-radius:999px;background:rgba(255,255,255,.5)}
+  .eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent)}
+  h1{font-size:clamp(27px,4.6vw,40px);line-height:1.18;font-weight:800;letter-spacing:-.03em;margin:0 0 14px;color:var(--strong)}
+  .sub{font-size:17px;color:var(--muted);margin:0;max-width:60ch}
+  main{padding:44px 0 40px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+  .panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px}
+  .panel h2{font-size:16px;font-weight:800;margin:0 0 16px;color:var(--strong);display:flex;align-items:center;gap:8px}
+  .panel h2 .d{width:22px;height:22px;border-radius:7px;background:var(--accent);color:#fff;font-size:12px;display:grid;place-items:center;font-weight:800}
+  .field{margin-bottom:16px}
+  .field label{display:flex;justify-content:space-between;align-items:baseline;font-size:13.5px;font-weight:700;color:var(--strong);margin-bottom:6px}
+  .field label .v{color:var(--accent);font-weight:800;font-feature-settings:"tnum"}
+  .field input[type=range]{width:100%;accent-color:var(--accent);height:6px}
+  .field .row{display:flex;gap:8px;align-items:center}
+  .field input[type=number]{width:100%;font-size:15px;font-weight:700;color:var(--strong);border:1px solid var(--line);border-radius:9px;padding:9px 11px;background:var(--bg);font-family:inherit;font-feature-settings:"tnum"}
+  .field .hint{font-size:12px;color:var(--muted);margin-top:5px}
+  .presets{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+  .presets button{font-size:12.5px;font-weight:700;border:1px solid var(--line);background:var(--surface);color:var(--muted);border-radius:999px;padding:7px 13px;cursor:pointer}
+  .presets button:hover{border-color:var(--accent);color:var(--accent)}
+  /* results */
+  .result .big{background:linear-gradient(135deg,#1d1a16,#2c2722);color:#f3efe9;border-radius:14px;padding:20px;margin-bottom:14px}
+  .result .big .lbl{font-size:12.5px;font-weight:700;color:#ff8a63;margin-bottom:6px}
+  .result .big .num{font-size:30px;font-weight:800;letter-spacing:-1px;line-height:1.1;font-feature-settings:"tnum"}
+  .result .big .num.green{color:#7be0a8}.result .big .num.red{color:#ff8a7a}
+  .result .big .sub2{font-size:13px;color:#b3aca6;margin-top:6px}
+  .kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .kpi{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:14px}
+  .kpi .k{font-size:12.5px;color:var(--muted);font-weight:600}
+  .kpi .val{font-size:19px;font-weight:800;color:var(--strong);margin-top:3px;font-feature-settings:"tnum"}
+  .verdict{margin-top:14px;border-radius:12px;padding:14px 16px;font-size:14px;font-weight:600}
+  .verdict.ok{background:var(--teal-soft);color:#1f5a51}.verdict.bad{background:var(--accent-soft);color:#a8472a}
+  .bar{height:12px;border-radius:6px;background:var(--line);overflow:hidden;margin:8px 0 4px}
+  .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),#ff7a55)}
+  .barlbl{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);font-weight:600}
+  /* table */
+  .tablecard{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);margin:22px 0 0}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  th,td{text-align:right;padding:11px 13px;border-bottom:1px solid var(--line);font-feature-settings:"tnum"}
+  th:first-child,td:first-child{text-align:left}
+  th{background:var(--quote-bg);font-weight:700;color:var(--strong);font-size:12.5px}
+  tr:last-child td{border-bottom:none}
+  td.pos{color:var(--teal);font-weight:700}td.neg{color:var(--accent);font-weight:700}
+  .note{background:var(--quote-bg);border-radius:12px;padding:14px 16px;font-size:13.5px;color:var(--muted);margin:18px 0}.note b{color:var(--ink)}
+  h3{font-size:16px;font-weight:800;margin:30px 0 8px;color:var(--strong)}
+  .disc{font-size:12.5px;color:var(--muted);background:var(--quote-bg);border-radius:12px;padding:14px 16px;margin-top:18px}
+  footer{border-top:1px solid var(--line);padding:34px 0 70px;color:var(--muted);font-size:13.5px;margin-top:30px}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:6px;justify-content:space-between;align-items:center}footer a{font-weight:600}
+  @media (max-width:720px){.grid{grid-template-columns:1fr}header.hero{padding:42px 0 30px}}
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+  <nav class="nav">
+    <a class="other" href="index.html">P1</a><a class="other" href="market.html">P2</a><a class="other" href="part3.html">P3</a><a class="other" href="part4.html">P4</a><a class="other" href="part5.html">P5</a><a class="other" href="part6.html">P6</a>
+    <a class="other" href="rfq.html">RFQ</a><span class="here">손익계산</span><a class="other" href="onepager.html">원페이저</a>
+  </nav>
+  <span class="eyebrow">실행 도구 ② 손익분기 시뮬레이터</span>
+  <h1>얼마 모이면 본전인가</h1>
+  <p class="sub">객단가·원가·수수료·선투자를 조절하면 손익분기 모금액과 필요 후원자 수, 목표 달성 시 순이익이 즉시 계산된다. 숫자를 바꿔가며 시나리오를 잡아보세요.</p>
+</div></header>
+
+<main class="wrap">
+  <div class="presets">
+    <span style="font-size:12.5px;font-weight:700;color:var(--muted);align-self:center">프리셋:</span>
+    <button data-preset="lean">린 (선투자 600만)</button>
+    <button data-preset="std">표준 (선투자 1,800만)</button>
+    <button data-preset="full">풀 (선투자 3,800만)</button>
+  </div>
+
+  <div class="grid">
+    <!-- INPUTS -->
+    <div class="panel">
+      <h2><span class="d">IN</span> 입력값</h2>
+
+      <div class="field">
+        <label>목표 모금액 <span class="v" id="vGoal">30,000,000원</span></label>
+        <input type="range" id="goal" min="5000000" max="200000000" step="1000000" value="50000000">
+        <div class="hint">펀딩으로 모으려는 총액</div>
+      </div>
+
+      <div class="field">
+        <label>리워드 객단가(후원자 1명당) <span class="v" id="vAOV">30,000원</span></label>
+        <input type="range" id="aov" min="9900" max="80000" step="1000" value="30000">
+        <div class="hint">예: 30매 24,900 / 60매 45,900 평균</div>
+      </div>
+
+      <div class="field">
+        <label>세트당 변동원가 <span class="v" id="vCogs">12,000원</span></label>
+        <input type="range" id="cogs" min="2000" max="50000" step="500" value="12000">
+        <div class="hint">제품 원가 + 부자재 + 배송(객단가의 약 40% 기본값)</div>
+      </div>
+
+      <div class="field">
+        <label>와디즈+PG 수수료율 <span class="v" id="vFee">12%</span></label>
+        <input type="range" id="fee" min="5" max="18" step="0.5" value="12">
+        <div class="hint">와디즈 최저 5%(Light)+PG 등. 보수적 12% 권장</div>
+      </div>
+
+      <div class="field">
+        <label>고정 선투자(매몰비)</label>
+        <div class="row"><input type="number" id="fixed" value="18000000" step="500000"></div>
+        <div class="hint">시제품+인증+콘텐츠 등 펀딩 전 현금 (Part 6 기준)</div>
+      </div>
+    </div>
+
+    <!-- RESULTS -->
+    <div class="panel result">
+      <h2><span class="d">∑</span> 결과</h2>
+      <div class="big">
+        <div class="lbl">손익분기 모금액 (BEP)</div>
+        <div class="num" id="rBep">—</div>
+        <div class="sub2" id="rBepBackers">—</div>
+      </div>
+      <div class="kpis">
+        <div class="kpi"><div class="k">세트당 공헌이익</div><div class="val" id="rCm">—</div></div>
+        <div class="kpi"><div class="k">공헌이익률</div><div class="val" id="rCmr">—</div></div>
+        <div class="kpi"><div class="k">목표 달성 후원자 수</div><div class="val" id="rGoalBackers">—</div></div>
+        <div class="kpi"><div class="k">목표 달성 시 순이익</div><div class="val" id="rProfit">—</div></div>
+      </div>
+      <div class="barlbl"><span>목표 대비 손익분기</span><span id="rRatio">—</span></div>
+      <div class="bar"><i id="rBar" style="width:0%"></i></div>
+      <div class="verdict ok" id="rVerdict">—</div>
+    </div>
+  </div>
+
+  <h3>시나리오 표 (달성률별 손익)</h3>
+  <div class="tablecard">
+    <table>
+      <thead><tr><th>달성률</th><th>모금액</th><th>후원자 수</th><th>수수료</th><th>변동원가</th><th>순손익</th></tr></thead>
+      <tbody id="scenBody"></tbody>
+    </table>
+  </div>
+
+  <div class="note">🧮 <b>계산식</b> — 세트당 공헌이익 = 객단가 − 변동원가 − (객단가 × 수수료율). 공헌이익률 = 공헌이익 ÷ 객단가. <b>손익분기 모금액 = 고정선투자 ÷ 공헌이익률</b>. 순손익 = 모금액 × 공헌이익률 − 고정선투자.</div>
+  <div class="disc">⚠️ 추정 모델입니다. 실제는 리워드 구성·반품·배송단가·광고비·세금에 따라 달라집니다. <b>변동원가에 배송·부자재·결제취소분</b>을 충분히 반영하세요. 펀딩 실패 시 고정 선투자는 회수되지 않습니다.</div>
+</main>
+
+<footer><div class="wrap">
+  <span><a href="rfq.html">← RFQ 템플릿</a> · <a href="onepager.html">원페이저 →</a></span>
+  <span>HOTSHOT · Researched with <strong>insane-search</strong></span>
+</div></footer>
+
+<script>
+  var $ = function(id){ return document.getElementById(id); };
+  var won = function(n){ return Math.round(n).toLocaleString('ko-KR') + '원'; };
+  var ppl = function(n){ return Math.ceil(n).toLocaleString('ko-KR') + '명'; };
+
+  var ids = ['goal','aov','cogs','fee','fixed'];
+  ids.forEach(function(id){ $(id).addEventListener('input', recalc); });
+  document.querySelectorAll('.presets button').forEach(function(b){
+    b.addEventListener('click', function(){
+      var p = b.getAttribute('data-preset');
+      var map = { lean:{fixed:6000000, aov:24900, goal:20000000},
+                  std:{fixed:18000000, aov:30000, goal:30000000},
+                  full:{fixed:38000000, aov:38000, goal:60000000} };
+      var v = map[p];
+      $('fixed').value = v.fixed; $('aov').value = v.aov; $('goal').value = v.goal;
+      recalc();
+    });
+  });
+
+  function recalc(){
+    var goal = +$('goal').value, aov = +$('aov').value, cogs = +$('cogs').value,
+        fee = +$('fee').value/100, fixed = +$('fixed').value;
+
+    $('vGoal').textContent = won(goal);
+    $('vAOV').textContent = won(aov);
+    $('vCogs').textContent = won(cogs);
+    $('vFee').textContent = (fee*100).toFixed(1).replace(/\.0$/,'') + '%';
+
+    var cm = aov - cogs - aov*fee;          // 세트당 공헌이익
+    var cmr = aov>0 ? cm/aov : 0;           // 공헌이익률
+    var bep = cmr>0 ? fixed/cmr : Infinity; // 손익분기 모금액
+    var bepBackers = aov>0 ? bep/aov : Infinity;
+    var goalBackers = aov>0 ? goal/aov : 0;
+    var profit = goal*cmr - fixed;          // 목표 달성 시 순이익
+
+    $('rCm').textContent = won(cm);
+    $('rCmr').textContent = (cmr*100).toFixed(1) + '%';
+    $('rGoalBackers').textContent = ppl(goalBackers);
+
+    var pe = $('rProfit'); pe.textContent = won(profit); pe.style.color = profit>=0 ? 'var(--teal)' : 'var(--accent)';
+
+    var be = $('rBep'), bb = $('rBepBackers');
+    if(cm<=0 || !isFinite(bep)){
+      be.textContent = '달성 불가'; be.className='num red';
+      bb.textContent = '공헌이익이 0 이하 — 원가/수수료를 낮추세요';
+    } else {
+      be.textContent = won(bep); be.className='num';
+      bb.textContent = '필요 후원자 약 ' + ppl(bepBackers);
+    }
+
+    var ratio = (isFinite(bep) && goal>0) ? bep/goal : 2;
+    $('rRatio').textContent = isFinite(bep) ? (ratio*100).toFixed(0)+'% 지점' : '—';
+    $('rBar').style.width = Math.max(0, Math.min(100, ratio*100)) + '%';
+
+    var v = $('rVerdict');
+    if(cm<=0){ v.className='verdict bad'; v.textContent='⚠️ 세트당 손해 구조입니다. 객단가↑ 또는 원가/수수료↓ 필요.'; }
+    else if(bep<=goal){ v.className='verdict ok'; v.textContent='✅ 목표 모금액 달성 시 흑자. 목표의 '+(ratio*100).toFixed(0)+'%만 모여도 본전입니다.'; }
+    else { v.className='verdict bad'; v.textContent='⚠️ 목표를 다 모아도 적자. 손익분기엔 '+won(bep)+'가 필요합니다.'; }
+
+    // scenario table
+    var rates = [0.5,1,1.5,2,3];
+    var tb = $('scenBody'); tb.innerHTML='';
+    rates.forEach(function(r){
+      var amt = goal*r, backers = aov>0?amt/aov:0, feeAmt = amt*fee, varc = backers*cogs;
+      var net = amt - feeAmt - varc - fixed;
+      var tr = document.createElement('tr');
+      tr.innerHTML = '<td>'+(r*100)+'%</td><td>'+won(amt)+'</td><td>'+ppl(backers)+'</td><td>'+won(feeAmt)+'</td><td>'+won(varc)+'</td>'+
+                     '<td class="'+(net>=0?'pos':'neg')+'">'+won(net)+'</td>';
+      tb.appendChild(tr);
+    });
+  }
+  recalc();
+</script>
+</body>
+</html>

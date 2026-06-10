@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>견적 요청서(RFQ) 템플릿 3종 — HOTSHOT</title>
+<meta name="description" content="발열 프리쉐이브 패치 출시를 위한 견적 요청서 템플릿 — OEM/ODM 제조, KC 인증 시험기관, 와디즈 콘텐츠 제작. 복사해서 바로 발송." />
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+<style>
+  :root{--bg:#f7f4ef;--surface:#fffdfa;--ink:#1d1a16;--muted:#6b6359;--line:#e6dfd4;--accent:#d9603b;--accent-soft:#fbe9e1;--teal:#2f7d72;--teal-soft:#e2f0ed;--quote-bg:#f1ece3;--strong:#0f0d0a;--radius:16px;--shadow:0 1px 2px rgba(29,26,22,.04),0 8px 28px -12px rgba(29,26,22,.16);--maxw:860px;}
+  *{box-sizing:border-box}html{scroll-behavior:smooth}
+  body{margin:0;font-family:"Pretendard Variable",Pretendard,-apple-system,system-ui,"Malgun Gothic",sans-serif;background:var(--bg);color:var(--ink);line-height:1.72;-webkit-font-smoothing:antialiased;letter-spacing:-.011em}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+  header.hero{padding:56px 0 36px;border-bottom:1px solid var(--line);background:radial-gradient(120% 80% at 100% 0%,var(--accent-soft) 0%,rgba(251,233,225,0) 55%),radial-gradient(90% 70% at 0% 0%,var(--teal-soft) 0%,rgba(226,240,237,0) 45%)}
+  .nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;font-size:13px;font-weight:600}
+  .nav a,.nav span{padding:6px 12px;border-radius:999px;text-decoration:none}
+  .nav .here{background:var(--accent);color:#fff}.nav .other{background:var(--surface);border:1px solid var(--line);color:var(--muted)}.nav a{border-bottom:none}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--accent);margin-bottom:18px;padding:6px 12px;border:1px solid var(--accent);border-radius:999px;background:rgba(255,255,255,.5)}
+  .eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent)}
+  h1{font-size:clamp(27px,4.6vw,40px);line-height:1.18;font-weight:800;letter-spacing:-.03em;margin:0 0 14px;color:var(--strong)}
+  .sub{font-size:17px;color:var(--muted);margin:0;max-width:60ch}
+  .toc{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}
+  .toc a{font-size:13.5px;font-weight:700;padding:8px 14px;border-radius:10px;background:var(--surface);border:1px solid var(--line);color:var(--ink);text-decoration:none}
+  .toc a:hover{border-color:var(--accent);color:var(--accent)}
+  main{padding:48px 0 40px}section{margin:0 0 54px;scroll-margin-top:20px}
+  .kicker{font-size:13px;font-weight:700;color:var(--accent);letter-spacing:.04em;margin:0 0 8px;display:flex;align-items:center;gap:10px}
+  .kicker .num{font-size:12px;width:24px;height:24px;border-radius:8px;background:var(--accent);color:#fff;display:grid;place-items:center;font-weight:800}
+  h2{font-size:clamp(20px,3vw,25px);font-weight:800;letter-spacing:-.02em;margin:0 0 6px;color:var(--strong)}
+  .to{font-size:14px;color:var(--muted);margin:0 0 14px}.to b{color:var(--strong)}
+  p{font-size:16px}
+  .rfqcard{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+  .rfqhead{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:14px 18px;background:var(--quote-bg);border-bottom:1px solid var(--line)}
+  .rfqhead .t{font-size:14px;font-weight:800;color:var(--strong)}
+  .copybtn{font-size:13px;font-weight:700;color:#fff;background:var(--accent);border:none;border-radius:8px;padding:8px 16px;cursor:pointer;white-space:nowrap}
+  .copybtn:active{transform:translateY(1px)}
+  .copybtn.done{background:var(--teal)}
+  pre{margin:0;padding:20px 18px;font-family:"Pretendard Variable",Pretendard,system-ui,"Malgun Gothic",sans-serif;font-size:14px;line-height:1.78;color:var(--ink);white-space:pre-wrap;word-break:break-word;background:var(--surface)}
+  .note{background:var(--quote-bg);border-radius:12px;padding:14px 16px;font-size:13.5px;color:var(--muted);margin:14px 0}.note b{color:var(--ink)}
+  .targets{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 16px}
+  .targets a{font-size:12.5px;font-weight:600;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:5px 11px;color:var(--muted)}
+  footer{border-top:1px solid var(--line);padding:34px 0 70px;color:var(--muted);font-size:13.5px}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:6px;justify-content:space-between;align-items:center}footer a{font-weight:600}
+  hr.soft{border:none;border-top:1px solid var(--line);margin:0}
+  @media (max-width:640px){header.hero{padding:42px 0 30px}main{padding:38px 0 30px}}
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+  <nav class="nav">
+    <a class="other" href="index.html">P1</a><a class="other" href="market.html">P2</a><a class="other" href="part3.html">P3</a><a class="other" href="part4.html">P4</a><a class="other" href="part5.html">P5</a><a class="other" href="part6.html">P6</a>
+    <span class="here">RFQ</span><a class="other" href="simulator.html">손익계산</a><a class="other" href="onepager.html">원페이저</a>
+  </nav>
+  <span class="eyebrow">실행 도구 ① 견적 요청서</span>
+  <h1>복사해서 바로 보내는 RFQ 3종</h1>
+  <p class="sub">OEM/ODM 제조 · KC 인증 시험기관 · 와디즈 콘텐츠 제작 — 각 블록을 복사해 메일/문의폼에 붙여 발송하면 된다. [대괄호]만 본인 정보로 교체.</p>
+  <div class="toc"><a href="#oem">① OEM/ODM 제조</a><a href="#kc">② KC 인증 시험</a><a href="#content">③ 와디즈 콘텐츠</a></div>
+</div></header>
+
+<main class="wrap">
+
+  <!-- OEM -->
+  <section id="oem">
+    <div class="kicker"><span class="num">1</span> 제조 견적</div>
+    <h2>OEM/ODM 제조 견적 요청서</h2>
+    <p class="to">받는 곳 예시 — <b>스팀베이스 · DHT B2B</b>(온열 스팀 마스크) / <b>핫팩부심 · 다봉산업 · 영인엠알오</b>(발열체) / <b>셀프코스 · 엔더코스</b>(시트·에센스)</p>
+    <div class="targets"><a href="https://steambase.co.kr" target="_blank" rel="noopener">steambase.co.kr</a><a href="http://miraehotpack.com" target="_blank" rel="noopener">miraehotpack.com</a><a href="https://selfcos.com" target="_blank" rel="noopener">selfcos.com</a></div>
+    <div class="rfqcard">
+      <div class="rfqhead"><span class="t">RFQ-1 · 제조</span><button class="copybtn" data-copy="rfq1">📋 복사</button></div>
+<pre id="rfq1">제목: [발열 프리쉐이브 패치] OEM/ODM 시제품·양산 견적 요청
+
+안녕하세요. 신규 그루밍 브랜드 [브랜드명/담당자]입니다.
+면도 전 수염을 따뜻하게 데워 부드럽게 해주는 1회용 자가발열 패치의
+시제품 및 양산 견적을 요청드립니다.
+
+[제품 개요]
+· 용도: 면도 전 수염 연화(온열). ※의료 효능 미표방
+· 발열 방식: 철분 산화(비전기) — 핫팩/스팀 아이마스크와 동일 원리
+· 표면 온도(목표): 40~43℃ (저온화상 회피 상한)
+· 승온: 개봉 후 30초~1분 내 체감 / 발열 지속 8~12분
+· 형태: 하관(下顔) 시트, 인중·턱·턱선 커버, "절취선으로 잘라 맞춤" 구조
+· 1회용, 개별 산소차단 파우치 포장
+· (옵션) 보습·진정 에센스 시트 동반 가능 여부 회신 요망
+
+[견적 요청 사항]
+1. 본 제품 제작 가능 여부 및 유사 양산 레퍼런스
+2. 시제품(샘플) 제작 비용 / 소요 기간 / 최소 수량
+3. 양산 단가표: 1,000 / 3,000 / 5,000 / 10,000개 구간별 개당 단가
+4. 금형·지그·개발비(일회성) 항목 및 금액
+5. 부자재(파우치 인쇄·단상자) 포함/별도 여부
+6. 품목 분류(공산품/화장품) 관련 협조 가능 여부 및 KC/표시 지원
+7. 전체 리드타임(샘플→양산→납품)
+
+[참고]
+· 크라우드펀딩(와디즈) 선판매 후 양산 예정 — 펀딩 일정에 맞춘 납기 협의 희망
+· 회신처: [이메일/연락처]
+
+견적서는 항목별(개발비·단가·부자재·시험·물류)로 분리해 주시면 감사하겠습니다.
+감사합니다.</pre>
+    </div>
+    <p class="note">📌 같은 본문을 3개 업체군에 보내고 <b>항목별 분리 견적</b>을 받아 비교하세요. 사양의 "공산품/의료효능 미표방"을 명시해야 분류·단가가 정확해집니다.</p>
+  </section>
+
+  <hr class="soft" />
+
+  <!-- KC -->
+  <section id="kc" style="padding-top:38px">
+    <div class="kicker"><span class="num">2</span> 인증 견적</div>
+    <h2>KC 인증·시험 견적 요청서</h2>
+    <p class="to">받는 곳 예시 — <b>KTL</b>(한국산업기술시험원) · <b>KTC</b>(한국기계전기전자시험연구원) / 분류 문의 <b>1381</b>(인증표준정보센터)</p>
+    <div class="rfqcard">
+      <div class="rfqhead"><span class="t">RFQ-2 · 인증</span><button class="copybtn" data-copy="rfq2">📋 복사</button></div>
+<pre id="rfq2">제목: [비전기 발열 패치] 품목 분류 및 KC 안전확인 시험 견적 요청
+
+안녕하세요. [브랜드명/담당자]입니다.
+피부 부착형 1회용 자가발열 패치의 국내 출시를 위한
+품목 분류 검토 및 안전 시험 견적을 요청드립니다.
+
+[제품 사양]
+· 명칭(가): 발열 프리쉐이브 패치
+· 사용 목적: 면도 전 수염을 온열로 연화 (※근육통완화·치료 등 의료 효능 미표방)
+· 발열 원리: 철분 산화(비전기). 표면온도 목표 40~43℃, 단시간(1~3분) 사용
+· 구조: 부직포 발열체 + (옵션)에센스 시트 + 약점착층 + 산소조절 백킹
+· 피부 접촉, 개별 포장 1회용
+
+[요청 사항]
+1. 본 제품의 품목 분류 의견 (생활용품/공산품 vs 의료기기 vs 화장품 경계)
+   - 필요 시 "의료기기 해당여부 검토 신청"(정부24) 절차 안내
+2. 공산품(생활용품) 경로 시 KC 안전확인/공급자적합성확인 적용 여부
+3. 적용 시험 항목 / 시험 비용 / 소요 기간
+4. 발열 관련 안전 시험(최고표면온도·저온화상·점착부 피부자극) 포함 여부
+5. 인증 대행 가능 여부 및 대행 비용
+
+· 회신처: [이메일/연락처] / 시제품 제공 가능
+감사합니다.</pre>
+    </div>
+    <p class="note">⚖️ <b>공산품行</b>(순수 발열, 효능 미표방)으로 문의하면 화장품 임상을 피해 비용·기간이 줄어듭니다. 에센스·보습 효능을 넣을 계획이면 화장품책임판매업·피부자극시험도 함께 문의하세요.</p>
+  </section>
+
+  <hr class="soft" />
+
+  <!-- CONTENT -->
+  <section id="content" style="padding-top:38px">
+    <div class="kicker"><span class="num">3</span> 콘텐츠 견적</div>
+    <h2>와디즈 콘텐츠·상세페이지 견적 요청서</h2>
+    <p class="to">받는 곳 예시 — <b>와디즈 파트너존</b>(공식 메이트/파트너 서비스) / 외부 뷰티 상세페이지 전문 스튜디오</p>
+    <div class="targets"><a href="https://partnerzone.wadiz.kr" target="_blank" rel="noopener">partnerzone.wadiz.kr</a></div>
+    <div class="rfqcard">
+      <div class="rfqhead"><span class="t">RFQ-3 · 콘텐츠</span><button class="copybtn" data-copy="rfq3">📋 복사</button></div>
+<pre id="rfq3">제목: [와디즈 펀딩] 상세페이지·촬영 콘텐츠 제작 견적 요청
+
+안녕하세요. [브랜드명/담당자]입니다.
+와디즈 리워드 펀딩 오픈을 준비 중인 발열 프리쉐이브 패치
+'HOTSHOT'의 상세페이지 및 촬영 견적을 요청드립니다.
+
+[프로젝트 개요]
+· 제품: 면도 전 붙이는 1회용 발열 패치 (핫타월 대체)
+· 콘셉트: "붙이고 1분, 핫타월처럼."
+· 타깃: 억센 수염 남성 + 여성 바디 + 휴대 수요
+· 목표 오픈: [예: 2026년 O월]
+
+[보유 자산] ※일부 외주 절감 가능
+· 브랜드 로고/키비주얼/패키지 시안 보유 (블랙×레드)
+· 스토리 카피 초안·구성안 보유
+· (보유/미보유) 제품 실물 샘플
+
+[견적 요청 사항]
+1. 패키지 옵션별 견적: 라이트(원고+디자인) / 스탠다드(+기본촬영) / 프리미엄(+고급촬영)
+2. 제품·연출 촬영 단독 견적(컷수·GIF 포함 여부)
+3. 제작 기간 및 수정 횟수
+4. 와디즈 내부 심사 대응 포함 여부
+
+· 회신처: [이메일/연락처]
+감사합니다.</pre>
+    </div>
+    <p class="note">🎨 <b>Part 5</b>의 로고·키비주얼·패키지와 <b>Part 4</b>의 카피를 그대로 전달하면 라이트 패키지로도 충분히 진행돼 콘텐츠 비용을 크게 아낄 수 있습니다.</p>
+  </section>
+
+</main>
+
+<footer><div class="wrap">
+  <span><a href="part6.html">← Part 6 · 투자 비용으로</a></span>
+  <span>HOTSHOT · Researched with <strong>insane-search</strong> · 2026</span>
+</div></footer>
+
+<script>
+  document.querySelectorAll('.copybtn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var el = document.getElementById(btn.getAttribute('data-copy'));
+      var text = el ? el.innerText : '';
+      function ok(){ var o=btn.textContent; btn.textContent='✅ 복사됨'; btn.classList.add('done'); setTimeout(function(){btn.textContent=o;btn.classList.remove('done');},1600); }
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).then(ok).catch(function(){fallback(text,ok);});
+      } else { fallback(text,ok); }
+    });
+  });
+  function fallback(text, cb){
+    var ta=document.createElement('textarea'); ta.value=text; ta.style.position='fixed'; ta.style.opacity='0';
+    document.body.appendChild(ta); ta.select();
+    try{ document.execCommand('copy'); cb(); }catch(e){} document.body.removeChild(ta);
+  }
+</script>
+</body>
+</html>

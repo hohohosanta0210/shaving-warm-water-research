@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>발열 프리쉐이브 패치 — 펀딩 선례·규제·기술 구현성</title>
+<meta name="description" content="얼굴에 붙이면 발열해 수염을 불려주는 소모성 온열 패치 — 와디즈/텀블벅 선례, 한국 규제·인허가(공산품·화장품·의료기기·의약품 분류), 기술 구현성과 저온화상 안전까지 정리." />
+<meta property="og:title" content="발열 프리쉐이브 패치 — 펀딩·규제·기술 구현성 (Part 3)" />
+<meta property="og:description" content="개념은 글로벌에 크림형으로 존재하나 패치형+철분산화+한국은 빈자리. 규제 분류 결정트리와 기술 구현성 분석." />
+<meta property="og:type" content="article" />
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+<style>
+  :root{
+    --bg:#f7f4ef;--surface:#fffdfa;--ink:#1d1a16;--muted:#6b6359;--line:#e6dfd4;
+    --accent:#d9603b;--accent-soft:#fbe9e1;--teal:#2f7d72;--teal-soft:#e2f0ed;
+    --quote-bg:#f1ece3;--strong:#0f0d0a;--radius:16px;
+    --shadow:0 1px 2px rgba(29,26,22,.04), 0 8px 28px -12px rgba(29,26,22,.16);
+    --maxw:760px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,system-ui,"Segoe UI",Roboto,sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.72;-webkit-font-smoothing:antialiased;font-feature-settings:"tnum";letter-spacing:-.011em;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+
+  header.hero{padding:60px 0 40px;border-bottom:1px solid var(--line);
+    background:radial-gradient(120% 80% at 100% 0%, var(--accent-soft) 0%, rgba(251,233,225,0) 55%),
+      radial-gradient(90% 70% at 0% 0%, var(--teal-soft) 0%, rgba(226,240,237,0) 45%);}
+  .nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;font-size:13.5px;font-weight:600}
+  .nav a,.nav span{padding:7px 14px;border-radius:999px;text-decoration:none}
+  .nav .here{background:var(--accent);color:#fff}
+  .nav .other{background:var(--surface);border:1px solid var(--line);color:var(--muted)}
+  .nav a{border-bottom:none}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--accent);
+    margin-bottom:18px;padding:6px 12px;border:1px solid var(--accent);border-radius:999px;background:rgba(255,255,255,.5);}
+  .eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent)}
+  h1{font-size:clamp(27px,4.8vw,40px);line-height:1.18;font-weight:800;letter-spacing:-.03em;margin:0 0 18px;color:var(--strong)}
+  .sub{font-size:17px;color:var(--muted);margin:0 0 22px;max-width:62ch}
+  .concept{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:15px;color:var(--ink);margin:0 0 24px}
+  .concept b{color:var(--strong)}
+  .meta{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{font-size:12.5px;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:5px 11px;font-weight:500}
+
+  main{padding:50px 0 40px}
+  section{margin:0 0 58px}
+  .kicker{font-size:13px;font-weight:700;color:var(--accent);letter-spacing:.04em;margin:0 0 10px;display:flex;align-items:center;gap:10px}
+  .kicker .num{font-size:12px;width:24px;height:24px;border-radius:8px;background:var(--accent);color:#fff;display:grid;place-items:center;font-weight:800}
+  h2{font-size:clamp(22px,3.6vw,28px);line-height:1.25;font-weight:800;letter-spacing:-.02em;margin:0 0 8px;color:var(--strong)}
+  .verdict{font-size:15px;font-weight:700;color:var(--teal);margin:0 0 22px}
+  .verdict.warn{color:var(--accent)}
+  p{margin:0 0 16px;font-size:16.5px}
+  a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(217,96,59,.35);transition:border-color .15s}
+  a:hover{border-color:var(--accent)}
+  strong{color:var(--strong);font-weight:700}
+  .hl{background:linear-gradient(180deg,transparent 62%,var(--accent-soft) 62%);padding:0 1px;font-weight:600}
+  .hl-t{background:linear-gradient(180deg,transparent 62%,var(--teal-soft) 62%);padding:0 1px;font-weight:600}
+
+  /* summary banner */
+  .summary{background:linear-gradient(135deg,#1d1a16,#2c2722);color:#f7f4ef;border-radius:var(--radius);padding:28px;box-shadow:var(--shadow)}
+  .summary h2{color:#fff;font-size:20px;margin:0 0 14px}
+  .summary ul{margin:0;padding:0;list-style:none}
+  .summary li{padding:10px 0;border-bottom:1px solid rgba(255,255,255,.12);font-size:15.5px;color:#e9e2d7;display:flex;gap:12px;align-items:flex-start}
+  .summary li:last-child{border-bottom:none}
+  .summary li .t{font-size:12px;font-weight:800;padding:3px 9px;border-radius:6px;white-space:nowrap;margin-top:2px}
+  .t-go{background:#2f7d72;color:#fff}
+  .t-warn{background:#d9603b;color:#fff}
+  .summary li b{color:#fff}
+
+  /* competitor cards */
+  .comp{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;box-shadow:var(--shadow);margin:14px 0}
+  .comp .top{display:flex;align-items:center;gap:10px;margin-bottom:6px;flex-wrap:wrap}
+  .comp .badge{font-size:11.5px;font-weight:800;padding:4px 10px;border-radius:999px}
+  .b-kr{background:var(--teal-soft);color:#1f5a51}
+  .b-glob{background:#efe2dd;color:#a8472a}
+  .comp h3{margin:0;font-size:17.5px;font-weight:800;color:var(--strong)}
+  .comp .ex{font-size:13px;color:var(--muted);font-weight:600;margin-left:auto}
+  .comp p{font-size:15px;margin:8px 0 0}
+  .comp .row{display:flex;gap:18px;flex-wrap:wrap;margin-top:10px;font-size:13.5px}
+  .comp .row .k{color:var(--muted)}
+  .comp .row .v{color:var(--strong);font-weight:600}
+  .pro{color:var(--teal);font-weight:700}
+  .con{color:var(--accent);font-weight:700}
+
+  /* gap callout */
+  .gap{background:#fff4ef;border:1px solid #f1d3c6;border-left:4px solid var(--accent);border-radius:14px;padding:22px;margin:18px 0}
+  .gap .lbl{font-size:12px;font-weight:800;color:var(--accent);letter-spacing:.05em;margin-bottom:10px}
+  .gap p{font-size:15.5px;margin:0}
+  .gap .punch{font-size:16px;font-weight:700;color:var(--strong);margin-top:8px}
+
+  /* decision tree */
+  .tree{display:grid;gap:12px;margin:16px 0}
+  .branch{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px;box-shadow:var(--shadow);position:relative;border-left:4px solid var(--line)}
+  .branch.ok{border-left-color:var(--teal)}
+  .branch.mid{border-left-color:#c79100}
+  .branch.bad{border-left-color:var(--accent)}
+  .branch .if{font-size:13.5px;color:var(--muted);font-weight:600}
+  .branch .if b{color:var(--strong)}
+  .branch .then{margin-top:6px;font-size:16px;font-weight:800;color:var(--strong)}
+  .branch .then .cls{padding:2px 8px;border-radius:6px;font-size:13.5px;margin-right:6px}
+  .cls-ok{background:var(--teal-soft);color:#1f5a51}
+  .cls-mid{background:#fbf0d2;color:#8a6a00}
+  .cls-bad{background:var(--accent-soft);color:#a8472a}
+  .branch .note{margin-top:6px;font-size:13.5px;color:var(--muted)}
+  .branch .note a{border:none;font-weight:600}
+
+  /* table */
+  .tablecard{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+  table{width:100%;border-collapse:collapse;font-size:14.5px}
+  th,td{text-align:left;padding:13px 15px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:var(--quote-bg);font-weight:700;color:var(--strong);font-size:13px}
+  tr:last-child td{border-bottom:none}
+
+  /* checklist */
+  .check{list-style:none;padding:0;margin:14px 0}
+  .check li{position:relative;padding:12px 0 12px 30px;border-bottom:1px dashed var(--line);font-size:15.5px}
+  .check li:last-child{border-bottom:none}
+  .check li::before{content:"✓";position:absolute;left:0;top:12px;width:20px;height:20px;border-radius:50%;background:var(--teal-soft);color:var(--teal);font-weight:800;font-size:12px;display:grid;place-items:center}
+  .check li .sub2{display:block;margin-top:4px;font-size:13.5px;color:var(--muted)}
+
+  /* mechanism box */
+  .mech{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);margin:14px 0}
+  .mech .step{display:flex;gap:14px;padding:10px 0;border-bottom:1px solid var(--line)}
+  .mech .step:last-child{border-bottom:none}
+  .mech .step .n{min-width:28px;height:28px;border-radius:8px;background:var(--accent);color:#fff;font-weight:800;font-size:13px;display:grid;place-items:center}
+  .mech .step p{margin:0;font-size:15px}
+  .mech .step b{color:var(--strong)}
+
+  /* feasibility meter */
+  .feas{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:14px 0}
+  .fcell{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+  .fcell .h{font-size:14px;font-weight:700;color:var(--strong);margin-bottom:6px}
+  .fcell .bar{height:7px;border-radius:4px;background:var(--line);overflow:hidden;margin-bottom:8px}
+  .fcell .bar i{display:block;height:100%;border-radius:4px;background:var(--teal)}
+  .fcell .bar.warn i{background:var(--accent)}
+  .fcell p{margin:0;font-size:13.5px;color:var(--muted)}
+
+  /* risk */
+  .risk{list-style:none;padding:0;margin:14px 0}
+  .risk li{position:relative;padding:13px 0 13px 30px;border-bottom:1px dashed var(--line);font-size:15.5px}
+  .risk li:last-child{border-bottom:none}
+  .risk li::before{content:"!";position:absolute;left:0;top:13px;width:20px;height:20px;border-radius:50%;background:var(--accent-soft);color:var(--accent);font-weight:800;font-size:12px;display:grid;place-items:center}
+  .risk li .mit{display:block;margin-top:5px;font-size:13.5px;color:var(--muted)}
+  .risk li .mit b{color:var(--teal)}
+
+  /* steps */
+  .steps{display:grid;gap:12px;margin:16px 0}
+  .step2{display:flex;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+  .step2 .d{font-size:14px;font-weight:800;color:var(--teal);background:var(--teal-soft);min-width:30px;height:30px;border-radius:8px;display:grid;place-items:center}
+  .step2 p{margin:0;font-size:15px}
+
+  .method{background:var(--surface);border:1px dashed var(--line);border-radius:var(--radius);padding:24px 22px}
+  .method h3{margin:0 0 14px;font-size:15px;font-weight:800;color:var(--strong)}
+  .method ul{margin:0;padding-left:18px}
+  .method li{font-size:14px;color:var(--muted);margin-bottom:7px}
+  .method li strong{color:var(--ink)}
+  .disc{font-size:13px;color:var(--muted);background:var(--quote-bg);border-radius:12px;padding:14px 16px;margin-top:14px}
+
+  footer{border-top:1px solid var(--line);padding:34px 0 70px;color:var(--muted);font-size:13.5px}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:6px;justify-content:space-between;align-items:center}
+  footer a{font-weight:600}
+  hr.soft{border:none;border-top:1px solid var(--line);margin:0}
+
+  @media (max-width:640px){
+    header.hero{padding:44px 0 32px}
+    main{padding:38px 0 30px}
+    .feas{grid-template-columns:1fr}
+    section{margin-bottom:46px}
+    .comp .ex{margin-left:0;width:100%}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <nav class="nav">
+      <a class="other" href="index.html">PART 1 · 사용자 니즈</a>
+      <a class="other" href="market.html">PART 2 · 시장성·경쟁</a>
+      <span class="here">PART 3 · 발열패치 타당성</span>
+    </nav>
+    <span class="eyebrow">제품 구체화 · 규제 · 기술</span>
+    <h1>얼굴에 붙이면 발열하는 '프리쉐이브 패치', 만들 수 있을까?</h1>
+    <p class="sub">파스처럼 얼굴에 붙이면 열이 나 수염을 불려주는 소모성 온열 패치. 비슷한 펀딩이 있었는지, 피부에 닿는 만큼 어떤 규제를 통과해야 하는지, 기술적으로 구현 가능한지를 정리했다.</p>
+    <div class="concept">💡 <b>구상 제품</b> — 1회용 자가발열 패치를 면도 전 수염 부위(턱·볼·인중·목)에 1~3분 붙여 따뜻하게 데워 수염을 불린 뒤 떼고 면도. "핫타월 대신 붙이는 한 장."</div>
+    <div class="meta">
+      <span class="chip">와디즈·텀블벅</span>
+      <span class="chip">철분산화 발열</span>
+      <span class="chip">공산품·화장품·의료기기</span>
+      <span class="chip">저온화상</span>
+      <span class="chip">OEM 제조</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- SUMMARY -->
+  <section id="summary">
+    <div class="kicker"><span class="num">✓</span> 한눈에</div>
+    <div class="summary">
+      <h2>결론 요약</h2>
+      <ul>
+        <li><span class="t t-warn">선례</span><span><b>개념은 이미 존재</b> — 미국·영국에 '셀프 히팅 프리쉐이브'(물 활성화 발열 크림)가 있다. 단 <b>패치형·철분산화·한국 시장은 빈자리</b>. 평가도 미온적이라 개선 여지 큼.</span></li>
+        <li><span class="t t-go">규제</span><span><b>설계가 등급을 정한다</b> — 비전기·의료효능 미표방이면 <b>공산품(KC)</b> 또는 <b>화장품</b>. 캡사이신류 화학발열은 <b>의약품/의약외품</b>(피해야 함), 전기+치료표방은 <b>의료기기</b>.</span></li>
+        <li><span class="t t-go">기술</span><span><b>구현 가능성 높음</b> — 자가발열 마스크팩 제조설비·미용 핫팩 특허가 이미 존재. 스팀 아이마스크(40℃·20분)와 동일 원리. <b>단시간(1~3분) 사용이라 저온화상 리스크도 낮다.</b></span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 1. CROWDFUNDING & PRIOR ART -->
+  <section id="prior">
+    <div class="kicker"><span class="num">1</span> 비슷한 펀딩·제품이 있었나?</div>
+    <h2>개념은 있다 — 단 '크림형', 한국엔 없음</h2>
+    <p class="verdict warn">결론 — 글로벌 선행제품 존재(novelty 제한적), 그러나 '패치형 × 철분산화 × 한국'은 미개척</p>
+
+    <div class="comp">
+      <div class="top"><span class="badge b-kr">와디즈·국내</span><h3>젠틀프로젝트 햄프씨드 쉐이빙 오일</h3><span class="ex">프리쉐이브 오일</span></div>
+      <p>"한국 최초 쉐이빙 오일" 펀딩. 발열은 없지만 <strong>면도 자극·건조</strong>를 문제로 내세워 성공. 3차례 펀딩 후 공식몰 입점.</p>
+      <div class="row">
+        <span><span class="k">누적</span> <span class="v">24,671,100원 · 860명 · 달성 2,467%</span></span>
+        <span><span class="k">발열</span> <span class="con">없음</span></span>
+      </div>
+      <p style="margin-top:8px;font-size:13.5px;color:var(--muted)">→ 한국 소비자가 '새로운 프리쉐이브'에 지갑을 연다는 증거. <a href="https://www.wadiz.kr/web/campaign/detail/42273" target="_blank" rel="noopener">와디즈</a></p>
+    </div>
+
+    <div class="comp">
+      <div class="top"><span class="badge b-glob">미국</span><h3>Billy Jealousy · Hot Towel Heating Pre-Shave</h3><span class="ex">물 활성화 발열</span></div>
+      <p><strong>물에 닿으면 발열</strong>하는 프리쉐이브. 수염을 들어올려 부드럽게 + 캐모마일 진정. 형태는 <strong>크림/젤</strong>(패치 아님).</p>
+      <div class="row"><span><span class="k">메커니즘</span> <span class="v">water-activated 발열</span></span><span><span class="k">한국</span> <span class="con">미진출</span></span></div>
+      <p style="margin-top:8px;font-size:13.5px;color:var(--muted)"><a href="https://www.billyjealousy.com/products/hot-towel-heating-pre-shave" target="_blank" rel="noopener">billyjealousy.com</a></p>
+    </div>
+
+    <div class="comp">
+      <div class="top"><span class="badge b-glob">영국</span><h3>Real Shaving Co · Self Heating Face Mask "Hot Towel Style"</h3><span class="ex">셀프 히팅 마스크(크림)</span></div>
+      <p>얼굴 수염을 데워 부드럽게 + 레몬그라스. 4.23 fl oz <strong>액상/크림</strong> 타입.</p>
+      <div class="row"><span><span class="k">사용자 평</span> <span class="con">"너무 되직해 펴바르기 힘들고 발열 미미"</span></span></div>
+      <p style="margin-top:8px;font-size:13.5px;color:var(--muted)">→ <strong>크림형의 한계</strong>(즉시 식음·균일도 낮음)가 드러남 = 패치형의 기회. <a href="https://www.badgerandblade.com/forum/threads/self-heating-hot-towel-mask.149388/" target="_blank" rel="noopener">Badger &amp; Blade 토론</a></p>
+    </div>
+
+    <div class="gap">
+      <div class="lbl">빈자리 · 차별점</div>
+      <p>선행제품은 모두 <strong>'물 활성화 발열 크림'</strong>이다. 사용자가 구상한 <strong>'붙이는 자가발열 패치(파스형, 철분산화)'</strong>는 — 크림형의 약점(바르는 번거로움·즉시 식음·발열 불균일)을 정면으로 해결한다.</p>
+      <p class="punch">→ "수염용 스팀 아이마스크" 포지션. 컨셉 novelty는 제한적이지만, <span class="hl">형태(패치) × 발열원(철분산화) × 한국 시장</span> 조합은 비어 있다.</p>
+    </div>
+    <p style="font-size:14px;color:var(--muted)">※ 와디즈/텀블벅에서 '발열 면도/온열 프리쉐이브' 전용 펀딩은 확인되지 않음(스팀 아이마스크·발열조끼·발열 마스크는 있으나 면도용 아님). 선점 여지 있음.</p>
+  </section>
+
+  <hr class="soft" />
+
+  <!-- 2. REGULATION -->
+  <section id="reg" style="padding-top:40px">
+    <div class="kicker"><span class="num">2</span> 규제·인허가 — 무엇을 통과해야 하나</div>
+    <h2>설계가 분류를 결정한다</h2>
+    <p class="verdict warn">결론 — '발열 방식 × 효능 표방'에 따라 4갈래. 잘 설계하면 공산품/화장품으로 가볍게, 잘못 설계하면 의약품으로 무거워진다</p>
+    <p>피부에 닿고 열을 내는 제품의 한국 분류는 <strong>① 발열을 무엇으로 내는가</strong>와 <strong>② 무슨 효능을 광고하는가</strong>로 갈린다. 식약처는 성분·사용목적·작용원리를 종합 판단한다.</p>
+
+    <div class="tree">
+      <div class="branch ok">
+        <div class="if"><b>철분 산화(비전기) 발열 + 의료 효능 미표방</b> · "수염을 따뜻하게/부드럽게"만 표방</div>
+        <div class="then"><span class="cls cls-ok">공산품(생활용품)</span></div>
+        <div class="note">핫팩과 동일 분류. 「전안법」 대상 → <strong>KC 안전확인/공급자적합성</strong> + <strong>저온화상 경고 표시</strong> 의무. 가장 가벼운 경로. <a href="https://www.kats.go.kr/content.do?cmsid=49" target="_blank" rel="noopener">국표원</a></div>
+      </div>
+      <div class="branch ok">
+        <div class="if"><b>보습·진정 에센스 동반 + 화장품 효능 표방</b> · 피부 미화/보습 등</div>
+        <div class="then"><span class="cls cls-ok">화장품</span></div>
+        <div class="note">자가발열 마스크팩 선례와 동일. <strong>화장품책임판매업 등록</strong>(전자민원 27,000원·7~10일, 책임판매관리자 필요 — 맞춤형화장품조제관리사로 1인 가능) + 안전기준·표시광고 준수. OEM/ODM은 브랜드 명의로 등록. <a href="https://easylaw.go.kr/CSP/CnpClsMain.laf?popMenu=ov&csmSeq=1301&ccfNo=2&cciNo=2&cnpClsNo=2" target="_blank" rel="noopener">생활법령</a></div>
+      </div>
+      <div class="branch mid">
+        <div class="if"><b>전기 발열 + "온열치료·근육통완화·혈행" 등 의료 효능 표방</b></div>
+        <div class="then"><span class="cls cls-mid">의료기기(개인용 온열기, 2등급)</span></div>
+        <div class="note">허가·전기/기계 안전성 검증 필요. 우리 컨셉엔 <strong>불필요·과잉</strong> — 의료 효능을 말하지 않으면 피할 수 있다. <a href="https://www.k-health.com/news/articleView.html?idxno=68009" target="_blank" rel="noopener">헬스경향</a></div>
+      </div>
+      <div class="branch bad">
+        <div class="if"><b>캡사이신·노니바마이드 등 약리적 화학 발열(파스 방식)</b></div>
+        <div class="then"><span class="cls cls-bad">의약품 / 의약외품</span></div>
+        <div class="note"><strong>피해야 할 길.</strong> 첩부제(파스) 규제 — 유전독성·불순물 안전입증 강화로 진입장벽 높고, <strong>얼굴·눈 주변엔 자극·위험</strong>. <a href="https://www.dailypharm.com/Users/News/NewsView.html?ID=325432" target="_blank" rel="noopener">데일리팜</a></div>
+      </div>
+    </div>
+
+    <div class="gap" style="background:var(--teal-soft);border-color:#bcdcd5;border-left-color:var(--teal)">
+      <div class="lbl" style="color:var(--teal)">권장 경로</div>
+      <p><strong>철분산화 발열 패치 + 의료 효능 미표방.</strong> 에센스를 넣고 보습/진정을 말하면 <span class="hl-t">화장품</span>, 순수 온열 패치로 가면 <span class="hl-t">공산품(KC)</span>. 둘 다 의료기기·의약품을 피한다. 경계가 모호하므로 출시 전 <strong>식약처 '의료기기 해당여부 검토 신청'(정부24) + 품목분류 민원</strong>으로 사전 확정 권장.</p>
+    </div>
+
+    <p style="font-weight:700;color:var(--strong);margin:18px 0 6px">통과·준수 체크리스트</p>
+    <ul class="check">
+      <li>품목분류 사전확정 — 의료기기 해당여부 검토 신청 + 식약처/1381 품목분류 문의
+        <span class="sub2">「의료기기와 공산품 경계영역제품 판단 해설서」(식약처) 기준 자료(사용목적·구조·원재료·작용원리) 제출</span></li>
+      <li>공산품行: KC 안전확인/공급자적합성 + 「전안법」 표시(제조국·제조일·저온화상 경고)</li>
+      <li>화장품行: 화장품책임판매업 등록 + 책임판매관리자 + 화장품 안전기준·전성분 표시·표시광고 심의</li>
+      <li>표시광고 리스크 — "수염 연화/면도 보조"는 OK, <strong>"혈행·치료·통증"은 금지어</strong>(의료기기·의약품 오인)</li>
+      <li>안전성 — 저온화상·피부자극(첩부 패치 점착제) 시험, 눈·점막 회피 사용법 명기</li>
+    </ul>
+  </section>
+
+  <hr class="soft" />
+
+  <!-- 3. TECH FEASIBILITY -->
+  <section id="tech" style="padding-top:40px">
+    <div class="kicker"><span class="num">3</span> 기술적으로 만들 수 있나</div>
+    <h2>구현 가능성 높음 — 검증된 발열 화학 + 기존 제조설비</h2>
+    <p class="verdict">결론 — "수염용 스팀 아이마스크"는 신기술이 아니라 <strong>기존 자가발열 마스크 기술의 응용</strong></p>
+
+    <p style="font-weight:700;color:var(--strong);margin-bottom:6px">발열 메커니즘 (핫팩·스팀 아이마스크와 동일)</p>
+    <div class="mech">
+      <div class="step"><div class="n">1</div><p><b>구성</b> — 부직포 주머니에 철가루 + 소금 + 수분 + 활성탄. 통기성 시트로 산소 유입량을 조절.</p></div>
+      <div class="step"><div class="n">2</div><p><b>반응</b> — 개봉·접촉 시 철이 공기와 산화. <b>철 1g당 약 1.69 kcal</b>의 열 방출. 흔들면 빠르게 승온.</p></div>
+      <div class="step"><div class="n">3</div><p><b>제어</b> — 활성탄이 열을 고르게 분산, 통기 면적으로 <b>40℃ 안팎·지속시간</b>을 설계. 스팀 아이마스크가 40℃·20분을 구현한 바로 그 방식.</p></div>
+      <div class="step"><div class="n">4</div><p><b>제조</b> — '자가발열 마스크팩 제조장치'(발열패치 공급 → 비통기성 시트 접착 → 식염수 분사 → 포장) 특허·설비가 이미 국내 존재. <b>OEM 양산 가능.</b></p></div>
+    </div>
+    <p style="font-size:13.5px;color:var(--muted)">참고: <a href="https://newsroom.posco.com/kr/%ED%95%AB%ED%8C%A9-%EB%A7%8C%EB%93%A4%EA%B8%B0-%ED%95%AB%ED%8C%A9-%EC%86%8D-%EC%88%A8%EA%B2%A8%EC%A7%84-%EC%B2%A0%EA%B0%80%EB%A3%A8%EC%9D%98-%EB%B9%84%EB%B0%80%EC%9D%84-%EC%95%8C%EB%A9%B4-ok/" target="_blank" rel="noopener">포스코 뉴스룸(핫팩 원리)</a> · 자가발열 마스크팩 제조장치 특허 KR1020140046490 · 미용 핫팩 특허 KR101651109B1</p>
+
+    <p style="font-weight:700;color:var(--strong);margin:22px 0 6px">구현 난이도 분해</p>
+    <div class="feas">
+      <div class="fcell"><div class="h">발열 화학 · 안전온도</div><div class="bar"><i style="width:90%"></i></div><p>검증 완료. 40℃ 안팎·단시간이면 저온화상 리스크 낮음(44℃ 6시간에야 위험 — 우리는 1~3분).</p></div>
+      <div class="fcell"><div class="h">제조 · 양산</div><div class="bar"><i style="width:85%"></i></div><p>자가발열 마스크 OEM 설비 존재. 신규 라인 불요.</p></div>
+      <div class="fcell"><div class="h">얼굴 3D 밀착 · 형태</div><div class="bar warn"><i style="width:55%"></i></div><p>턱·인중·목의 곡면 밀착이 난제. 마스크형(귀걸이)·분할 패치·점착 방식 설계 필요.</p></div>
+      <div class="fcell"><div class="h">발열 속도 · 즉시성</div><div class="bar warn"><i style="width:60%"></i></div><p>산화 발열은 승온에 1~5분. 아침 면도엔 '꺼내서 바로 데워짐' UX 튜닝 필요.</p></div>
+    </div>
+
+    <p style="font-weight:700;color:var(--strong);margin:20px 0 6px">기술 리스크 &amp; 대응</p>
+    <ul class="risk">
+      <li>얼굴 곡면 밀착·습윤 전달 — 눈가용 패치와 달리 턱·목은 움직임이 큼
+        <span class="mit"><b>대응:</b> 하관 마스크형(귀걸이) + 신축 점착 + 보습젤 레이어로 열·수분 동시 전달</span></li>
+      <li>저온화상·점착 자극 — 점막·눈 인접, 피부 민감
+        <span class="mit"><b>대응:</b> 상한 온도 캡(≤43℃) 설계, 1회·단시간 사용 강제, 첩부 점착제 피부자극 시험</span></li>
+      <li>승온 지연 vs 즉시성 기대 — 핫타월의 즉각 따뜻함 대비
+        <span class="mit"><b>대응:</b> 개봉 즉시 발열 시작하는 산소 노출 구조, 또는 결정화 발열(아세트산나트륨) 병행 검토</span></li>
+      <li>물 활성화 대비 휴대성·쓰레기 — 1회용 발열체 폐기물
+        <span class="mit"><b>대응:</b> 발열체/패치 분리 배출, 친환경 소구는 과대광고 주의</span></li>
+    </ul>
+  </section>
+
+  <hr class="soft" />
+
+  <!-- ROADMAP -->
+  <section id="roadmap" style="padding-top:40px">
+    <div class="kicker"><span class="num">→</span> 실행 로드맵</div>
+    <h2>만든다면, 이 순서로</h2>
+    <div class="steps">
+      <div class="step2"><div class="d">1</div><p><strong>분류 확정</strong> — 컨셉(철분산화·효능 표방 범위) 정하고 식약처 '의료기기 해당여부 검토'+품목분류 민원으로 공산품/화장품 길 확정.</p></div>
+      <div class="step2"><div class="d">2</div><p><strong>프로토타입</strong> — 자가발열 마스크 OEM과 하관 패치 시제품. 40~43℃·1~3분·밀착 검증, 저온화상/자극 시험.</p></div>
+      <div class="step2"><div class="d">3</div><p><strong>차별화</strong> — 크림형 경쟁사의 약점(펴바름·식음) 대비 "붙이고 1분, 핫타월처럼"으로 포지셔닝.</p></div>
+      <div class="step2"><div class="d">4</div><p><strong>검증 펀딩</strong> — 와디즈로 컨셉·가격·반복구매 의향 테스트(쉐이빙 오일 선례처럼). 인증은 본양산 전 완료.</p></div>
+      <div class="step2"><div class="d">5</div><p><strong>타깃</strong> — Part 2 결론대로 억센 수염 남성 + 여성 바디 + 휴대 수요. 의료 효능 금지어 회피한 카피.</p></div>
+    </div>
+  </section>
+
+  <!-- METHOD -->
+  <section id="method">
+    <div class="method">
+      <h3>방법론 메모 · insane-search</h3>
+      <ul>
+        <li><strong>펀딩·선행제품</strong> — 와디즈 캠페인, Billy Jealousy/Real Shaving Co, Badger&amp;Blade 교차 확인</li>
+        <li><strong>규제</strong> — 식약처(화장품 정의·경계영역 해설서·개인용온열기·파스), 국표원/전안법 KC, 화장품책임판매업 생활법령 등 공식 출처 기반</li>
+        <li><strong>기술</strong> — 핫팩/자가발열 마스크 원리, 제조장치·미용핫팩 특허, 스팀 아이마스크 사양(40℃·20분)</li>
+        <li><strong>우회 수집</strong> — 403/SPA는 Jina Reader로 처리. curl_cffi 엔진은 설치 권한 거부로 미사용</li>
+      </ul>
+      <div class="disc">⚠️ <strong>면책</strong> — 본 규제 정리는 공개 자료 기반 일반 안내이며 법률·인허가 자문이 아니다. 실제 분류·인증은 최종 제품의 성분·구조·효능 표방에 따라 달라지므로, 출시 전 <strong>식약처·국가기술표준원·관세사/규제 전문가</strong>의 공식 확인이 반드시 필요하다.</div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span><a href="market.html">← Part 2 · 시장성·경쟁으로</a></span>
+    <span>Researched with <strong>insane-search</strong> · 2026</span>
+  </div>
+</footer>
+
+</body>
+</html>

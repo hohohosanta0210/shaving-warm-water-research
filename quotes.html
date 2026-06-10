@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>견적 벤치마크 &amp; 비교 트래커 — HOTSHOT</title>
+<meta name="description" content="발열 프리쉐이브 패치 제작비 공개가 벤치마크와, 실제 견적이 오면 채워 비교하는 트래커. 핫팩·마스크팩·KC인증·상세페이지 단가 기준." />
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+<style>
+  :root{--bg:#f7f4ef;--surface:#fffdfa;--ink:#1d1a16;--muted:#6b6359;--line:#e6dfd4;--accent:#d9603b;--accent-soft:#fbe9e1;--teal:#2f7d72;--teal-soft:#e2f0ed;--quote-bg:#f1ece3;--strong:#0f0d0a;--radius:16px;--shadow:0 1px 2px rgba(29,26,22,.04),0 8px 28px -12px rgba(29,26,22,.16);--maxw:880px;}
+  *{box-sizing:border-box}html{scroll-behavior:smooth}
+  body{margin:0;font-family:"Pretendard Variable",Pretendard,-apple-system,system-ui,"Malgun Gothic",sans-serif;background:var(--bg);color:var(--ink);line-height:1.68;-webkit-font-smoothing:antialiased;letter-spacing:-.011em}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+  header.hero{padding:54px 0 34px;border-bottom:1px solid var(--line);background:radial-gradient(120% 80% at 100% 0%,var(--accent-soft) 0%,rgba(251,233,225,0) 55%),radial-gradient(90% 70% at 0% 0%,var(--teal-soft) 0%,rgba(226,240,237,0) 45%)}
+  .nav{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:22px;font-size:12.5px;font-weight:600}
+  .nav a,.nav span{padding:6px 11px;border-radius:999px;text-decoration:none}
+  .nav .here{background:var(--accent);color:#fff}.nav .other{background:var(--surface);border:1px solid var(--line);color:var(--muted)}.nav a{border-bottom:none}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--accent);margin-bottom:16px;padding:6px 12px;border:1px solid var(--accent);border-radius:999px;background:rgba(255,255,255,.5)}
+  .eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent)}
+  h1{font-size:clamp(26px,4.4vw,38px);line-height:1.18;font-weight:800;letter-spacing:-.03em;margin:0 0 14px;color:var(--strong)}
+  .sub{font-size:16.5px;color:var(--muted);margin:0;max-width:62ch}
+  main{padding:30px 0 40px}section{margin:0 0 40px}
+  .warn{background:#fff4ef;border:1px solid #f1d3c6;border-left:4px solid var(--accent);border-radius:12px;padding:16px 18px;margin:22px 0}
+  .warn b{color:var(--strong)}.warn p{margin:0;font-size:14.5px;color:#7a5546}
+  .kicker{font-size:13px;font-weight:700;color:var(--accent);letter-spacing:.04em;margin:0 0 8px;display:flex;align-items:center;gap:10px}
+  .kicker .num{font-size:12px;width:24px;height:24px;border-radius:8px;background:var(--accent);color:#fff;display:grid;place-items:center;font-weight:800}
+  h2{font-size:clamp(20px,3vw,25px);font-weight:800;letter-spacing:-.02em;margin:0 0 6px;color:var(--strong)}
+  .lead{font-size:15.5px;color:var(--muted);margin:0 0 14px}
+  .tablecard{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);margin:12px 0}
+  table{width:100%;border-collapse:collapse;font-size:13.5px}
+  th,td{text-align:left;padding:11px 13px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:var(--quote-bg);font-weight:700;color:var(--strong);font-size:12.5px}
+  tr:last-child td{border-bottom:none}
+  td .it{font-weight:700;color:var(--strong)}
+  .bm{font-weight:800;color:var(--accent);white-space:nowrap}
+  .src{font-size:11.5px;color:var(--muted)}.src a{color:var(--muted)}
+  /* buildup */
+  .build{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px 20px;margin:12px 0}
+  .build .row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px dashed var(--line);font-size:14px}
+  .build .row:last-of-type{border-bottom:none}
+  .build .row .v{font-weight:700;color:var(--strong);font-feature-settings:"tnum"}
+  .build .tot{display:flex;justify-content:space-between;margin-top:10px;padding-top:12px;border-top:2px solid var(--ink);font-size:15.5px;font-weight:800}
+  .build .tot .v{color:var(--accent)}
+  /* tracker */
+  .trk{overflow-x:auto}
+  table.tracker td{padding:0}
+  table.tracker input{width:100%;border:none;background:transparent;font-family:inherit;font-size:13px;padding:11px 13px;color:var(--ink)}
+  table.tracker input:focus{outline:2px solid var(--accent-soft);background:#fff}
+  table.tracker th{font-size:12px}
+  .btnrow{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+  .btn{font-size:13px;font-weight:700;border-radius:8px;padding:9px 15px;cursor:pointer;border:1px solid var(--line);background:var(--surface);color:var(--ink)}
+  .btn.p{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .note{background:var(--quote-bg);border-radius:12px;padding:14px 16px;font-size:13.5px;color:var(--muted);margin:14px 0}.note b{color:var(--ink)}
+  footer{border-top:1px solid var(--line);padding:34px 0 70px;color:var(--muted);font-size:13.5px}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:6px;justify-content:space-between;align-items:center}footer a{font-weight:600}
+  hr.soft{border:none;border-top:1px solid var(--line);margin:0}
+  @media (max-width:640px){header.hero{padding:40px 0 28px}}
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+  <nav class="nav">
+    <a class="other" href="index.html">P1</a><a class="other" href="market.html">P2</a><a class="other" href="part3.html">P3</a><a class="other" href="part4.html">P4</a><a class="other" href="part5.html">P5</a><a class="other" href="part6.html">P6</a>
+    <a class="other" href="rfq.html">RFQ</a><a class="other" href="simulator.html">손익</a><a class="other" href="onepager.html">요약</a><span class="here">견적</span><a class="other" href="wadiz-guide.html">와디즈</a><a class="other" href="booklet.html">책자</a>
+  </nav>
+  <span class="eyebrow">실행 도구 ④ 견적 벤치마크 · 트래커</span>
+  <h1>견적, 받기 전에 '시세'부터 안다</h1>
+  <p class="sub">공개 가격 데이터로 항목별 시세 벤치마크를 만들고, 실제 견적이 오면 채워 비교하는 트래커를 붙였다. 협상 전 기준선으로 쓰세요.</p>
+</div></header>
+
+<main class="wrap">
+
+  <div class="warn">
+    <b>⚠️ 솔직히 — 이건 '실제로 받은 견적'이 아닙니다.</b>
+    <p>저는 업체에 직접 문의해 견적을 받을 수 없어, <b>공개된 가격 자료로 추정한 벤치마크</b>를 정리했습니다. 실제 단가는 <a href="rfq.html">RFQ</a>를 보내 받아야 하며, 아래 ③ 트래커에 입력해 비교하세요.</p>
+  </div>
+
+  <!-- BENCHMARK -->
+  <section id="bench">
+    <div class="kicker"><span class="num">1</span> 항목별 공개가 벤치마크</div>
+    <h2>시세 기준선</h2>
+    <p class="lead">출처는 공개 쇼핑가·업계 블로그·인증기관 공시. 사양·수량·시점에 따라 달라진다.</p>
+    <div class="tablecard"><table>
+      <thead><tr><th>항목</th><th>공개가 벤치마크</th><th>출처/근거</th></tr></thead>
+      <tbody>
+        <tr><td><span class="it">처방·기획·설계</span></td><td class="bm">100~300만원</td><td class="src">시제품 기획·도면 단계 통상 (<a href="https://www.inandoutstandard.kr/55/?bmode=view&idx=167174316" target="_blank" rel="noopener">IN&amp;OUT</a>)</td></tr>
+        <tr><td><span class="it">외형 목업/샘플</span></td><td class="bm">30~200만원</td><td class="src">목업 제작 단계 통상</td></tr>
+        <tr><td><span class="it">시트(마스크팩) 원가</span></td><td class="bm">개당 50~500원</td><td class="src">마스크팩 원가 (<a href="https://www.teamblind.com/kr" target="_blank" rel="noopener">업계 증언</a>)</td></tr>
+        <tr><td><span class="it">발열체(핫팩) 소량 도매</span></td><td class="bm">개당 ~260원</td><td class="src">소량 도매 환산 (<a href="http://miraehotpack.com" target="_blank" rel="noopener">핫팩부심</a>) · OEM 원가는 더 낮음</td></tr>
+        <tr><td><span class="it">스팀 아이마스크 소비자가</span></td><td class="bm">개당 ~448원~</td><td class="src">완제품 소매가 참고(원가 추정용)</td></tr>
+        <tr><td><span class="it">발열체 OEM MOQ</span></td><td class="bm">3,000~5,000개~</td><td class="src">기성핫팩+인쇄 3,000 / 부직포인쇄+진공 5,000 (<a href="https://www.kevinsroom.co.kr/felt-hotpack" target="_blank" rel="noopener">케빈스룸</a>)</td></tr>
+        <tr><td><span class="it">KC 생활용품 공장심사</span></td><td class="bm">25만원(국내)/60만원(국외)+출장</td><td class="src">생활용품 안전인증 공시 + 시험비 별도(수십~수백만)</td></tr>
+        <tr><td><span class="it">상세페이지(크몽)</span></td><td class="bm">기본 1.9만 / 평균 20만 / 풀 54만+</td><td class="src">촬영+디자인 풀패키지 기준. <b>템플릿 제공 시 40~50%↓</b> (<a href="https://kmong.com/prices/%EC%83%81%EC%84%B8%ED%8E%98%EC%9D%B4%EC%A7%80" target="_blank" rel="noopener">크몽</a>)</td></tr>
+        <tr><td><span class="it">화장품책임판매업 등록</span></td><td class="bm">2.7만원(전자민원)</td><td class="src">화장품行 선택 시</td></tr>
+        <tr><td><span class="it">와디즈 수수료</span></td><td class="bm">모금액 5%~ + PG</td><td class="src">Light 요금제 최저 5%, 실패 시 0</td></tr>
+      </tbody>
+    </table></div>
+    <p class="note">💡 마스크팩·핫팩 원가가 <b>개당 수백 원</b>이라는 건, 우리 제품(발열체+시트+에센스+파우치+재단)의 <b>개당 원가가 1천 원 안팎까지 충분히 가능</b>하다는 신호다. 객단가 대비 공헌이익을 <a href="simulator.html">손익 시뮬레이터</a>에서 확인하세요.</p>
+  </section>
+
+  <hr class="soft" />
+
+  <!-- BUILDUP -->
+  <section id="build" style="padding-top:32px">
+    <div class="kicker"><span class="num">2</span> 개당 원가 빌드업(추정)</div>
+    <h2>패치 1장 원가, 이렇게 쌓인다</h2>
+    <div class="build">
+      <div class="row"><span>철분 발열체</span><span class="v">약 200~400원</span></div>
+      <div class="row"><span>시트(부직포/하이드로겔)</span><span class="v">약 100~400원</span></div>
+      <div class="row"><span>보습·진정 에센스 (화장품行 시)</span><span class="v">약 100~500원</span></div>
+      <div class="row"><span>약점착·이형지·재단</span><span class="v">약 100~300원</span></div>
+      <div class="row"><span>개별 산소차단 파우치 인쇄</span><span class="v">약 150~400원</span></div>
+      <div class="tot"><span>패치 1장 추정 원가</span><span class="v">약 650~2,000원</span></div>
+    </div>
+    <p class="note">📦 여기에 단상자·배송·불량률을 얹어 <b>세트(30매) 변동원가</b>를 잡고, 객단가의 35~45% 내로 들어오면 건강한 구조다. (소량일수록 단가↑ → MOQ 협상이 관건)</p>
+  </section>
+
+  <hr class="soft" />
+
+  <!-- TRACKER -->
+  <section id="tracker" style="padding-top:32px">
+    <div class="kicker"><span class="num">3</span> 견적 비교 트래커</div>
+    <h2>실제 견적이 오면, 여기 채워 비교</h2>
+    <p class="lead">RFQ를 받은 업체 견적을 입력하면 한눈에 비교된다. (브라우저에 자동 저장 — 같은 기기에서 유지)</p>
+    <div class="btnrow">
+      <button class="btn p" id="addRow">＋ 행 추가</button>
+      <button class="btn" id="clearAll">전체 지우기</button>
+      <button class="btn" onclick="window.print()">🖨 인쇄</button>
+    </div>
+    <div class="tablecard trk"><table class="tracker" id="trk">
+      <thead><tr>
+        <th style="min-width:120px">업체명</th><th>유형</th><th>개당 단가</th><th>개발비(일회성)</th><th>MOQ</th><th>샘플비</th><th>납기</th><th style="min-width:120px">비고</th>
+      </tr></thead>
+      <tbody id="trkBody"></tbody>
+    </table></div>
+    <p class="note">🎯 비교 포인트 — ① <b>개당 단가 × 예상수량 + 개발비</b> 총액 ② MOQ가 펀딩 목표와 맞는지 ③ 샘플 납기(펀딩 일정 역산) ④ 공산품/화장품 분류 지원 여부.</p>
+  </section>
+
+</main>
+
+<footer><div class="wrap">
+  <span><a href="rfq.html">← RFQ 보내기</a> · <a href="wadiz-guide.html">와디즈 가이드 →</a></span>
+  <span>HOTSHOT · insane-search</span>
+</div></footer>
+
+<script>
+  var COLS = ['업체명','유형','개당 단가','개발비','MOQ','샘플비','납기','비고'];
+  var KEY = 'hotshot_quote_tracker_v1';
+  var body = document.getElementById('trkBody');
+  function rowHTML(d){ d=d||[]; var h='';
+    for(var i=0;i<COLS.length;i++){ h+='<td><input data-c="'+i+'" value="'+(d[i]?String(d[i]).replace(/"/g,'&quot;'):'')+'" placeholder="'+(i===2?'예: 1,200원':i===3?'예: 200만':'')+'"></td>'; }
+    h+='<td style="width:36px"><button class="btn" style="padding:6px 9px" onclick="this.closest(\'tr\').remove();save()">✕</button></td>';
+    return h; }
+  function addRow(d){ var tr=document.createElement('tr'); tr.innerHTML=rowHTML(d); body.appendChild(tr);
+    tr.querySelectorAll('input').forEach(function(inp){ inp.addEventListener('input',save); }); }
+  function save(){ var rows=[]; body.querySelectorAll('tr').forEach(function(tr){ var r=[]; tr.querySelectorAll('input').forEach(function(i){r.push(i.value);}); rows.push(r); });
+    try{ localStorage.setItem(KEY, JSON.stringify(rows)); }catch(e){} }
+  function load(){ var rows=[]; try{ rows=JSON.parse(localStorage.getItem(KEY)||'[]'); }catch(e){}
+    if(!rows.length){ rows=[['스팀베이스','원스톱','','','','','',''],['핫팩부심','발열체','','','','','',''],['셀프코스','시트/에센스','','','','','','']]; }
+    rows.forEach(addRow); }
+  document.getElementById('addRow').addEventListener('click',function(){ addRow(); save(); });
+  document.getElementById('clearAll').addEventListener('click',function(){ if(confirm('모든 행을 지울까요?')){ body.innerHTML=''; save(); } });
+  load();
+</script>
+</body>
+</html>

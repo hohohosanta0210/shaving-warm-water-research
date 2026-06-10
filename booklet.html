@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>HOTSHOT 종합 사업 책자 — 발열 프리쉐이브 패치</title>
+<meta name="description" content="발열 프리쉐이브 패치 'HOTSHOT' 사업 종합 책자 — 니즈·시장·타당성·제품/규제/기술·브랜드·투자비용 6부를 한 권으로." />
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+<style>
+  :root{--bg:#f7f4ef;--ink:#1d1a16;--muted:#6b6359;--line:#e6dfd4;--accent:#d9603b;--accent-soft:#fbe9e1;--teal:#2f7d72;--teal-soft:#e2f0ed;--quote-bg:#f1ece3;--strong:#0f0d0a;--red:#ff3b2f;}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Pretendard Variable",Pretendard,-apple-system,system-ui,"Malgun Gothic",sans-serif;background:var(--bg);color:var(--ink);line-height:1.62;-webkit-font-smoothing:antialiased;letter-spacing:-.011em}
+  .toolbar{position:sticky;top:0;z-index:10;background:rgba(247,244,239,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .toolbar .in{max-width:900px;margin:0 auto;padding:10px 20px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+  .nav{display:flex;gap:6px;flex-wrap:wrap;font-size:12px;font-weight:600}
+  .nav a,.nav span{padding:5px 9px;border-radius:999px;text-decoration:none}
+  .nav .here{background:var(--accent);color:#fff}.nav .other{background:#fffdfa;border:1px solid var(--line);color:var(--muted)}
+  .btn{font-size:13px;font-weight:700;border-radius:8px;padding:8px 14px;cursor:pointer;border:1px solid var(--line);background:#fffdfa;color:var(--ink);text-decoration:none}
+  .btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .book{max-width:900px;margin:18px auto;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 10px 40px -16px rgba(0,0,0,.2);overflow:hidden}
+  .sheet{padding:40px 46px}
+  /* cover */
+  .cover{background:radial-gradient(120% 90% at 80% 0%,#2a211e 0%,#15110f 55%,#0a0908 100%);color:#f3efe9;min-height:380px;display:flex;flex-direction:column;justify-content:center}
+  .cover .kick{font-size:13px;font-weight:700;letter-spacing:2px;color:#ff8a63;margin-bottom:14px}
+  .cover .brand{font-size:64px;font-weight:800;letter-spacing:-3px;line-height:1}
+  .cover .brand .r{color:var(--red)}
+  .cover .tl{font-size:16px;font-weight:700;color:#cbc3bd;margin-top:10px;letter-spacing:1px}
+  .cover .one{font-size:17px;color:#b3aca6;margin-top:22px;max-width:60ch;line-height:1.6}
+  .cover .meta{margin-top:26px;font-size:12.5px;color:#8a827c;border-top:1px solid rgba(255,255,255,.14);padding-top:16px}
+  /* toc */
+  .toc-sheet{background:#fffdfa;border-bottom:1px solid var(--line)}
+  .toc-sheet h2{font-size:15px;font-weight:800;color:var(--muted);letter-spacing:1px;margin:0 0 16px}
+  .toc-list{display:grid;grid-template-columns:1fr 1fr;gap:8px 28px}
+  .toc-list a{display:flex;justify-content:space-between;border-bottom:1px dotted var(--line);padding:7px 0;font-size:14px;color:var(--ink);text-decoration:none;font-weight:600}
+  .toc-list a .p{color:var(--accent);font-weight:800}
+  /* part sections */
+  .part{border-top:1px solid var(--line)}
+  .ph{display:flex;align-items:baseline;gap:12px;margin-bottom:6px}
+  .ph .pn{font-size:13px;font-weight:800;color:#fff;background:var(--accent);border-radius:7px;padding:3px 10px}
+  .ph h2{font-size:23px;font-weight:800;letter-spacing:-.02em;margin:0;color:var(--strong)}
+  .ph .vd{margin-left:auto;font-size:12px;font-weight:800;padding:3px 10px;border-radius:999px;background:var(--teal-soft);color:#1f5a51}
+  .ph .vd.warn{background:var(--accent-soft);color:#a8472a}
+  .lead{font-size:14.5px;color:var(--muted);margin:0 0 14px}
+  .ul{margin:0 0 14px;padding-left:18px}
+  .ul li{font-size:14px;margin-bottom:6px;line-height:1.55}
+  .ul li b{color:var(--strong)}
+  .hl{background:var(--accent-soft);padding:0 3px;border-radius:3px;font-weight:700}
+  .hl-t{background:var(--teal-soft);padding:0 3px;border-radius:3px;font-weight:700}
+  table{width:100%;border-collapse:collapse;font-size:13px;margin:6px 0 14px;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+  th,td{text-align:left;padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:var(--quote-bg);font-weight:700;color:var(--strong);font-size:12px}
+  tr:last-child td{border-bottom:none}
+  .q{background:var(--quote-bg);border-left:3px solid var(--accent);border-radius:8px;padding:10px 14px;font-size:13.5px;color:var(--strong);margin:0 0 14px;font-weight:600}
+  .strip{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:6px 0 14px}
+  .st{border:1px solid var(--line);border-radius:9px;padding:10px;text-align:center;background:#fffdfa}
+  .st .v{font-size:15px;font-weight:800;color:var(--accent);font-feature-settings:"tnum"}.st .k{font-size:10.5px;color:var(--muted);margin-top:2px}
+  .imgrow{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:6px 0 8px}
+  .imgrow img{width:100%;border:1px solid var(--line);border-radius:8px;display:block}
+  .verdict{background:linear-gradient(135deg,#16130f,#241c19);color:#f3efe9;border-radius:12px;padding:18px 20px;margin:8px 0}
+  .verdict .t{font-size:12px;font-weight:800;color:#7be0a8;margin-bottom:6px}
+  .verdict .m{font-size:14.5px;font-weight:600;line-height:1.55}.verdict .m .r{color:#ff8a63}
+  .closing{background:#fffdfa}
+  .tools{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:8px 0}
+  .tool{border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:#fff}
+  .tool .nm{font-weight:800;color:var(--strong);font-size:13.5px}.tool .d{font-size:12px;color:var(--muted);margin-top:3px}
+  .disc{font-size:11.5px;color:var(--muted);background:var(--quote-bg);border-radius:10px;padding:12px 14px;margin-top:14px}
+  @media (max-width:680px){.sheet{padding:26px 20px}.toc-list,.tools,.imgrow{grid-template-columns:1fr}.strip{grid-template-columns:1fr 1fr}.cover .brand{font-size:46px}}
+  @media print{
+    @page{size:A4;margin:12mm}
+    .toolbar{display:none}
+    body{background:#fff}
+    .book{margin:0;border:none;box-shadow:none;border-radius:0;max-width:100%}
+    .sheet{padding:0 0 10mm}
+    .part{page-break-before:always;border-top:none;padding-top:4mm}
+    .cover{page-break-after:always;min-height:240mm;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .toc-sheet{page-break-after:always}
+    .verdict,.cover,.st .v,.ph .pn,.q,.brand .r{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    table,.verdict,.q,.imgrow{break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar"><div class="in">
+  <nav class="nav">
+    <a class="other" href="index.html">P1</a><a class="other" href="market.html">P2</a><a class="other" href="part3.html">P3</a><a class="other" href="part4.html">P4</a><a class="other" href="part5.html">P5</a><a class="other" href="part6.html">P6</a><a class="other" href="rfq.html">RFQ</a><a class="other" href="simulator.html">손익</a><a class="other" href="onepager.html">요약</a><a class="other" href="quotes.html">견적</a><a class="other" href="wadiz-guide.html">와디즈</a><span class="here">책자</span>
+  </nav>
+  <div style="display:flex;gap:8px">
+    <a class="btn" href="booklet.pdf" download>⬇ PDF</a>
+    <button class="btn primary" onclick="window.print()">🖨 인쇄/PDF</button>
+  </div>
+</div></div>
+
+<div class="book">
+  <!-- COVER -->
+  <div class="sheet cover">
+    <div class="kick">BUSINESS BOOKLET · 종합 사업 책자</div>
+    <div class="brand">HOT<span class="r">SHOT</span></div>
+    <div class="tl">PRE-SHAVE HEAT PATCH</div>
+    <div class="one">붙이면 발열해 수염을 불려주는 1회용 프리쉐이브 패치.<br>"붙이고 1분, 핫타월처럼." — 잘라 쓰는 하관 발열 패치 사업 리서치 종합본.</div>
+    <div class="meta">리서치 6부 + 실행 도구 6종 · Researched with insane-search · 2026 · 추정치 포함</div>
+  </div>
+
+  <!-- TOC -->
+  <div class="sheet toc-sheet">
+    <h2>목차 · CONTENTS</h2>
+    <div class="toc-list">
+      <a href="#p1"><span>사용자 니즈</span><span class="p">P1</span></a>
+      <a href="#p2"><span>시장성 · 경쟁</span><span class="p">P2</span></a>
+      <a href="#p3"><span>발열패치 타당성</span><span class="p">P3</span></a>
+      <a href="#p4"><span>시제품 · OEM · 펀딩</span><span class="p">P4</span></a>
+      <a href="#p5"><span>브랜드 · 비주얼</span><span class="p">P5</span></a>
+      <a href="#p6"><span>투자 비용</span><span class="p">P6</span></a>
+    </div>
+  </div>
+
+  <!-- P1 -->
+  <div class="sheet part" id="p1">
+    <div class="ph"><span class="pn">P1</span><h2>사용자 니즈</h2><span class="vd warn">페인 확인</span></div>
+    <p class="lead">디시·클리앙·더쿠·인스티즈·네이트판·마이피누·아하·쓰레드·블라인드 등 9개 커뮤니티 실제 목소리.</p>
+    <ul class="ul">
+      <li>"불리기"는 모두가 아는 정석이나 <b>실제로는 귀찮아서 생략</b>한다(정답은 알지만 안 지킴).</li>
+      <li>생략 → <b>따갑고 피남</b> / 제대로 → <b>시간·번거로움</b>. 사용자는 그 사이에 끼어 있다.</li>
+      <li>"편하면 갈아탄다" — 전기·레이저·제모기로 이미 이주 중(전환의향 강함).</li>
+    </ul>
+    <div class="q">“블려도 좀 그렇던데 하루종일 불리고 있을 수도 없구 흑흑” — 블라인드 / “귀찮아서 안 민 날은 긴바지” — 마이피누</div>
+  </div>
+
+  <!-- P2 -->
+  <div class="sheet part" id="p2">
+    <div class="ph"><span class="pn">P2</span><h2>시장성 · 경쟁</h2><span class="vd">조건부 GO</span></div>
+    <ul class="ul">
+      <li>한국 남성화장품 <b>~1.2조원</b>(+50%/5년), 글로벌 제모 여 $7.1B·남 $4.8B, 제모기기 구매 2/3 남성.</li>
+      <li>경쟁: 셀프히팅 프리쉐이브는 <b>크림형</b>(미·영, 평가 미온적), 한국엔 부재.</li>
+      <li>질레트 히티드(하드웨어 $200/24.9만원)는 <span class="hl">고가로 한국 단종</span> → 컨셉 수요는 진짜, 죽인 건 가격.</li>
+    </ul>
+    <table><thead><tr><th>접근</th><th>대표</th><th>상태</th></tr></thead><tbody>
+      <tr><td>하드웨어</td><td>질레트 히티드</td><td>한국 단종(고가)</td></tr>
+      <tr><td>워터리스 젤</td><td>H2NO(미)</td><td>니치·한국 미진출</td></tr>
+      <tr><td>프리쉐이브 오일</td><td>수입 다수</td><td>한국 수입 니치</td></tr>
+    </tbody></table>
+    <div class="q">→ 한국 주류에 '불리기 생략' 저가 소모품 자리는 <b>비어 있다.</b></div>
+  </div>
+
+  <!-- P3 -->
+  <div class="sheet part" id="p3">
+    <div class="ph"><span class="pn">P3</span><h2>발열패치 타당성</h2><span class="vd">구현 가능</span></div>
+    <ul class="ul">
+      <li><b>선례</b> — 셀프히팅 프리쉐이브는 크림형으로 존재. <span class="hl">패치형×철분산화×한국</span>은 빈자리.</li>
+      <li><b>기술</b> — 핫팩·스팀 아이마스크와 동일 철분 산화 발열. 자가발열 마스크 OEM 설비 존재 → 구현성 높음. 단시간(1~3분)이라 저온화상 리스크 낮음.</li>
+    </ul>
+    <table><thead><tr><th>설계</th><th>분류</th><th>비고</th></tr></thead><tbody>
+      <tr><td>철분산화+효능 미표방</td><td><b>공산품(KC)</b></td><td>가장 가벼움</td></tr>
+      <tr><td>에센스+화장품 효능</td><td><b>화장품</b></td><td>책임판매업</td></tr>
+      <tr><td>전기+치료표방</td><td>의료기기</td><td>과잉</td></tr>
+      <tr><td>캡사이신 화학발열</td><td>의약품/외품</td><td>회피</td></tr>
+    </tbody></table>
+    <div class="q">권장 — <b>철분산화 + 의료효능 미표방</b> → 공산품 또는 화장품. 의료기기·의약품 회피.</div>
+  </div>
+
+  <!-- P4 -->
+  <div class="sheet part" id="p4">
+    <div class="ph"><span class="pn">P4</span><h2>시제품 · OEM · 펀딩</h2></div>
+    <div class="imgrow">
+      <img src="mockup.svg" alt="잘라 쓰는 하관 발열 패치 목업">
+      <img src="render_product.svg" alt="HOTSHOT 제품 키비주얼">
+    </div>
+    <ul class="ul">
+      <li><b>형태</b> — 하관 시트, 절취선으로 인중/턱/윙 <b>잘라 맞춤</b>, 발열 셀 분할. 40~43℃·승온 30초~1분·지속 8~12분·1회용.</li>
+      <li><b>OEM</b> — 원스톱(스팀베이스·DHT) + 발열체(핫팩부심·다봉·영인) + 시트/에센스(셀프코스·엔더코스).</li>
+      <li><b>카피</b> — "붙이고 1분, 핫타월처럼." (공감→솔루션→3스텝→안전→리워드→FAQ).</li>
+    </ul>
+  </div>
+
+  <!-- P5 -->
+  <div class="sheet part" id="p5">
+    <div class="ph"><span class="pn">P5</span><h2>브랜드 · 비주얼</h2></div>
+    <div class="imgrow">
+      <img src="render_box.svg" alt="HOTSHOT 패키지 박스">
+      <img src="render_thumb.svg" alt="HOTSHOT 펀딩 썸네일">
+    </div>
+    <ul class="ul">
+      <li><b>네이밍</b> — <b>HOTSHOT</b>(추천) / PREHEAT · EMBER · 60SEC. (확정 전 KIPRIS 상표검색)</li>
+      <li><b>컬러</b> — 블랙 베이스 <span style="font-feature-settings:'tnum'">#0A0908</span> × 레드 포인트 <span style="color:var(--red);font-weight:700">#FF3B2F</span> (레드 5% 이내).</li>
+    </ul>
+  </div>
+
+  <!-- P6 -->
+  <div class="sheet part" id="p6">
+    <div class="ph"><span class="pn">P6</span><h2>투자 비용</h2><span class="vd">린~표준 현실적</span></div>
+    <p class="lead">와디즈는 양산비를 선주문금으로 충당 → 진짜 선투자는 시제품+인증+콘텐츠.</p>
+    <div class="strip">
+      <div class="st"><div class="v">400~900만</div><div class="k">린 선투자</div></div>
+      <div class="st"><div class="v">1,200~2,500만</div><div class="k">표준 선투자</div></div>
+      <div class="st"><div class="v">5%~</div><div class="k">수수료/실패시 0</div></div>
+      <div class="st"><div class="v">MOQ 3~5천</div><div class="k">핫팩·스팀마스크</div></div>
+    </div>
+    <ul class="ul">
+      <li>개당 원가 추정 <b>약 650~2,000원</b>(발열체+시트+에센스+점착+파우치).</li>
+      <li>절감 레버 — 공산품行 / 원스톱 OEM / 자체 콘텐츠 / MOQ 협상 / 정부 지원.</li>
+    </ul>
+    <div class="verdict">
+      <div class="t">★ 종합 판단 — 조건부 GO</div>
+      <div class="m">니즈·기술·빈자리 모두 확인. <span class="r">저가 소모품 + 공산품行 + 자체 콘텐츠</span>면 와디즈 도전 비용은 <span class="r">수백~2천만원대</span>. 양산은 펀딩 선주문이 흡수. 단 <span class="r">실패 시 선투자는 매몰</span>.</div>
+    </div>
+  </div>
+
+  <!-- CLOSING -->
+  <div class="sheet closing part">
+    <div class="ph"><span class="pn">✓</span><h2>실행 도구 &amp; 다음 액션</h2></div>
+    <div class="tools">
+      <div class="tool"><div class="nm">RFQ 템플릿</div><div class="d">제조·인증·콘텐츠 견적요청서</div></div>
+      <div class="tool"><div class="nm">손익 시뮬레이터</div><div class="d">BEP·후원자 수·순익 계산</div></div>
+      <div class="tool"><div class="nm">원페이저</div><div class="d">1장 요약(+PDF)</div></div>
+      <div class="tool"><div class="nm">견적 트래커</div><div class="d">시세 벤치마크+비교</div></div>
+      <div class="tool"><div class="nm">와디즈 가이드</div><div class="d">오픈예정 등록 7단계</div></div>
+      <div class="tool"><div class="nm">이 책자</div><div class="d">6부 종합본</div></div>
+    </div>
+    <ul class="ul" style="margin-top:12px">
+      <li><b>1.</b> OEM 3곳 RFQ 발송 → 견적 트래커에 입력·비교.</li>
+      <li><b>2.</b> KC 품목분류·시험 견적(KTL/KTC) + 시제품 제작·발열/점착 시험.</li>
+      <li><b>3.</b> 와디즈 오픈예정 등록 → 알림신청으로 수요 검증 → 본펀딩.</li>
+    </ul>
+    <div class="disc">⚠️ 본 책자의 시장·비용·규제 수치는 공개정보 기반 추정이며 법률·인허가·재무 자문이 아니다. 집행 전 OEM·시험기관·와디즈·전문가의 공식 확인 필수. 전체 원문: hohohosanta0210.github.io/shaving-warm-water-research</div>
+  </div>
+</div>
+</body>
+</html>

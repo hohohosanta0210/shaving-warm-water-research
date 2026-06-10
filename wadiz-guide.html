@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>와디즈 오픈예정 등록 가이드 — HOTSHOT</title>
+<meta name="description" content="와디즈 입점부터 오픈예정 등록, 본펀딩까지 단계별 가이드 — 사전 준비물, 심사, 오픈예정 7~25일 설정, 알림신청 관리, 정산." />
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+<style>
+  :root{--bg:#f7f4ef;--surface:#fffdfa;--ink:#1d1a16;--muted:#6b6359;--line:#e6dfd4;--accent:#d9603b;--accent-soft:#fbe9e1;--teal:#2f7d72;--teal-soft:#e2f0ed;--quote-bg:#f1ece3;--strong:#0f0d0a;--radius:16px;--shadow:0 1px 2px rgba(29,26,22,.04),0 8px 28px -12px rgba(29,26,22,.16);--maxw:820px;}
+  *{box-sizing:border-box}html{scroll-behavior:smooth}
+  body{margin:0;font-family:"Pretendard Variable",Pretendard,-apple-system,system-ui,"Malgun Gothic",sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;-webkit-font-smoothing:antialiased;letter-spacing:-.011em}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+  header.hero{padding:54px 0 34px;border-bottom:1px solid var(--line);background:radial-gradient(120% 80% at 100% 0%,var(--accent-soft) 0%,rgba(251,233,225,0) 55%),radial-gradient(90% 70% at 0% 0%,var(--teal-soft) 0%,rgba(226,240,237,0) 45%)}
+  .nav{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:22px;font-size:12.5px;font-weight:600}
+  .nav a,.nav span{padding:6px 11px;border-radius:999px;text-decoration:none}
+  .nav .here{background:var(--accent);color:#fff}.nav .other{background:var(--surface);border:1px solid var(--line);color:var(--muted)}.nav a{border-bottom:none}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--accent);margin-bottom:16px;padding:6px 12px;border:1px solid var(--accent);border-radius:999px;background:rgba(255,255,255,.5)}
+  .eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent)}
+  h1{font-size:clamp(26px,4.4vw,38px);line-height:1.18;font-weight:800;letter-spacing:-.03em;margin:0 0 14px;color:var(--strong)}
+  .sub{font-size:16.5px;color:var(--muted);margin:0;max-width:60ch}
+  main{padding:36px 0 40px}section{margin:0 0 44px}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:0 0 26px}
+  .stat{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .stat::after{content:"";position:absolute;inset:0 auto 0 0;width:3px;background:var(--accent)}
+  .stat .big{font-size:20px;font-weight:800;color:var(--strong)}.stat .lbl{font-size:12.5px;color:var(--muted);margin-top:4px}
+  .kicker{font-size:13px;font-weight:700;color:var(--accent);letter-spacing:.04em;margin:0 0 8px}
+  h2{font-size:clamp(20px,3vw,25px);font-weight:800;letter-spacing:-.02em;margin:0 0 16px;color:var(--strong)}
+  /* steps */
+  .steps{position:relative;margin:0;padding:0;list-style:none}
+  .steps::before{content:"";position:absolute;left:18px;top:8px;bottom:8px;width:2px;background:var(--line)}
+  .step{position:relative;padding:0 0 22px 52px}
+  .step .dot{position:absolute;left:6px;top:0;width:26px;height:26px;border-radius:50%;background:var(--accent);color:#fff;font-size:13px;font-weight:800;display:grid;place-items:center;box-shadow:0 0 0 4px var(--bg)}
+  .step.done .dot{background:var(--teal)}
+  .step h3{margin:0 0 4px;font-size:16.5px;font-weight:800;color:var(--strong)}
+  .step .when{font-size:12px;font-weight:700;color:var(--accent);margin-bottom:6px}
+  .step p{margin:0 0 6px;font-size:14.5px;color:var(--ink)}
+  .step ul{margin:6px 0 0;padding-left:17px}
+  .step li{font-size:13.5px;color:var(--muted);margin-bottom:4px}
+  .step li b{color:var(--strong)}
+  .hl{background:var(--accent-soft);padding:0 3px;border-radius:3px;font-weight:700}
+  /* checklist */
+  .check{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px 20px;margin:12px 0}
+  .check label{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px dashed var(--line);font-size:14.5px;cursor:pointer}
+  .check label:last-child{border-bottom:none}
+  .check input{margin-top:3px;width:17px;height:17px;accent-color:var(--teal);flex-shrink:0}
+  .check .sub{display:block;font-size:12.5px;color:var(--muted)}
+  .note{background:var(--quote-bg);border-radius:12px;padding:14px 16px;font-size:13.5px;color:var(--muted);margin:14px 0}.note b{color:var(--ink)}
+  .tip{background:var(--teal-soft);border:1px solid #bcdcd5;border-radius:12px;padding:14px 16px;font-size:14px;color:#1d3d38;margin:14px 0}.tip b{color:#143c34}
+  hr.soft{border:none;border-top:1px solid var(--line);margin:30px 0}
+  footer{border-top:1px solid var(--line);padding:34px 0 70px;color:var(--muted);font-size:13.5px}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:6px;justify-content:space-between;align-items:center}footer a{font-weight:600}
+  .disc{font-size:12.5px;color:var(--muted);background:var(--quote-bg);border-radius:12px;padding:14px 16px;margin-top:14px}
+  @media (max-width:640px){header.hero{padding:40px 0 28px}.stats{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+  <nav class="nav">
+    <a class="other" href="index.html">P1</a><a class="other" href="market.html">P2</a><a class="other" href="part3.html">P3</a><a class="other" href="part4.html">P4</a><a class="other" href="part5.html">P5</a><a class="other" href="part6.html">P6</a>
+    <a class="other" href="rfq.html">RFQ</a><a class="other" href="simulator.html">손익</a><a class="other" href="onepager.html">요약</a><a class="other" href="quotes.html">견적</a><span class="here">와디즈</span><a class="other" href="booklet.html">책자</a>
+  </nav>
+  <span class="eyebrow">실행 도구 ⑤ 와디즈 오픈예정 가이드</span>
+  <h1>입점부터 오픈예정·본펀딩까지</h1>
+  <p class="sub">와디즈에 제품을 올리는 전체 흐름과, '오픈예정'으로 시장 반응을 먼저 검증하는 법을 단계별로 정리했다.</p>
+</div></header>
+
+<main class="wrap">
+  <div class="stats">
+    <div class="stat"><div class="big">7~25일</div><div class="lbl">오픈예정 진행 기간(설정 가능 범위)</div></div>
+    <div class="stat"><div class="big">5%~</div><div class="lbl">펀딩 수수료(Light)+PG · 실패 시 0</div></div>
+    <div class="stat"><div class="big">1~4주</div><div class="lbl">프로젝트 심사~승인 소요(가변)</div></div>
+  </div>
+
+  <section>
+    <div class="kicker">STEP-BY-STEP</div>
+    <h2>전체 7단계 흐름</h2>
+    <ol class="steps">
+      <li class="step done">
+        <div class="dot">0</div>
+        <div class="when">사전 준비 (펀딩 전)</div>
+        <h3>제품·서류·시제품 갖추기</h3>
+        <p>심사는 <b>실물 샘플</b>로 최소 기준을 확인한다. 콘텐츠 제작에도 샘플이 필요.</p>
+        <ul>
+          <li><b>시제품(샘플)</b> — 와디즈 심사·촬영용 (→ <a href="quotes.html">견적</a>)</li>
+          <li><b>인증/서류</b> — 공산품 KC 또는 화장품책임판매업 (→ <a href="part3.html">Part 3</a>)</li>
+          <li>사업자등록·정산 계좌·신분 인증</li>
+        </ul>
+      </li>
+      <li class="step">
+        <div class="dot">1</div>
+        <div class="when">입점 신청</div>
+        <h3>메이커 가입 &amp; 입점</h3>
+        <p>와디즈 회원가입 후 <b>메이커 전환</b>(개인/개인사업자/법인). 메이커 스튜디오 접근 권한을 얻는다.</p>
+      </li>
+      <li class="step">
+        <div class="dot">2</div>
+        <div class="when">프로젝트 개설</div>
+        <h3>스토리·리워드·서류 작성</h3>
+        <p>상세페이지(스토리), 리워드 구성, 가격/수량, 인증·검증 서류를 등록.</p>
+        <ul>
+          <li>스토리 카피 → <a href="part4.html">Part 4</a> / 비주얼 → <a href="part5.html">Part 5</a> 그대로 활용</li>
+          <li>리워드 티어(10/30/60매) 및 발송 예정일 설정</li>
+        </ul>
+      </li>
+      <li class="step">
+        <div class="dot">3</div>
+        <div class="when">심사 (1~4주)</div>
+        <h3>내부 심사 &amp; 승인</h3>
+        <p>카테고리별 <b>법적 인증</b>과 샘플 기준을 심사. 통과해야 리워드 펀딩 진행 가능. 수정 요청에 대응.</p>
+      </li>
+      <li class="step">
+        <div class="dot">4</div>
+        <div class="when">오픈예정 (7~25일)</div>
+        <h3>오픈예정 설정 — 핵심 검증 단계</h3>
+        <p>최종 승인 후 <b>메이커 스튜디오 → [일정]</b>에서 오픈예정 공개일·프로젝트 기간·발송 기간을 설정하고 <b>[저장하기]</b>를 누르면 즉시 공개된다.</p>
+        <ul>
+          <li>기간은 <span class="hl">최소 7일~최대 25일</span></li>
+          <li>서포터가 <b>'알림신청'</b> → 오픈 시 알림. <b>시장성 사전 검증</b>의 핵심</li>
+          <li>필수는 아니지만 <b>성공률을 크게 좌우</b></li>
+        </ul>
+      </li>
+      <li class="step">
+        <div class="dot">5</div>
+        <div class="when">알림신청 관리</div>
+        <h3>반응 보며 홍보 설계</h3>
+        <p><b>메이커 스튜디오 → [오픈예정 현황]</b>에서 일자별 알림신청 인원을 확인. 이 추세로 오픈 후 광고·물량을 결정.</p>
+        <ul>
+          <li>알림신청 수 = <b>수요 신호</b> (저조하면 카피/타깃/가격 재점검)</li>
+          <li>(옵션) 오픈예정 패키지 광고로 알림신청 가속</li>
+        </ul>
+      </li>
+      <li class="step">
+        <div class="dot">6</div>
+        <div class="when">본펀딩 → 정산</div>
+        <h3>오픈·마감·발송</h3>
+        <p>오픈일에 펀딩 시작 → 마감 → <b>성공 시 수수료(5%~ +PG) 차감 후 정산</b> → 양산·리워드 발송. 실패 시 수수료·정산 없음.</p>
+      </li>
+    </ol>
+  </section>
+
+  <hr class="soft" />
+
+  <section>
+    <div class="kicker">CHECKLIST</div>
+    <h2>오픈 전 점검표</h2>
+    <div class="check">
+      <label><input type="checkbox"> <span>시제품 샘플 확보(심사·촬영용)<span class="sub">→ 견적/제작 일정 역산</span></span></label>
+      <label><input type="checkbox"> <span>품목 분류 확정 + 인증<span class="sub">공산품 KC 또는 화장품 책임판매업 (Part 3)</span></span></label>
+      <label><input type="checkbox"> <span>상세페이지·비주얼 준비<span class="sub">Part 4 카피 + Part 5 비주얼 활용</span></span></label>
+      <label><input type="checkbox"> <span>리워드 구성·가격·발송일<span class="sub">손익 시뮬레이터로 객단가·BEP 점검</span></span></label>
+      <label><input type="checkbox"> <span>사업자·정산 계좌·세금 처리 확인</span></label>
+      <label><input type="checkbox"> <span>오픈예정 기간(7~25일)·홍보 채널 계획</span></label>
+      <label><input type="checkbox"> <span>저온화상·점막 회피 등 안전 표시/주의문구</span></label>
+    </div>
+    <div class="tip">💡 <b>전략 — 오픈예정을 '시장 검증'으로 써라.</b> 본양산 대량 발주 전에 오픈예정 알림신청 수로 수요를 가늠하면, <b>재고 리스크 없이</b> 카피·타깃·가격을 다듬을 수 있다. (Part 2의 'WTP 검증'을 여기서 실행)</div>
+    <div class="note">📌 와디즈는 정책·요금제·심사 기준을 수시 갱신한다. 실제 진행 전 <a href="https://helpcenter.wadiz.kr/hc/ko" target="_blank" rel="noopener">와디즈 도움말센터</a>와 <a href="https://partnerzone.wadiz.kr" target="_blank" rel="noopener">파트너존</a>에서 최신 절차·수수료를 반드시 확인.</div>
+    <div class="disc">⚠️ 본 가이드는 공개 도움말 기반 요약이며 와디즈 공식 안내가 아니다. 단계·기간·수수료는 시점/요금제/카테고리에 따라 달라질 수 있다.</div>
+  </section>
+</main>
+
+<footer><div class="wrap">
+  <span><a href="quotes.html">← 견적 트래커</a> · <a href="booklet.html">종합 책자 →</a></span>
+  <span>HOTSHOT · insane-search</span>
+</div></footer>
+</body>
+</html>

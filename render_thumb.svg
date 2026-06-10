@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" font-family="'Pretendard','Apple SD Gothic Neo','Malgun Gothic',sans-serif">
+  <defs>
+    <radialGradient id="tbg" cx="0.5" cy="0.35" r="1.0">
+      <stop offset="0" stop-color="#2a211e"/><stop offset="0.5" stop-color="#161210"/><stop offset="1" stop-color="#080706"/>
+    </radialGradient>
+    <linearGradient id="tred" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ff5140"/><stop offset="1" stop-color="#d11818"/>
+    </linearGradient>
+    <radialGradient id="thg" cx="0.5" cy="0.5" r="0.6">
+      <stop offset="0" stop-color="#ff5a3c" stop-opacity="0.6"/><stop offset="1" stop-color="#ff5a3c" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="tpatch" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ff624a"/><stop offset="1" stop-color="#cc1f1f"/>
+    </linearGradient>
+    <pattern id="tcells" width="26" height="26" patternUnits="userSpaceOnUse">
+      <path d="M0 0 H26 M0 0 V26" stroke="#0a0908" stroke-width="1.6" opacity="0.32"/>
+    </pattern>
+    <filter id="tglow" x="-60%" y="-60%" width="220%" height="220%">
+      <feDropShadow dx="0" dy="0" stdDeviation="12" flood-color="#ff3b2f" flood-opacity="0.55"/>
+    </filter>
+    <filter id="tsh" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="20" stdDeviation="30" flood-color="#000" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="900" fill="url(#tbg)"/>
+  <ellipse cx="600" cy="470" rx="520" ry="460" fill="url(#thg)" opacity="0.55"/>
+
+  <!-- top eyebrow -->
+  <g transform="translate(600,118)" text-anchor="middle">
+    <rect x="-150" y="-30" width="300" height="44" rx="22" fill="#1d1a18" stroke="#3a3431"/>
+    <circle cx="-118" cy="-8" r="5" fill="#ff3b2f"/>
+    <text x="6" y="-2" font-size="17" font-weight="700" fill="#e7e1dc" letter-spacing="0.5">와디즈 오픈예정</text>
+  </g>
+
+  <!-- headline -->
+  <g text-anchor="middle">
+    <text x="600" y="248" font-size="74" font-weight="800" letter-spacing="-3" fill="#ffffff">붙이고 1분,</text>
+    <text x="600" y="332" font-size="74" font-weight="800" letter-spacing="-3" fill="#ffffff">핫타월<tspan fill="#ff3b2f">처럼.</tspan></text>
+    <text x="600" y="388" font-size="24" font-weight="600" fill="#9b938d">물에 불릴 필요 없이, 붙이면 따뜻하게 — 발열 프리쉐이브 패치</text>
+  </g>
+
+  <!-- center patch hero -->
+  <g transform="translate(600,600)" filter="url(#tsh)">
+    <ellipse cx="0" cy="10" rx="260" ry="240" fill="url(#thg)"/>
+    <!-- philtrum -->
+    <rect x="-40" y="-186" width="80" height="66" rx="16" fill="url(#tpatch)"/>
+    <!-- wings -->
+    <path d="M -230 -176 C -196 -82 -158 -10 -104 40 L -150 104 C -226 60 -262 -52 -256 -160 Z" fill="url(#tpatch)" opacity="0.95"/>
+    <path d="M 230 -176 C 196 -82 158 -10 104 40 L 150 104 C 226 60 262 -52 256 -160 Z" fill="url(#tpatch)" opacity="0.95"/>
+    <!-- chin band -->
+    <path d="M -158 -116 C -158 48 -88 156 0 188 C 88 156 158 48 158 -116 C 158 -158 112 -182 54 -182 L -54 -182 C -112 -182 -158 -158 -158 -116 Z" fill="url(#tpatch)"/>
+    <!-- cells -->
+    <rect x="-40" y="-186" width="80" height="66" rx="16" fill="url(#tcells)"/>
+    <path d="M -158 -116 C -158 48 -88 156 0 188 C 88 156 158 48 158 -116 C 158 -158 112 -182 54 -182 L -54 -182 C -112 -182 -158 -158 -158 -116 Z" fill="url(#tcells)"/>
+    <!-- perforation -->
+    <g stroke="#fff" stroke-width="2.6" stroke-dasharray="4 8" opacity="0.85" fill="none">
+      <line x1="0" y1="-182" x2="0" y2="186"/>
+      <line x1="-152" y1="-46" x2="152" y2="-46"/>
+      <line x1="-150" y1="50" x2="150" y2="50"/>
+    </g>
+    <!-- scissors -->
+    <text x="170" y="-150" font-size="40">✂️</text>
+    <!-- heat waves -->
+    <g stroke="#ff6a4d" stroke-width="4" fill="none" opacity="0.85" stroke-linecap="round" filter="url(#tglow)">
+      <path d="M -250 -210 q 14 -20 0 -40 q -14 -20 0 -40"/>
+      <path d="M 0 -226 q 14 -20 0 -40 q -14 -20 0 -40"/>
+      <path d="M 250 -210 q -14 -20 0 -40 q 14 -20 0 -40"/>
+    </g>
+  </g>
+
+  <!-- brand bottom -->
+  <g text-anchor="middle">
+    <rect x="510" y="828" width="180" height="6" rx="3" fill="url(#tred)" filter="url(#tglow)" transform="translate(-90,0)"/>
+    <text x="600" y="812" font-size="40" font-weight="800" letter-spacing="-1.5" fill="#ffffff">HOT<tspan fill="#ff3b2f">SHOT</tspan></text>
+  </g>
+</svg>

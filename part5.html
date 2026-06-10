@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>HOTSHOT — 브랜드 네이밍 &amp; 비주얼 (블랙×레드)</title>
+<meta name="description" content="발열 프리쉐이브 패치의 브랜드 네이밍 아이데이션과 블랙 베이스·레드 포인트 비주얼 — 제품 키비주얼, 패키지 박스, 와디즈 펀딩 썸네일." />
+<meta property="og:title" content="HOTSHOT — 브랜드 네이밍 & 비주얼 (Part 5)" />
+<meta property="og:description" content="네이밍 후보 + 추천, 블랙×레드 제품 렌더·패키지·펀딩 썸네일" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="render_thumb.png" />
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+<style>
+  :root{
+    --bg:#f7f4ef;--surface:#fffdfa;--ink:#1d1a16;--muted:#6b6359;--line:#e6dfd4;
+    --accent:#d9603b;--quote-bg:#f1ece3;--strong:#0f0d0a;--radius:16px;
+    --shadow:0 1px 2px rgba(29,26,22,.04), 0 8px 28px -12px rgba(29,26,22,.16);
+    --red:#ff3b2f;--red-deep:#d11818;--maxw:860px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,system-ui,"Segoe UI",Roboto,sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.72;-webkit-font-smoothing:antialiased;font-feature-settings:"tnum";letter-spacing:-.011em;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+
+  /* dark brand hero */
+  header.hero{padding:56px 0 50px;color:#f3efe9;position:relative;overflow:hidden;
+    background:radial-gradient(120% 90% at 75% 0%, #2a211e 0%, #15110f 55%, #0a0908 100%);}
+  header.hero::after{content:"";position:absolute;right:-120px;top:-80px;width:520px;height:520px;border-radius:50%;
+    background:radial-gradient(circle, rgba(255,90,60,.35) 0%, rgba(255,90,60,0) 65%);pointer-events:none}
+  .nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:26px;font-size:13.5px;font-weight:600;position:relative;z-index:2}
+  .nav a,.nav span{padding:7px 14px;border-radius:999px;text-decoration:none}
+  .nav .here{background:var(--red);color:#fff}
+  .nav .other{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);color:#cbc3bd}
+  .nav a{border-bottom:none}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:#ff6a4d;
+    margin-bottom:18px;padding:6px 13px;border:1px solid rgba(255,90,60,.5);border-radius:999px;position:relative;z-index:2}
+  .eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--red)}
+  header h1{font-size:clamp(30px,5.4vw,52px);line-height:1.12;font-weight:800;letter-spacing:-.03em;margin:0 0 16px;color:#fff;position:relative;z-index:2}
+  header h1 .r{color:var(--red)}
+  header .sub{font-size:17px;color:#b3aca6;margin:0;max-width:60ch;position:relative;z-index:2}
+  .toc{display:flex;gap:8px;flex-wrap:wrap;margin-top:24px;position:relative;z-index:2}
+  .toc a{font-size:13.5px;font-weight:700;padding:8px 14px;border-radius:10px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);color:#e7e1dc;text-decoration:none}
+  .toc a:hover{border-color:var(--red);color:#fff}
+
+  main{padding:50px 0 40px}
+  section{margin:0 0 64px;scroll-margin-top:20px}
+  .kicker{font-size:13px;font-weight:700;color:var(--accent);letter-spacing:.04em;margin:0 0 10px;display:flex;align-items:center;gap:10px}
+  .kicker .num{font-size:12px;width:24px;height:24px;border-radius:8px;background:var(--red);color:#fff;display:grid;place-items:center;font-weight:800}
+  h2{font-size:clamp(22px,3.4vw,28px);line-height:1.25;font-weight:800;letter-spacing:-.02em;margin:0 0 10px;color:var(--strong)}
+  h3{font-size:16.5px;font-weight:800;color:var(--strong);margin:26px 0 10px}
+  p{margin:0 0 16px;font-size:16.5px}
+  a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(217,96,59,.35)}
+  a:hover{border-color:var(--accent)}
+  strong{color:var(--strong);font-weight:700}
+  .lead{font-size:16px;color:var(--muted);margin-bottom:18px}
+
+  /* recommend card */
+  .rec{background:linear-gradient(135deg,#161210,#241c19);border-radius:var(--radius);padding:30px 28px;color:#f3efe9;box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .rec::after{content:"";position:absolute;right:-60px;top:-60px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(255,90,60,.35),rgba(255,90,60,0) 65%)}
+  .rec .tag{font-size:12px;font-weight:800;letter-spacing:.05em;color:#ff6a4d;margin-bottom:10px}
+  .rec .bn{font-size:46px;font-weight:800;letter-spacing:-2px;margin:0;color:#fff}
+  .rec .bn .r{color:var(--red)}
+  .rec .ko{font-size:15px;color:#b3aca6;margin:4px 0 14px}
+  .rec p{color:#d8d1cb;font-size:15px;margin:0;position:relative;z-index:2}
+  .rec .why{margin-top:14px;display:flex;gap:8px;flex-wrap:wrap}
+  .rec .why span{font-size:12.5px;font-weight:700;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:5px 11px;color:#e7e1dc}
+
+  /* name table */
+  .tablecard{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);margin:14px 0}
+  table{width:100%;border-collapse:collapse;font-size:14.5px}
+  th,td{text-align:left;padding:13px 15px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:var(--quote-bg);font-weight:700;color:var(--strong);font-size:13px}
+  tr:last-child td{border-bottom:none}
+  td .nm{font-weight:800;color:var(--strong);font-size:15px}
+  td .nm small{display:block;font-weight:600;color:var(--muted);font-size:12px}
+  .star{color:var(--red);font-weight:800}
+
+  /* figures */
+  figure{margin:0 0 14px}
+  .figdark{background:#0d0b0a;border:1px solid #2a2624;border-radius:var(--radius);padding:10px;box-shadow:var(--shadow)}
+  .figdark img{width:100%;height:auto;display:block;border-radius:9px}
+  figcaption{font-size:13px;color:var(--muted);margin-top:10px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px}
+  figcaption a{font-weight:600}
+  .fcap-t{font-weight:700;color:var(--strong)}
+
+  /* palette */
+  .palette{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:14px 0}
+  .sw{border-radius:12px;overflow:hidden;border:1px solid var(--line);background:var(--surface)}
+  .sw .chip{height:64px}
+  .sw .meta{padding:8px 10px}
+  .sw .nm2{font-size:12.5px;font-weight:800;color:var(--strong)}
+  .sw .hex{font-size:11.5px;color:var(--muted);font-feature-settings:"tnum"}
+
+  .note{background:var(--quote-bg);border-radius:12px;padding:14px 16px;font-size:13.5px;color:var(--muted);margin:14px 0}
+  .note b{color:var(--ink)}
+
+  .method{background:var(--surface);border:1px dashed var(--line);border-radius:var(--radius);padding:22px}
+  .method h3{margin:0 0 12px;font-size:15px}
+  .method ul{margin:0;padding-left:18px}
+  .method li{font-size:14px;color:var(--muted);margin-bottom:6px}
+  .disc{font-size:13px;color:var(--muted);background:var(--quote-bg);border-radius:12px;padding:14px 16px;margin-top:14px}
+
+  footer{border-top:1px solid var(--line);padding:34px 0 70px;color:var(--muted);font-size:13.5px}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:6px;justify-content:space-between;align-items:center}
+  footer a{font-weight:600}
+  hr.soft{border:none;border-top:1px solid var(--line);margin:0}
+
+  @media (max-width:640px){
+    header.hero{padding:42px 0 38px}
+    main{padding:38px 0 30px}
+    .palette{grid-template-columns:repeat(2,1fr)}
+    section{margin-bottom:50px}
+    .rec .bn{font-size:38px}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <nav class="nav">
+      <a class="other" href="index.html">PART 1</a>
+      <a class="other" href="market.html">PART 2</a>
+      <a class="other" href="part3.html">PART 3</a>
+      <a class="other" href="part4.html">PART 4</a>
+      <span class="here">PART 5 · 브랜드</span>
+    </nav>
+    <span class="eyebrow">브랜드 네이밍 &amp; 비주얼</span>
+    <h1>HOT<span class="r">SHOT</span> — 이름을 붙이고, 얼굴을 입혔다</h1>
+    <p class="sub">발열 프리쉐이브 패치의 네이밍 후보와, 블랙 베이스 · 레드 포인트로 만든 제품 키비주얼 · 패키지 · 펀딩 썸네일.</p>
+    <div class="toc">
+      <a href="#name">① 네이밍 아이데이션</a>
+      <a href="#visual">② 비주얼 3종</a>
+      <a href="#palette">③ 컬러 가이드</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ============ NAMING ============ -->
+  <section id="name">
+    <div class="kicker"><span class="num">1</span> 네이밍 아이데이션</div>
+    <h2>이름 후보와 추천</h2>
+    <p class="lead">컨셉 키워드 — <strong>발열(HEAT) · 면도 전(PRE-SHAVE) · 한 장(PATCH) · 빠름(1분) · 블랙&amp;레드 무드</strong>. 네 방향으로 발상하고, 발음·기억성·중복 가능성을 따져 추렸다.</p>
+
+    <div class="rec">
+      <div class="tag">★ 추천 1순위</div>
+      <p class="bn">HOT<span class="r">SHOT</span></p>
+      <p class="ko">핫샷 · "한 방에 끝내는 따뜻함"</p>
+      <p>HOT(따뜻함·열) + SHOT(한 방·즉효). 짧고 강하고 외우기 쉽다. 블랙×레드의 강한 무드와 정확히 맞고, 남성 그루밍의 자신감 톤에도 어울린다. 글로벌 확장 시에도 발음 장벽이 없다.</p>
+      <div class="why"><span>기억성 ★</span><span>블랙·레드 적합</span><span>글로벌 발음 쉬움</span><span>남성·자신감 톤</span></div>
+    </div>
+
+    <h3>추천 2·3순위</h3>
+    <div class="tablecard">
+      <table>
+        <thead><tr><th>이름</th><th>의미 / 톤</th><th>강점 · 주의</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><span class="nm">PREHEAT <span class="star">★</span><small>프리히트</small></span></td>
+            <td>Pre-shave + Preheat(예열)의 완벽한 더블미닝. 차분·기능적</td>
+            <td>의미 직관성 최상, 설명이 필요 없음 · 일반 단어라 상표는 도형/조합 결합 권장</td>
+          </tr>
+          <tr>
+            <td><span class="nm">EMBER <span class="star">★</span><small>엠버</small></span></td>
+            <td>은은한 잉걸불. 프리미엄·유니섹스(여성 바디까지)</td>
+            <td>고급스럽고 성별 중립 → 확장성 좋음 · 기존 사용처 있어 상표검색 필수</td>
+          </tr>
+          <tr>
+            <td><span class="nm">60SEC<small>식스티세컨즈</small></span></td>
+            <td>"60초면 끝." 속도/간편을 직접 약속</td>
+            <td>베네핏이 곧 이름 · 숫자라 검색·상표 유리</td>
+          </tr>
+          <tr>
+            <td><span class="nm">WARM UP<small>웜업</small></span></td>
+            <td>면도 전 '워밍업'. 캐주얼·친근</td>
+            <td>의미 명확 · 너무 일반적이라 단독 상표 약함</td>
+          </tr>
+          <tr>
+            <td><span class="nm">온픽 · ONPICK<small>溫 + pick</small></span></td>
+            <td>'따뜻함을 고른다/뜯는다'. 한글+영문 하이브리드</td>
+            <td>국내 친근감·패치(뜯다) 연상 · 글로벌은 약함</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">🔎 <b>상표 주의</b> — HOTSHOT·PREHEAT·EMBER는 사전 단어라 화장품/잡화 류에서 선등록이 있을 수 있다. 출시 전 <b>KIPRIS 상표검색</b>으로 지정상품류(3류 화장품·5류/10류 등) 확인 후, 필요하면 <b>로고(도형)+영문 조합</b>으로 식별력을 확보할 것. 본 페이지의 1차 웹 확인에선 동일 그루밍 브랜드 충돌은 발견되지 않았다.</p>
+  </section>
+
+  <hr class="soft" />
+
+  <!-- ============ VISUALS ============ -->
+  <section id="visual" style="padding-top:42px">
+    <div class="kicker"><span class="num">2</span> 비주얼 3종</div>
+    <h2>블랙 베이스 · 레드 포인트</h2>
+    <p class="lead">HOTSHOT을 적용한 컨셉 비주얼. 모두 벡터(SVG)라 무한 확대·수정 가능하며, 공유용 PNG도 함께 제공한다.</p>
+
+    <figure>
+      <div class="figdark"><img src="render_product.svg" alt="HOTSHOT 제품 키비주얼 — 사쉐와 발열 패치, 블랙×레드" /></div>
+      <figcaption><span class="fcap-t">① 제품 키비주얼</span><span><a href="render_product.svg" target="_blank" rel="noopener">SVG</a> · <a href="render_product.png" target="_blank" rel="noopener">PNG</a></span></figcaption>
+    </figure>
+
+    <figure>
+      <div class="figdark"><img src="render_box.svg" alt="HOTSHOT 패키지 박스 3D 목업, 블랙×레드" /></div>
+      <figcaption><span class="fcap-t">② 패키지 박스 (30매입)</span><span><a href="render_box.svg" target="_blank" rel="noopener">SVG</a> · <a href="render_box.png" target="_blank" rel="noopener">PNG</a></span></figcaption>
+    </figure>
+
+    <figure>
+      <div class="figdark"><img src="render_thumb.svg" alt="HOTSHOT 와디즈 펀딩 썸네일 — 붙이고 1분, 핫타월처럼" /></div>
+      <figcaption><span class="fcap-t">③ 와디즈 펀딩 썸네일</span><span><a href="render_thumb.svg" target="_blank" rel="noopener">SVG</a> · <a href="render_thumb.png" target="_blank" rel="noopener">PNG</a></span></figcaption>
+    </figure>
+    <p class="note">🖼 컨셉 일러스트(벡터)로 실제 제품 사진·인쇄물은 아니다. 색·로고·카피는 그대로 OEM/디자이너 전달 가이드로 사용 가능.</p>
+  </section>
+
+  <hr class="soft" />
+
+  <!-- ============ PALETTE ============ -->
+  <section id="palette" style="padding-top:42px">
+    <div class="kicker"><span class="num">3</span> 컬러 가이드</div>
+    <h2>블랙 × 레드 팔레트</h2>
+    <p class="lead">베이스는 깊은 블랙, 포인트는 강렬한 레드 하나. 색을 아껴 쓸수록 고급스럽다.</p>
+    <div class="palette">
+      <div class="sw"><div class="chip" style="background:#0a0908"></div><div class="meta"><div class="nm2">Jet Black</div><div class="hex">#0A0908</div></div></div>
+      <div class="sw"><div class="chip" style="background:#141110"></div><div class="meta"><div class="nm2">Base</div><div class="hex">#141110</div></div></div>
+      <div class="sw"><div class="chip" style="background:#1a1715"></div><div class="meta"><div class="nm2">Surface</div><div class="hex">#1A1715</div></div></div>
+      <div class="sw"><div class="chip" style="background:#ff3b2f"></div><div class="meta"><div class="nm2">Red (Point)</div><div class="hex">#FF3B2F</div></div></div>
+      <div class="sw"><div class="chip" style="background:#d11818"></div><div class="meta"><div class="nm2">Deep Red</div><div class="hex">#D11818</div></div></div>
+    </div>
+    <div class="palette" style="margin-top:0">
+      <div class="sw"><div class="chip" style="background:#ff6a4d"></div><div class="meta"><div class="nm2">Heat Glow</div><div class="hex">#FF6A4D</div></div></div>
+      <div class="sw"><div class="chip" style="background:#ffffff;border-bottom:1px solid var(--line)"></div><div class="meta"><div class="nm2">White</div><div class="hex">#FFFFFF</div></div></div>
+      <div class="sw"><div class="chip" style="background:#b3aca6"></div><div class="meta"><div class="nm2">Text Gray</div><div class="hex">#B3ACA6</div></div></div>
+      <div class="sw"><div class="chip" style="background:#3a3431"></div><div class="meta"><div class="nm2">Border</div><div class="hex">#3A3431</div></div></div>
+      <div class="sw"><div class="chip" style="background:#8a827c"></div><div class="meta"><div class="nm2">Sub Gray</div><div class="hex">#8A827C</div></div></div>
+    </div>
+    <p class="note">🎨 <b>사용 비율</b> — 블랙 계열 80% · 화이트/그레이 텍스트 15% · <b>레드는 5% 이내</b>(로고·CTA·발열 강조에만). 레드를 남발하면 싸 보인다.</p>
+  </section>
+
+  <!-- METHOD -->
+  <section id="method">
+    <div class="method">
+      <h3>방법론 · insane-search</h3>
+      <ul>
+        <li><strong>네이밍</strong> — 1차 웹 중복 확인(프리히트/바버패치 등) 후 충돌 없는 방향으로 추림. 확정 전 KIPRIS 상표검색 필요</li>
+        <li><strong>비주얼</strong> — 벡터(SVG)로 직접 제작, 헤드리스 브라우저로 렌더 검수. SVG/PNG 동시 제공</li>
+      </ul>
+      <div class="disc">⚠️ <b>면책</b> — 네이밍은 아이데이션이며 상표권 검토·등록이 아니다. 비주얼은 컨셉 일러스트로 실제 제품/패키지 아님. 상업 사용 전 상표·디자인·표시광고 검토 필수.</div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span><a href="part4.html">← Part 4 · 시제품·OEM·펀딩으로</a></span>
+    <span>HOTSHOT 컨셉 · Researched with <strong>insane-search</strong> · 2026</span>
+  </div>
+</footer>
+
+</body>
+</html>

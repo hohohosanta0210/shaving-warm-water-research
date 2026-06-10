@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 760" font-family="'Pretendard','Apple SD Gothic Neo','Malgun Gothic',sans-serif">
+  <defs>
+    <radialGradient id="bg" cx="0.62" cy="0.32" r="0.9">
+      <stop offset="0" stop-color="#26201e"/><stop offset="0.55" stop-color="#151210"/><stop offset="1" stop-color="#0a0908"/>
+    </radialGradient>
+    <linearGradient id="sachet" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1c1a19"/><stop offset="0.5" stop-color="#141211"/><stop offset="1" stop-color="#0d0b0a"/>
+    </linearGradient>
+    <linearGradient id="foil" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2a2624" stop-opacity="0.9"/><stop offset="0.5" stop-color="#3a3431" stop-opacity="0.5"/><stop offset="1" stop-color="#1a1716" stop-opacity="0.9"/>
+    </linearGradient>
+    <linearGradient id="red" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ff4d3d"/><stop offset="1" stop-color="#d11a1a"/>
+    </linearGradient>
+    <radialGradient id="heatglow" cx="0.5" cy="0.5" r="0.6">
+      <stop offset="0" stop-color="#ff5a3c" stop-opacity="0.55"/><stop offset="1" stop-color="#ff5a3c" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="patch" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ff5e45"/><stop offset="1" stop-color="#cc2020"/>
+    </linearGradient>
+    <pattern id="cells" width="22" height="22" patternUnits="userSpaceOnUse">
+      <rect width="22" height="22" fill="none"/>
+      <path d="M0 0 H22 M0 0 V22" stroke="#0a0908" stroke-width="1.4" opacity="0.35"/>
+    </pattern>
+    <filter id="soft" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="22" stdDeviation="34" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+    <filter id="redglow" x="-60%" y="-60%" width="220%" height="220%">
+      <feDropShadow dx="0" dy="0" stdDeviation="9" flood-color="#ff3b2f" flood-opacity="0.65"/>
+    </filter>
+  </defs>
+
+  <rect width="1240" height="760" fill="url(#bg)"/>
+  <!-- ambient red rim -->
+  <ellipse cx="880" cy="300" rx="520" ry="430" fill="url(#heatglow)" opacity="0.5"/>
+
+  <!-- ===== left: brand lockup ===== -->
+  <g transform="translate(96,150)">
+    <rect x="-2" y="-46" width="48" height="6" rx="3" fill="url(#red)" filter="url(#redglow)"/>
+    <text x="0" y="22" font-size="84" font-weight="800" letter-spacing="-3" fill="#ffffff">HOT<tspan fill="#ff3b2f">SHOT</tspan></text>
+    <text x="2" y="64" font-size="21" font-weight="700" letter-spacing="2" fill="#c9c2bd">PRE-SHAVE HEAT PATCH</text>
+    <text x="3" y="120" font-size="20" font-weight="600" fill="#8a827c">붙이고 1분, 핫타월처럼.</text>
+    <text x="3" y="150" font-size="20" font-weight="600" fill="#8a827c">잘라 쓰는 발열 프리쉐이브 패치</text>
+
+    <!-- feature chips -->
+    <g transform="translate(0,200)" font-size="15" font-weight="700">
+      <g>
+        <rect x="0" y="0" width="150" height="40" rx="20" fill="#1d1a18" stroke="#3a3431"/>
+        <circle cx="24" cy="20" r="5" fill="#ff3b2f"/>
+        <text x="40" y="26" fill="#e7e1dc">40~43℃ 온열</text>
+      </g>
+      <g transform="translate(166,0)">
+        <rect x="0" y="0" width="132" height="40" rx="20" fill="#1d1a18" stroke="#3a3431"/>
+        <circle cx="24" cy="20" r="5" fill="#ff3b2f"/>
+        <text x="40" y="26" fill="#e7e1dc">잘라 쓰기</text>
+      </g>
+      <g transform="translate(0,52)">
+        <rect x="0" y="0" width="120" height="40" rx="20" fill="#1d1a18" stroke="#3a3431"/>
+        <circle cx="24" cy="20" r="5" fill="#ff3b2f"/>
+        <text x="40" y="26" fill="#e7e1dc">1회용</text>
+      </g>
+      <g transform="translate(136,52)">
+        <rect x="0" y="0" width="162" height="40" rx="20" fill="#1d1a18" stroke="#3a3431"/>
+        <circle cx="24" cy="20" r="5" fill="#ff3b2f"/>
+        <text x="40" y="26" fill="#e7e1dc">전기/충전 불필요</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- ===== right: sachet + patch ===== -->
+  <!-- sachet -->
+  <g transform="translate(690,120)" filter="url(#soft)">
+    <rect x="0" y="0" width="300" height="430" rx="18" fill="url(#sachet)" stroke="#332e2b"/>
+    <rect x="0" y="0" width="300" height="430" rx="18" fill="url(#foil)"/>
+    <!-- top serration -->
+    <g fill="#0a0908"><path d="M0 0 l14 10 l14 -10 l14 10 l14 -10 l14 10 l14 -10 l14 10 l14 -10 l14 10 l14 -10 l14 10 l14 -10 l14 10 l14 -10 l14 10 l14 -10 l14 10 l14 -10 l14 10 l14 -10 V0 Z"/></g>
+    <!-- tear notch -->
+    <path d="M300 60 l-16 8 l16 8 Z" fill="#0a0908"/>
+
+    <!-- brand on sachet -->
+    <text x="34" y="120" font-size="44" font-weight="800" letter-spacing="-2" fill="#ffffff">HOT<tspan fill="#ff3b2f">SHOT</tspan></text>
+    <rect x="34" y="138" width="34" height="5" rx="2.5" fill="#ff3b2f"/>
+    <text x="34" y="174" font-size="14" font-weight="700" letter-spacing="1.5" fill="#b3aca6">PRE-SHAVE HEAT PATCH</text>
+
+    <!-- mini patch icon -->
+    <g transform="translate(150,290)">
+      <ellipse cx="0" cy="0" rx="120" ry="120" fill="url(#heatglow)"/>
+      <rect x="-20" y="-86" width="40" height="34" rx="8" fill="url(#patch)"/>
+      <path d="M -64 -36 C -64 30 -34 70 0 82 C 34 70 64 30 64 -36 C 64 -54 40 -60 0 -60 C -40 -60 -64 -54 -64 -36 Z" fill="url(#patch)"/>
+      <rect x="-20" y="-86" width="40" height="34" rx="8" fill="url(#cells)"/>
+      <path d="M -64 -36 C -64 30 -34 70 0 82 C 34 70 64 30 64 -36 C 64 -54 40 -60 0 -60 C -40 -60 -64 -54 -64 -36 Z" fill="url(#cells)"/>
+    </g>
+    <text x="150" y="408" font-size="13" font-weight="700" fill="#8a827c" text-anchor="middle">1 SHEET · 1회용</text>
+  </g>
+
+  <!-- patch out of sachet, leaning -->
+  <g transform="translate(560,400) rotate(-14)" filter="url(#soft)">
+    <ellipse cx="0" cy="20" rx="170" ry="160" fill="url(#heatglow)"/>
+    <!-- philtrum -->
+    <rect x="-26" y="-128" width="52" height="44" rx="11" fill="url(#patch)"/>
+    <!-- chin U band + wings -->
+    <path d="M -150 -120 C -128 -54 -104 -8 -68 26 L -98 70 C -148 40 -172 -36 -168 -104 Z" fill="url(#patch)" opacity="0.96"/>
+    <path d="M 150 -120 C 128 -54 104 -8 68 26 L 98 70 C 148 40 172 -36 168 -104 Z" fill="url(#patch)" opacity="0.96"/>
+    <path d="M -104 -76 C -104 32 -58 104 0 124 C 58 104 104 32 104 -76 C 104 -104 74 -120 36 -120 L -36 -120 C -74 -120 -104 -104 -104 -76 Z" fill="url(#patch)"/>
+    <!-- cell grid -->
+    <rect x="-26" y="-128" width="52" height="44" rx="11" fill="url(#cells)"/>
+    <path d="M -104 -76 C -104 32 -58 104 0 124 C 58 104 104 32 104 -76 C 104 -104 74 -120 36 -120 L -36 -120 C -74 -120 -104 -104 -104 -76 Z" fill="url(#cells)"/>
+    <!-- perforation -->
+    <g stroke="#fff" stroke-width="2" stroke-dasharray="3 6" opacity="0.85" fill="none">
+      <line x1="0" y1="-120" x2="0" y2="120"/>
+      <line x1="-100" y1="-30" x2="100" y2="-30"/>
+      <line x1="-130" y1="-110" x2="-78" y2="14"/>
+      <line x1="130" y1="-110" x2="78" y2="14"/>
+    </g>
+    <!-- heat waves -->
+    <g stroke="#ff6a4d" stroke-width="3" fill="none" opacity="0.85" stroke-linecap="round">
+      <path d="M -150 -150 q 12 -16 0 -32 q -12 -16 0 -32"/>
+      <path d="M 0 -160 q 12 -16 0 -32 q -12 -16 0 -32"/>
+      <path d="M 150 -150 q -12 -16 0 -32 q 12 -16 0 -32"/>
+    </g>
+  </g>
+
+  <text x="96" y="710" font-size="13" fill="#5c554f">컨셉 키비주얼 · 블랙 베이스 / 레드 포인트 · 실제 제품 사진 아님</text>
+</svg>

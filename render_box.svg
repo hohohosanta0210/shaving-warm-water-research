@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 760" font-family="'Pretendard','Apple SD Gothic Neo','Malgun Gothic',sans-serif">
+  <defs>
+    <radialGradient id="bbg" cx="0.5" cy="0.4" r="0.95">
+      <stop offset="0" stop-color="#221c1a"/><stop offset="0.6" stop-color="#141110"/><stop offset="1" stop-color="#090807"/>
+    </radialGradient>
+    <linearGradient id="front" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1a1715"/><stop offset="1" stop-color="#100e0d"/>
+    </linearGradient>
+    <linearGradient id="side" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#0e0c0b"/><stop offset="1" stop-color="#050404"/>
+    </linearGradient>
+    <linearGradient id="top" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#272220"/><stop offset="1" stop-color="#181513"/>
+    </linearGradient>
+    <linearGradient id="rd" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ff4d3d"/><stop offset="1" stop-color="#cc1818"/>
+    </linearGradient>
+    <radialGradient id="hglow" cx="0.5" cy="0.5" r="0.6">
+      <stop offset="0" stop-color="#ff5a3c" stop-opacity="0.5"/><stop offset="1" stop-color="#ff5a3c" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="bsh" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="28" stdDeviation="36" flood-color="#000" flood-opacity="0.65"/>
+    </filter>
+    <filter id="rglow" x="-60%" y="-60%" width="220%" height="220%">
+      <feDropShadow dx="0" dy="0" stdDeviation="8" flood-color="#ff3b2f" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+
+  <rect width="1240" height="760" fill="url(#bbg)"/>
+  <ellipse cx="520" cy="430" rx="430" ry="300" fill="url(#hglow)" opacity="0.4"/>
+  <!-- floor reflection -->
+  <ellipse cx="540" cy="650" rx="360" ry="40" fill="#000" opacity="0.45"/>
+
+  <!-- ===== 3D box ===== -->
+  <g filter="url(#bsh)">
+    <!-- top face -->
+    <path d="M 300 250 L 560 200 L 760 250 L 500 304 Z" fill="url(#top)"/>
+    <!-- side face -->
+    <path d="M 760 250 L 760 560 L 500 620 L 500 304 Z" fill="url(#side)"/>
+    <!-- front face -->
+    <path d="M 300 250 L 500 304 L 500 620 L 300 568 Z" fill="url(#front)"/>
+
+    <!-- red accent stripe on top -->
+    <path d="M 300 250 L 560 200 L 583 207 L 323 257 Z" fill="url(#rd)"/>
+
+    <!-- ===== front face artwork ===== -->
+    <g>
+      <!-- vertical red bar -->
+      <rect x="322" y="300" width="9" height="250" fill="url(#rd)" filter="url(#rglow)" transform="skewY(15)"/>
+      <!-- brand -->
+      <g transform="translate(300,250)">
+        <!-- text follows front-face skew (down-left) -->
+        <g transform="skewY(15)">
+          <text x="48" y="120" font-size="42" font-weight="800" letter-spacing="-2" fill="#ffffff">HOT<tspan fill="#ff3b2f">SHOT</tspan></text>
+          <text x="50" y="150" font-size="13" font-weight="700" letter-spacing="1.2" fill="#b3aca6">PRE-SHAVE HEAT PATCH</text>
+          <text x="50" y="210" font-size="15" font-weight="600" fill="#8a827c">발열 프리쉐이브 패치</text>
+          <text x="50" y="234" font-size="13" font-weight="600" fill="#6f6862">잘라 쓰는 온열 · 1회용</text>
+          <!-- patch icon -->
+          <g transform="translate(96,300)">
+            <rect x="-15" y="-44" width="30" height="24" rx="6" fill="url(#rd)"/>
+            <path d="M -40 -18 C -40 18 -22 40 0 48 C 22 40 40 18 40 -18 C 40 -32 24 -36 0 -36 C -24 -36 -40 -32 -40 -18 Z" fill="url(#rd)"/>
+          </g>
+          <text x="96" y="372" font-size="14" font-weight="800" fill="#ffffff" text-anchor="middle">30매입</text>
+        </g>
+      </g>
+    </g>
+
+    <!-- ===== side face artwork ===== -->
+    <g transform="translate(500,304)">
+      <g transform="skewY(-15)">
+        <rect x="40" y="80" width="32" height="4" fill="#ff3b2f"/>
+        <g transform="translate(40,118)" font-size="12.5" font-weight="600" fill="#8a827c">
+          <text y="0">· 40~43℃ 온열</text>
+          <text y="28">· 잘라 맞춤</text>
+          <text y="56">· 전기 불필요</text>
+          <text y="84">· 휴대 간편</text>
+        </g>
+      </g>
+    </g>
+  </g>
+
+  <!-- sachet leaning against box -->
+  <g transform="translate(700,400) rotate(8)" filter="url(#bsh)">
+    <rect x="0" y="0" width="150" height="220" rx="12" fill="#16130f"/>
+    <rect x="0" y="0" width="150" height="220" rx="12" fill="#1c1916" opacity="0.6"/>
+    <g fill="#090807"><path d="M0 0 l10 7 l10 -7 l10 7 l10 -7 l10 7 l10 -7 l10 7 l10 -7 l10 7 l10 -7 l10 7 l10 -7 l10 7 l10 -7 V0Z"/></g>
+    <text x="18" y="64" font-size="22" font-weight="800" letter-spacing="-1" fill="#fff">HOT<tspan fill="#ff3b2f">SHOT</tspan></text>
+    <rect x="18" y="74" width="20" height="3.5" fill="#ff3b2f"/>
+    <g transform="translate(75,150)">
+      <rect x="-10" y="-30" width="20" height="16" rx="4" fill="url(#rd)"/>
+      <path d="M -28 -10 C -28 14 -15 30 0 36 C 15 30 28 14 28 -10 C 28 -22 16 -26 0 -26 C -16 -26 -28 -22 -28 -10 Z" fill="url(#rd)"/>
+    </g>
+  </g>
+
+  <text x="96" y="712" font-size="13" fill="#5c554f">패키지 컨셉 목업 · 블랙 베이스 / 레드 포인트 · 실제 인쇄물 아님</text>
+</svg>

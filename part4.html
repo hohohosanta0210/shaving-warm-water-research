@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>발열 프리쉐이브 패치 — 시제품 스펙 · OEM · 펀딩 카피</title>
+<meta name="description" content="잘라 쓰는 하관 발열 프리쉐이브 패치의 시제품 스펙, 국내 OEM 제조 후보 리스트, 와디즈 펀딩 페이지 카피, 시제품 목업 이미지." />
+<meta property="og:title" content="발열 프리쉐이브 패치 — 시제품·OEM·펀딩 (Part 4)" />
+<meta property="og:description" content="시제품 스펙 시트, OEM 제조 후보, 와디즈 카피, 잘라 쓰는 패치 목업" />
+<meta property="og:type" content="article" />
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+<style>
+  :root{
+    --bg:#f7f4ef;--surface:#fffdfa;--ink:#1d1a16;--muted:#6b6359;--line:#e6dfd4;
+    --accent:#d9603b;--accent-soft:#fbe9e1;--teal:#2f7d72;--teal-soft:#e2f0ed;
+    --quote-bg:#f1ece3;--strong:#0f0d0a;--radius:16px;
+    --shadow:0 1px 2px rgba(29,26,22,.04), 0 8px 28px -12px rgba(29,26,22,.16);
+    --maxw:820px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,system-ui,"Segoe UI",Roboto,sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.72;-webkit-font-smoothing:antialiased;font-feature-settings:"tnum";letter-spacing:-.011em;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+
+  header.hero{padding:60px 0 38px;border-bottom:1px solid var(--line);
+    background:radial-gradient(120% 80% at 100% 0%, var(--accent-soft) 0%, rgba(251,233,225,0) 55%),
+      radial-gradient(90% 70% at 0% 0%, var(--teal-soft) 0%, rgba(226,240,237,0) 45%);}
+  .nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;font-size:13.5px;font-weight:600}
+  .nav a,.nav span{padding:7px 14px;border-radius:999px;text-decoration:none}
+  .nav .here{background:var(--accent);color:#fff}
+  .nav .other{background:var(--surface);border:1px solid var(--line);color:var(--muted)}
+  .nav a{border-bottom:none}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--accent);
+    margin-bottom:18px;padding:6px 12px;border:1px solid var(--accent);border-radius:999px;background:rgba(255,255,255,.5);}
+  .eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent)}
+  h1{font-size:clamp(27px,4.6vw,40px);line-height:1.18;font-weight:800;letter-spacing:-.03em;margin:0 0 16px;color:var(--strong)}
+  .sub{font-size:17px;color:var(--muted);margin:0;max-width:62ch}
+
+  .toc{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}
+  .toc a{font-size:13.5px;font-weight:700;padding:8px 14px;border-radius:10px;background:var(--surface);border:1px solid var(--line);color:var(--ink);text-decoration:none}
+  .toc a:hover{border-color:var(--accent);color:var(--accent)}
+
+  main{padding:50px 0 40px}
+  section{margin:0 0 62px;scroll-margin-top:20px}
+  .kicker{font-size:13px;font-weight:700;color:var(--accent);letter-spacing:.04em;margin:0 0 10px;display:flex;align-items:center;gap:10px}
+  .kicker .num{font-size:12px;width:24px;height:24px;border-radius:8px;background:var(--accent);color:#fff;display:grid;place-items:center;font-weight:800}
+  h2{font-size:clamp(22px,3.4vw,28px);line-height:1.25;font-weight:800;letter-spacing:-.02em;margin:0 0 10px;color:var(--strong)}
+  h3{font-size:17px;font-weight:800;color:var(--strong);margin:26px 0 10px}
+  p{margin:0 0 16px;font-size:16.5px}
+  a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(217,96,59,.35)}
+  a:hover{border-color:var(--accent)}
+  strong{color:var(--strong);font-weight:700}
+  .lead{font-size:16px;color:var(--muted);margin-bottom:18px}
+
+  /* mockup figure */
+  figure{margin:0 0 18px}
+  .figwrap{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:14px;box-shadow:var(--shadow)}
+  .figwrap img{width:100%;height:auto;display:block;border-radius:8px}
+  figcaption{font-size:13px;color:var(--muted);margin-top:10px;text-align:center}
+  figcaption a{font-weight:600}
+
+  /* spec table */
+  .tablecard{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);margin:14px 0}
+  table{width:100%;border-collapse:collapse;font-size:14.5px}
+  th,td{text-align:left;padding:13px 15px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:var(--quote-bg);font-weight:700;color:var(--strong);font-size:13px}
+  tr:last-child td{border-bottom:none}
+  td .k{font-weight:700;color:var(--strong)}
+  .pill{display:inline-block;font-size:12px;font-weight:700;padding:2px 9px;border-radius:999px;background:var(--teal-soft);color:#1f5a51}
+  .pill.warn{background:var(--accent-soft);color:#a8472a}
+
+  /* cut explanation */
+  .cuts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0}
+  .cutcard{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px;box-shadow:var(--shadow)}
+  .cutcard .t{font-weight:800;color:var(--strong);font-size:15px;margin-bottom:4px}
+  .cutcard p{margin:0;font-size:13.5px;color:var(--muted)}
+
+  /* OEM */
+  .oem{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px;box-shadow:var(--shadow);margin:10px 0}
+  .oem .top{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .oem h4{margin:0;font-size:16px;font-weight:800;color:var(--strong)}
+  .oem .site{font-size:13px;color:var(--accent);font-weight:600}
+  .oem p{margin:6px 0 0;font-size:14px;color:var(--muted)}
+  .tracktag{font-size:11.5px;font-weight:800;padding:3px 9px;border-radius:999px}
+  .tk-heat{background:var(--accent-soft);color:#a8472a}
+  .tk-mask{background:var(--teal-soft);color:#1f5a51}
+  .tk-one{background:#fbf0d2;color:#8a6a00}
+
+  /* copy block */
+  .copy{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow)}
+  .copy .label{font-size:12px;font-weight:800;color:var(--accent);letter-spacing:.05em;margin-bottom:6px;text-transform:uppercase}
+  .copy .title-l{font-size:24px;font-weight:800;color:var(--strong);line-height:1.3;margin:0 0 6px;letter-spacing:-.02em}
+  .copy .alt{font-size:13.5px;color:var(--muted);margin:0 0 18px}
+  .copy h4{margin:20px 0 8px;font-size:15.5px;font-weight:800;color:var(--accent)}
+  .copy p{font-size:15px;margin:0 0 12px}
+  .copy .story{font-size:15.5px;line-height:1.8}
+  .reward{border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:10px 0;background:var(--bg)}
+  .reward .r-top{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+  .reward .r-name{font-weight:800;color:var(--strong);font-size:15px}
+  .reward .r-price{font-weight:800;color:var(--accent);font-size:15px;white-space:nowrap}
+  .reward .r-desc{font-size:13.5px;color:var(--muted);margin-top:4px}
+  .faqq{font-weight:700;color:var(--strong);margin:14px 0 4px;font-size:15px}
+  .faqa{font-size:14.5px;color:var(--muted);margin:0}
+  .copybtn{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:var(--teal);background:var(--teal-soft);border:none;border-radius:8px;padding:8px 14px;cursor:pointer;margin-top:8px}
+
+  .note{background:var(--quote-bg);border-radius:12px;padding:14px 16px;font-size:13.5px;color:var(--muted);margin:14px 0}
+  .note b{color:var(--ink)}
+
+  .method{background:var(--surface);border:1px dashed var(--line);border-radius:var(--radius);padding:22px}
+  .method h3{margin:0 0 12px;font-size:15px}
+  .method ul{margin:0;padding-left:18px}
+  .method li{font-size:14px;color:var(--muted);margin-bottom:6px}
+  .disc{font-size:13px;color:var(--muted);background:var(--quote-bg);border-radius:12px;padding:14px 16px;margin-top:14px}
+
+  footer{border-top:1px solid var(--line);padding:34px 0 70px;color:var(--muted);font-size:13.5px}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:6px;justify-content:space-between;align-items:center}
+  footer a{font-weight:600}
+  hr.soft{border:none;border-top:1px solid var(--line);margin:0}
+
+  @media (max-width:640px){
+    header.hero{padding:44px 0 30px}
+    main{padding:38px 0 30px}
+    .cuts{grid-template-columns:1fr}
+    section{margin-bottom:48px}
+    .reward .r-top{flex-direction:column;gap:2px}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <nav class="nav">
+      <a class="other" href="index.html">PART 1 · 니즈</a>
+      <a class="other" href="market.html">PART 2 · 시장성</a>
+      <a class="other" href="part3.html">PART 3 · 타당성</a>
+      <span class="here">PART 4 · 시제품·OEM·펀딩</span>
+    </nav>
+    <span class="eyebrow">실행 키트 · 시제품 · 제조 · 펀딩</span>
+    <h1>잘라 쓰는 발열 프리쉐이브 패치 — 만들기 위한 실행 자료</h1>
+    <p class="sub">시제품 스펙 시트, 국내 OEM 제조 후보, 와디즈 펀딩 페이지 카피, 그리고 시제품 목업 이미지를 한 곳에 모았다.</p>
+    <div class="toc">
+      <a href="#spec">① 시제품 스펙 + 목업</a>
+      <a href="#oem">② OEM 제조 후보</a>
+      <a href="#copy">③ 와디즈 펀딩 카피</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ============ 1. SPEC + MOCKUP ============ -->
+  <section id="spec">
+    <div class="kicker"><span class="num">1</span> 시제품 스펙 &amp; 목업</div>
+    <h2>하관 발열 패치 — '잘라서 맞춤' 설계</h2>
+    <p class="lead">기본형은 인중 + 턱에 쫙 붙는 하관 시트지만, 얼굴형이 다 다르므로 <strong>절취선(흰 점선)을 따라 인중 스트립·턱 U밴드·볼 윙을 분리/재단</strong>해 자기 얼굴에 맞춘다.</p>
+
+    <figure>
+      <div class="figwrap">
+        <img src="mockup.svg" alt="발열 프리쉐이브 패치 시제품 컨셉 — 펼친 모양(절취선), 부착 예시, 단면 구조" />
+      </div>
+      <figcaption>시제품 컨셉 목업 · <a href="mockup.svg" target="_blank" rel="noopener">SVG 원본</a> · <a href="mockup_preview.png" target="_blank" rel="noopener">PNG</a> (컨셉 일러스트, 실제 비율 아님)</figcaption>
+    </figure>
+
+    <h3>① 펼친 형태 · 잘라 쓰는 방식</h3>
+    <div class="cuts">
+      <div class="cutcard"><div class="t">인중 스트립</div><p>코밑 좁은 부위 전용. 작게 떼어 단독 사용 가능.</p></div>
+      <div class="cutcard"><div class="t">턱 · 턱선 U밴드</div><p>턱~턱선~목을 감싸는 본체. 가로 절취선으로 폭 조절.</p></div>
+      <div class="cutcard"><div class="t">볼/턱선 윙</div><p>구레나룻·볼 수염용. 필요 없으면 잘라내 버린다.</p></div>
+    </div>
+    <p class="note">📐 <b>재단 원리</b> — 발열체가 <b>작은 셀(격자)로 분할</b>돼 있어 절취선을 가위로 자르거나 손으로 뜯어도 각 셀이 독립적으로 발열을 유지한다(핫팩을 잘라 쓰지 못하는 한계를 셀 분할로 해결). 셀 경계는 비발열 실링 처리.</p>
+
+    <h3>② 핵심 스펙(목표값)</h3>
+    <div class="tablecard">
+      <table>
+        <tbody>
+          <tr><td><span class="k">발열 방식</span></td><td>철분 산화(비전기) — 핫팩·스팀 아이마스크와 동일 원리 <span class="pill">공산품/화장품 경로</span></td></tr>
+          <tr><td><span class="k">표면 온도</span></td><td><strong>40~43℃</strong> 상한(저온화상 회피). 스팀 아이마스크 40℃ 기준 준용</td></tr>
+          <tr><td><span class="k">승온 시간</span></td><td>개봉 후 <strong>30초~1분</strong> 내 체감 온기 (산소 노출 즉시 반응 구조)</td></tr>
+          <tr><td><span class="k">발열 지속</span></td><td><strong>8~12분</strong> (실사용은 1~3분 후 면도 — 여유 마진 포함)</td></tr>
+          <tr><td><span class="k">습윤</span></td><td>스팀/보습 에센스로 따뜻함 + 수분 동시 전달(핫타월 재현)</td></tr>
+          <tr><td><span class="k">형태·치수</span></td><td>하관 시트 약 180×120mm, 절취 격자(셀 ~25×25mm), 인중 스트립 분리형</td></tr>
+          <tr><td><span class="k">점착</span></td><td>약점착 피부용 점착제(잔여물 적음) 또는 하이드로겔 자착 + 보조 귀걸이</td></tr>
+          <tr><td><span class="k">레이어</span></td><td>이형지 / 약점착층 / (에센스 시트) / 철분 발열체(통기 부직포) / 산소조절 백킹</td></tr>
+          <tr><td><span class="k">포장·수명</span></td><td>1회용, 개별 <strong>산소차단 파우치</strong>(개봉 전 발열 방지)</td></tr>
+          <tr><td><span class="k">안전 표시</span></td><td>저온화상 경고, 1회·단시간, 눈·점막·상처 부위 회피, 연속 사용 금지 <span class="pill warn">필수</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">⚙️ <b>대안 발열원</b> — 즉시성이 더 필요하면 <b>아세트산나트륨 결정화(재사용형 손난로 원리)</b>를 1회용으로 응용 검토. 단 점착·곡면 밀착은 철분 시트가 유리.</p>
+  </section>
+
+  <hr class="soft" />
+
+  <!-- ============ 2. OEM ============ -->
+  <section id="oem" style="padding-top:42px">
+    <div class="kicker"><span class="num">2</span> OEM 제조 후보</div>
+    <h2>발열체 + 시트/에센스, 두 축을 붙인다</h2>
+    <p class="lead">이 제품은 <strong>① 철분 발열체(핫팩 기술)</strong>와 <strong>② 피부 접촉 시트·에센스(마스크팩 기술)</strong>의 결합이다. 가장 빠른 길은 <strong>이미 '온열 스팀 마스크'를 만드는 곳</strong>에 점착·재단 커스텀을 얹는 것.</p>
+
+    <h3><span class="tracktag tk-one">원스톱 근접</span> 온열·스팀 마스크 제조 (1순위 접촉)</h3>
+    <div class="oem">
+      <div class="top"><h4>스팀베이스</h4><span class="site">steambase.co.kr</span></div>
+      <p>온열 스팀 아이마스크를 직접 제조·판매(데일리 아이마스크 등). 발열체+시트 결합 노하우 보유 → 하관 패치 변형 협의 1순위.</p>
+    </div>
+    <div class="oem">
+      <div class="top"><h4>DHT B2B</h4><span class="site">dht-b2b.com</span></div>
+      <p>스팀 아이마스크/온열안대 B2B 공급. OEM·소싱 채널로 활용 가능.</p>
+    </div>
+
+    <h3><span class="tracktag tk-heat">발열체</span> 핫팩·발열체 OEM (발열 모듈 소싱)</h3>
+    <div class="oem">
+      <div class="top"><h4>핫팩부심</h4><span class="site">miraehotpack.com</span></div>
+      <p>국내 OEM 핫팩/손난로 제작(70·100·150g 등). 발열체 사양·KC 인증 상담.</p>
+    </div>
+    <div class="oem">
+      <div class="top"><h4>다봉산업㈜</h4><span class="site">da-bong.com</span></div>
+      <p>핫팩·보온대 OEM 제조. 발열 파우치 커스텀 가능성.</p>
+    </div>
+    <div class="oem">
+      <div class="top"><h4>영인엠알오 (강병장 핫팩)</h4><span class="site">yinmro.com</span></div>
+      <p>국내생산 핫팩, ISO 9001/14001. 온도·지속시간 스펙 협의.</p>
+    </div>
+
+    <h3><span class="tracktag tk-mask">시트·에센스</span> 마스크팩·하이드로겔·패치 OEM/ODM</h3>
+    <div class="oem">
+      <div class="top"><h4>셀프코스</h4><span class="site">selfcos.com</span></div>
+      <p>하이드로겔 마스크팩·아이패치·코팩 전문 OEM/ODM <strong>제조사 매칭 플랫폼</strong>(임상·용기·원료 포함). 신규 브랜드가 견적 비교하기 좋음.</p>
+    </div>
+    <div class="oem">
+      <div class="top"><h4>엔더코스</h4><span class="site">ndecos.com</span></div>
+      <p>마스크팩·기초화장품 ODM, 바이오셀룰로오스 원단. 에센스 처방 개발.</p>
+    </div>
+    <div class="oem">
+      <div class="top"><h4>아이썸 / 한국코스모 / 라온하세 / ㈜뷰티화장품</h4><span class="site">eyesome.co.kr · hankookcosmo.co.kr · laonhase.com · btcosmetic.com</span></div>
+      <p>마스크팩·기초 OEM/ODM 다수. 화장품行(에센스 동반) 선택 시 책임판매업·처방까지 원스톱 가능 업체군.</p>
+    </div>
+
+    <h3>제작 플로우(권장)</h3>
+    <div class="tablecard">
+      <table>
+        <thead><tr><th>단계</th><th>내용</th><th>주체</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>품목분류 확정(공산품 vs 화장품) — 식약처 민원</td><td>브랜드</td></tr>
+          <tr><td>2</td><td>온열 스팀 마스크 제조사에 하관 패치 변형 의뢰(발열+시트 일체)</td><td>스팀베이스/DHT</td></tr>
+          <tr><td>3</td><td>발열체 스펙 미세조정(40~43℃·승온속도) / 필요 시 핫팩 OEM 병행</td><td>핫팩 OEM</td></tr>
+          <tr><td>4</td><td>에센스·점착·이형지·절취격자·개별포장 사양 확정, 안전·점착 시험</td><td>마스크팩 OEM</td></tr>
+          <tr><td>5</td><td>KC/표시(공산품) 또는 책임판매업·표시광고(화장품) 완료 후 양산</td><td>브랜드+OEM</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">📞 <b>실무 팁</b> — 분류 애매하면 <b>국번없이 1381(인증표준정보센터)</b> / 식약처 <b>정부24 '의료기기 해당여부 검토 신청'</b>으로 먼저 확정 후 OEM 견적. 사양서엔 "사용목적: 면도 전 수염 연화(온열)"로 명기하고 의료 효능 문구는 배제.</p>
+  </section>
+
+  <hr class="soft" />
+
+  <!-- ============ 3. WADIZ COPY ============ -->
+  <section id="copy" style="padding-top:42px">
+    <div class="kicker"><span class="num">3</span> 와디즈 펀딩 카피</div>
+    <h2>그대로 붙여 쓰는 펀딩 페이지 초안</h2>
+    <p class="lead">Part 1~2에서 검증된 인사이트("불리기가 귀찮다 · 핫타월은 비현실적 · 편하면 갈아탄다")를 그대로 카피에 녹였다. 톤은 와디즈 메이커 화법.</p>
+
+    <div class="copy">
+      <div class="label">제목 (메인)</div>
+      <p class="title-l">"붙이고 1분, 핫타월처럼." — 면도 전 따뜻하게, 잘라 쓰는 발열 프리쉐이브 패치</p>
+      <div class="alt">대안 제목 ⓐ 「세면대 앞에서 물 데울 시간, 패치 한 장으로 끝」 · ⓑ 「수염 불리기, 이제 붙이세요」 · ⓒ 「바버샵 스팀타월을 1회용 패치에 담았다」</div>
+
+      <h4>서브카피</h4>
+      <p>매일 아침 따뜻한 물에 수염 불리기… 알지만 안 하죠. 바쁘니까. 그래서 만들었습니다. <strong>얼굴에 붙이면 따뜻해져 수염을 부드럽게</strong> 풀어주는 1회용 패치. 얼굴형 따라 <strong>잘라서</strong> 인중에도, 턱에도.</p>
+
+      <h4>① 공감 — 이런 적 있죠?</h4>
+      <p class="story">"하루종일 불리고 있을 수도 없고…" 따뜻한 물로 수염 불리는 게 정석인 건 다 압니다. 그런데 바쁜 아침엔 그냥 폼만 바르고 밀다가 — 따갑고, 빨갛고, 피가 나죠. 핫타월? 전자레인지에 수건 돌릴 여유, 현실엔 없습니다.</p>
+
+      <h4>② 솔루션 — 붙이는 따뜻함</h4>
+      <p class="story">핫팩과 같은 <strong>철분 산화 발열</strong>로 40℃ 안팎의 포근한 온기 + 스팀이 수염을 부드럽게 풀어줍니다. 물 먹은 수염은 마른 상태보다 <strong>70% 부드러워진다</strong>는 그 원리를, 세면대 없이 패치 한 장으로.</p>
+
+      <h4>③ 사용법 — 3단계 30초</h4>
+      <p class="story"><strong>STEP 1.</strong> 포장을 뜯어 얼굴형에 맞게 자른다(인중/턱/볼).<br>
+      <strong>STEP 2.</strong> 수염 부위에 붙이고 1~3분 따뜻하게.<br>
+      <strong>STEP 3.</strong> 떼고 평소처럼 면도. 끝.</p>
+
+      <h4>④ 왜 '패치'인가 — 크림과 다릅니다</h4>
+      <p class="story">바르는 발열 크림은 금방 식고, 펴 바르기 번거롭고, 균일하지 않습니다. 패치는 <strong>붙여두면 손 안 대도</strong> 고르게, 일정 온도로 따뜻하게. 게다가 <strong>잘라서</strong> 내 얼굴에 맞춥니다.</p>
+
+      <h4>⑤ 안전</h4>
+      <p class="story">최고 온도를 제한(≤43℃)해 저온화상 위험을 낮췄고, 1회·단시간 사용 설계입니다. 눈·점막·상처 부위는 피해 주세요. <span style="color:var(--muted);font-size:13.5px">(인증/시험 정보는 본양산 기준 고지)</span></p>
+
+      <h4>⑥ 리워드 구성(예시)</h4>
+      <div class="reward"><div class="r-top"><span class="r-name">얼리버드 · 10매</span><span class="r-price">9,900원</span></div><div class="r-desc">1~2주 체험용. 1매당 990원. 한정 수량.</div></div>
+      <div class="reward"><div class="r-top"><span class="r-name">베이직 · 30매</span><span class="r-price">24,900원</span></div><div class="r-desc">한 달 데일리. 가장 인기 예상 구성.</div></div>
+      <div class="reward"><div class="r-top"><span class="r-name">패밀리/커플 · 60매 + 파우치</span><span class="r-price">45,900원</span></div><div class="r-desc">남성 수염 + 여성 바디 겸용. 휴대 파우치 증정.</div></div>
+      <p style="font-size:12.5px;color:var(--muted);margin-top:6px">※ 가격은 가설 — Part 2의 'WTP(지불의향) 검증' 항목으로 펀딩 반응 보며 조정.</p>
+
+      <h4>⑦ FAQ</h4>
+      <div class="faqq">Q. 진짜 따뜻해지나요?</div>
+      <p class="faqa">핫팩과 같은 검증된 발열 원리입니다. 개봉 후 30초~1분이면 따뜻해집니다.</p>
+      <div class="faqq">Q. 얼굴에 붙여도 안전한가요?</div>
+      <p class="faqa">최고 온도를 제한하고 단시간 사용으로 설계했습니다. 눈·점막·상처 부위는 피해 주세요.</p>
+      <div class="faqq">Q. 여자도 쓸 수 있나요?</div>
+      <p class="faqa">네. 잘라서 다리·겨드랑이 등 바디 면도 전 연화에도 쓸 수 있습니다.</p>
+      <div class="faqq">Q. 전기/충전이 필요한가요?</div>
+      <p class="faqa">아니요. 붙이면 끝나는 1회용입니다. 출장·여행·헬스장에도.</p>
+    </div>
+
+    <p class="note">✍️ <b>카피 활용</b> — 위 텍스트는 와디즈 스토리 섹션에 그대로 이식 가능. 단 <b>의료 효능 표현 금지</b>(혈행·치료·통증 등)와 <b>인증 완료 전 단정 표현 자제</b> 원칙을 지킬 것.</p>
+  </section>
+
+  <!-- METHOD -->
+  <section id="method">
+    <div class="method">
+      <h3>방법론 · insane-search</h3>
+      <ul>
+        <li><strong>OEM</strong> — 핫팩 OEM(핫팩부심·다봉·영인), 온열 스팀 마스크(스팀베이스·DHT), 마스크팩/하이드로겔 OEM(셀프코스·엔더코스 등) 교차 확인</li>
+        <li><strong>스펙</strong> — 스팀 아이마스크(40℃) · 저온화상 임계(44℃ 6h) · 핫팩 발열(철 1g당 1.69kcal) 근거로 목표값 도출</li>
+        <li><strong>목업</strong> — 벡터(SVG)로 직접 제작, 헤드리스 렌더 검수. 확대·편집·재사용 가능</li>
+      </ul>
+      <div class="disc">⚠️ <b>면책</b> — 스펙은 목표 설계값(시험 전 가설), OEM은 공개 정보 기반 후보이며 거래·품질 보증이 아니다. 카피의 효능 표현은 인증·표시광고 심의 후 확정해야 한다. 실제 제작 전 OEM 실견적·시제품 시험·규제 확인 필수.</div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span><a href="part3.html">← Part 3 · 발열패치 타당성으로</a></span>
+    <span>Researched with <strong>insane-search</strong> · 2026</span>
+  </div>
+</footer>
+
+</body>
+</html>
